@@ -13,7 +13,7 @@ pipeline {
                 VERSION= sh (script: "sh version.sh", returnStdout: true)
             }
             steps {
-                sh "fpm -a amd64 -t deb --deb-no-default-config-files -v `echo ${VERSION}` -n scripts-teleservices -s dir .=/opt/publik"
+                sh "fpm -a amd64 -t deb --deb-no-default-config-files -v `echo ${VERSION}` -n scripts-teleservices -s dir .=/opt/publik/scripts"
                 withCredentials([string(credentialsId: 'gpg-passphrase-system@imio.be', variable:'PASSPHRASE')]){
                     sh ('''dpkg-sig --gpg-options "--yes --batch --passphrase '$PASSPHRASE' " -s builder -k 9D4C79E197D914CF60C05332C0025EEBC59B875B scripts-teleservices_`echo ${VERSION}`_amd64.deb''')
                 }

@@ -12,7 +12,7 @@
   <always_advertise>false</always_advertise>
   <has_captcha>false</has_captcha>
   <skip_from_360_view>false</skip_from_360_view>
-  <category category_id="97">Bac &#224; sable</category>
+  <category category_id="9">Mod&#232;les</category>
   <workflow workflow_id="1">Gestion des rendez-vous</workflow>
   <max_field_id>65</max_field_id>
   <last_modification user_id="1">2019-11-25 15:45:41</last_modification>

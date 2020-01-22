@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-15"?>
 <formdef id="11">
-  <name>Acte de d&#233;c&#232;s</name>
+  <name>Acte de D&#233;c&#232;s</name>
   <url_name>acte-de-deces</url_name>
   <description>&lt;p&gt;&lt;em&gt;L'extrait d'acte de D&amp;eacute;c&amp;egrave;s ne peut &amp;ecirc;tre r&amp;eacute;clam&amp;eacute; que dans la commune o&amp;ugrave; le d&amp;eacute;c&amp;egrave;s a eu lieu. &lt;/em&gt;&lt;/p&gt;</description>
   <internal_identifier>acte-de-deces</internal_identifier>

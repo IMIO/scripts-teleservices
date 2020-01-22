@@ -34,7 +34,7 @@
               <value>='{0} {1} {2} - {3} {4}'.format(form_var_rue, form_var_numero, '({0})'.format(vars().get('form_var_boite')) if vars().get('form_var_boite') is not None else '', form_var_cp, form_var_localite) if vars().get('form_var_rb_concerne') is None else '{0} {1}({2}) - {3} {4}'.format(form_var_rue, form_var_numero, form_var_boite, form_var_cp, form_var_localite) if form_var_rb_concerne_raw == 'moi' else '{0} {1}({2}) - {3} {4}'.format(form_var_rue_perscon, form_var_numero_perscon, form_var_boite_perscon, form_var_cp_perscon, form_var_localite_perscon)</value>
             </field><field>
               <field_id>bo12</field_id>
-              <value>=form_var_tel if vars().get('form_var_rb_concerne') is None else form_var_tel if form_var_rb_concerne_raw == 'moi' else vars().get('form_var_tel_persconf') or ''</value>
+              <value>=form_var_tel if vars().get('form_var_rb_concerne') is None else form_var_tel if form_var_rb_concerne_raw == 'moi' else vars().get('form_var_tel_perscon') or ''</value>
             </field><field>
               <field_id>bo2</field_id>
               <value>=locals().get("form_var_nb_exemplaire") or 1</value>

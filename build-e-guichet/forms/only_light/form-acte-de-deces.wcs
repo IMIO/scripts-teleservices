@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-15"?>
 <formdef id="13">
-  <name>Acte de d&#233;c&#232;s</name>
+  <name>Acte de D&#233;c&#232;s</name>
   <url_name>acte-de-deces</url_name>
   <internal_identifier>acte-de-deces</internal_identifier>
   <discussion>false</discussion>

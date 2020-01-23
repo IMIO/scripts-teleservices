@@ -199,26 +199,6 @@
       <display_disabled_items>False</display_disabled_items>
       <id>63</id>
     </field><field>
-      <label>Adresse e-mail</label>
-      <type>email</type>
-      <required>True</required>
-      <varname>email_perscon</varname>
-      <in_listing>False</in_listing>
-      <extra_css_class>grid-1-2 newline</extra_css_class>
-      <prefill>
-        <type>none</type>
-      </prefill><id>49</id>
-    </field><field>
-      <label>Num&#233;ro de t&#233;l&#233;phone</label>
-      <type>string</type>
-      <required>True</required>
-      <varname>tel_perscon</varname>
-      <in_listing>False</in_listing>
-      <extra_css_class>grid-1-2</extra_css_class>
-      <prefill>
-        <type>none</type>
-      </prefill><id>66</id>
-    </field><field>
       <label>Donn&#233;es du demandeur</label>
       <type>page</type>
       <post_conditions>

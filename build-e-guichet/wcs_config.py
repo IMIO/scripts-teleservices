@@ -12,10 +12,14 @@ try:
         for line in f:
             if "DATABASES['default']['PASSWORD']" in line:
                 password = line.split(' = ')[1].translate(None, "'").replace('\n','')
+            if "DATABASES['default']['HOST']" in line:
+                host = line.split(' = ')[1].translate(None, "'").replace('\n','')
+            if "DATABASES['default']['PORT']" in line:
+                port = line.split(' = ')[1].translate(None, "'").replace('\n','')
     pub.cfg['postgresql'] = {'database':'teleservices_{0}_wcs'.format(sys.argv[1]),
                         'user':'teleservices_{0}_teleservices'.format(sys.argv[1]),
-                        'host':'database.lan.imio.be',
-                        'port':'5432',
+                        'host':host,
+                        'port':port,
                         'password':password}
 except:
     pub.cfg['postgresql'] = {'database':'wcs',

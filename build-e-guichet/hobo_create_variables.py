@@ -6,6 +6,8 @@ Variable(name='commune_cp', label='Code postal/postaux de la commune', value='11
 Variable(name='administration_adresse', label="Adresse complète de l'administration", value="1, Place de l'administration - 1111 Ma Commune").save()
 Variable(name='administration_site', label='Site Internet de la commune', value='https://www.ma-commune.be').save()
 Variable(name='global_title', label='Intitulé de l\'instance et mails', value='Commune - Guichet en ligne').save()
+Variable(name='logo', label='Logo', value='False').save()
+Variable(name='banner', label='Bannière', value='False').save()
 variables = Variable.objects
 variables.filter(name='default_from_email').update(value='no-reply@imio.be')
 

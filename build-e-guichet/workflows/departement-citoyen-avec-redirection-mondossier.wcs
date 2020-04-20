@@ -723,6 +723,7 @@ ex : 4000,4020,4030,4031</hint>
           <label>BAEC</label>
           <type>bool</type>
           <required>False</required>
+	  <hint>Cette option est &#224; activer (case coch&#233;e) pour les actes et &#224; d&#233;sactiver pour les autres d&#233;marches. (+ d'info : https://docs.imio.be/imio-doc/ia.teleservices/faq/a_quoi_sert_la_case_baec.html)</hint>
           <varname>BAEC</varname>
           <in_listing>False</in_listing>
           <prefill>

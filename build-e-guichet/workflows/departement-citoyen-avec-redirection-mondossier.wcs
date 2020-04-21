@@ -640,6 +640,21 @@ Cordialement, </body>
           </roles>
         </trigger>
       </triggers>
+    </action><action>
+      <id>3</id>
+      <name>Resoumettre (iMio-test)</name>
+      <items>
+        <item id="1" type="jump">
+          <status>just_submitted</status>
+          <set_marker_on_status>False</set_marker_on_status>
+        </item>
+      </items><triggers>
+        <trigger id="759814e1-adc4-47fd-88c1-8566f2871992" type="manual">
+          <roles>
+            <item role_id="77e9495a5ab84a10954668022dbfd0dc">Debug</item>
+          </roles>
+        </trigger>
+      </triggers>
     </action>
   </global_actions><variables>
     <formdef>

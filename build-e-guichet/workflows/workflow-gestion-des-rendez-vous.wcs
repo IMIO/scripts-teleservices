@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<workflow id="9">
+<workflow id="127">
   <name>Gestion des rendez-vous</name>
   <roles>
     <role id="_receiver">Agent traitant</role>
-  </roles><last_modification user_id="1">2020-01-17 13:02:31</last_modification>
+  </roles><last_modification user_id="3">2020-04-22 15:55:01</last_modification>
   <possible_status>
     <status>
       <id>1</id>
@@ -179,14 +179,14 @@
           <post>False</post>
           <post_data>
             <item>
-              <name>user_name</name>
-              <value>{{form_var_benef_nom}} {{form_var_benef_prenom}}</value>
+              <name>label</name>
+              <value>{{form_name}}</value>
             </item><item>
               <name>backoffice_url</name>
               <value>{{form_url_backoffice}}</value>
             </item><item>
-              <name>label</name>
-              <value>{{form_name}}</value>
+              <name>user_name</name>
+              <value>{{form_var_benef_nom}} {{form_var_benef_prenom}}</value>
             </item>
           </post_data><response_type>json</response_type>
           <varname>reservation</varname>
@@ -211,7 +211,7 @@
       </visibility><items>
         <item id="1" type="sendmail">
           <to>
-            <item role_id="{{nicolas.hislaire@imio.be}}">{{nicolas.hislaire@imio.be}}</item>
+            <item role_id="_submitter">_submitter</item>
           </to><subject>{{ form_name }} - {{form_var_type_rdv}}</subject>
           <body>Bonjour,
 
@@ -241,7 +241,8 @@ Votre administration</body>
             <display_location>summary</display_location>
           </display_locations><prefill>
             <type>none</type>
-          </prefill><display_mode>list</display_mode>
+          </prefill><items />
+          <display_mode>list</display_mode>
           <data_source>
             <type>json</type>
             <value>{{ agendas_url }}/api/agenda/</value>

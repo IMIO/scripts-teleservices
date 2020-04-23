@@ -8,11 +8,11 @@ from quixote import get_publisher
 pub = get_publisher()
 if sys.argv[1].upper() == "LOCAL":
     pub.cfg['misc']['homepage-redirect-url'] = 'http://{0}.{1}/demarches/'.format(sys.argv[1], sys.args[2])
-    pub.cfg['postgresql'] = {'database':'wcs',
-                    'user':'postgres',
-                    'host':'database',
-                    'port':'5432',
-                    'password':'password'}
+    pub.cfg['postgresql'] = {'database': 'wcs',
+                             'user': 'postgres',
+                             'host': 'database',
+                             'port': '5432',
+                             'password': 'password'}
 else:
     pub.cfg['misc']['homepage-redirect-url'] = 'https://{0}.{1}/demarches/'.format(sys.argv[1], sys.args[2])
 

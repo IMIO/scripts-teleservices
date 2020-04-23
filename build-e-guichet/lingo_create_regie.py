@@ -5,17 +5,17 @@ from combo.apps.lingo.models import Regie
 from combo.apps.lingo.models import PaymentBackend
 
 service_opt = {
-               "payment_means": "VISA,MASTERCARD,MAESTRO",
-               "platform": "test",
-               "secret_key": "002001000000001_KEY1",
-               "merchant_id": "002001000000001",
-               "key_version": "1"
-              }
+    "payment_means": "VISA,MASTERCARD,MAESTRO",
+    "platform": "test",
+    "secret_key": "002001000000001_KEY1",
+    "merchant_id": "002001000000001",
+    "key_version": "1"
+}
 
 pb = PaymentBackend(label=u'Atos test',
-               slug=u'atos_test',
-               service=eopayment.SIPS2,
-               service_options=service_opt)
+                    slug=u'atos_test',
+                    service=eopayment.SIPS2,
+                    service_options=service_opt)
 pb.save()
 
 Regie(label='Atos test',

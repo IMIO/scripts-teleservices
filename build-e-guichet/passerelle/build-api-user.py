@@ -1,4 +1,4 @@
-from passerelle.base.models import ApiUser, AccessRight
+from passerelle.base.models import ApiUser
 
 api_user = ApiUser.objects.create(
     username='Tout_le_monde',

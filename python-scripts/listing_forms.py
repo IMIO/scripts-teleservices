@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 # sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=COMMUNE-formulaires.guichet-citoyen.be listing_forms.py COMMUNE
 
-import csv
-import re
-import sys
 from time import mktime
 from datetime import datetime
 from wcs.formdef import FormDef

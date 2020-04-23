@@ -31,4 +31,4 @@ for formdef in FormDef.select(order_by='category_id'):
     datasources_existantes = []
 html = "{}</body></html>".format(html)
 
-print html
+print(html)

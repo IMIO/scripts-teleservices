@@ -10,7 +10,7 @@ def patch_authentic_user():
     User = get_user_model()
     OU = get_ou_model()
     Role = get_role_model()
-    organisation_unit = OU.objects.get(default = True)
+    organisation_unit = OU.objects.get(default=True)
     user_admin_commune = User.objects.get_or_create(username='admin_commune')[0]
     with provisionning:
 
@@ -24,3 +24,4 @@ def patch_authentic_user():
         role_agent_fabriques.members.add(user_admin_commune)
 
 patch_authentic_user()
+

@@ -1,4 +1,4 @@
-#USAGE : docker exec -ti [COMMUNE]teleservices_[COMMUNE]teleservices_1 sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=[COMMUNE]-formulaires.[DOMAIN] /opt/publik/scripts/build-e-guichet/export-workflows.py [COMMUNE]
+# USAGE : docker exec -ti [COMMUNE]teleservices_[COMMUNE]teleservices_1 sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=[COMMUNE]-formulaires.[DOMAIN] /opt/publik/scripts/build-e-guichet/export-workflows.py [COMMUNE]
 
 import os
 import sys
@@ -19,6 +19,7 @@ for wf in Workflow.select():
         except ImportError:
             pass
         import sys
+
         reload(sys)
         sys.setdefaultencoding('utf8')
         xml_str = ET.tostring(xml)
@@ -27,4 +28,3 @@ for wf in Workflow.select():
         os.mkdir(folder_store_wf)
     with open("{}/{}.wcs".format(folder_store_wf, slugify(wf.name)), 'w+') as myfile:
         myfile.write(xml_str)
-

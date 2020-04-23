@@ -8,28 +8,12 @@ from quixote import get_publisher
 pub = get_publisher()
 if sys.argv[1].upper() == "LOCAL":
     pub.cfg['misc']['homepage-redirect-url'] = 'http://{0}.{1}/demarches/'.format(sys.argv[1], sys.args[2])
+    pub.cfg['postgresql'] = {'database':'wcs',
+                    'user':'postgres',
+                    'host':'database',
+                    'port':'5432',
+                    'password':'password'}
 else:
     pub.cfg['misc']['homepage-redirect-url'] = 'https://{0}.{1}/demarches/'.format(sys.argv[1], sys.args[2])
-try:
-    with open('/etc/combo/settings.d/settings.py') as f:
-        for line in f:
-            if "DATABASES['default']['PASSWORD']" in line:
-                password = line.split(' = ')[1].translate(None, "'").replace('\n','')
-            if "DATABASES['default']['HOST']" in line:
-                host = line.split(' = ')[1].translate(None, "'").replace('\n','')
-            if "DATABASES['default']['PORT']" in line:
-                port = line.split(' = ')[1].translate(None, "'").replace('\n','')
-    pub.cfg['postgresql'] = {'database':'teleservices_{0}_wcs'.format(sys.argv[1]),
-                        'user':'teleservices_{0}_teleservices'.format(sys.argv[1]),
-                        'host':host,
-                        'port':port,
-                        'password':password}
-except:
-    pub.cfg['postgresql'] = {'database':'wcs',
-                        'user':'postgres',
-                        'host':'database',
-                        'port':'5432',
-                        'password':'password'}
-    
-pub.cfg['emails']['smtp_server'] = 'mailrelay.imio.be'
+
 pub.write_cfg()

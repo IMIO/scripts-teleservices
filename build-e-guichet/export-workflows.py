@@ -14,6 +14,10 @@ for wf in Workflow.select():
     try:
         xml_str = ET.tostring(xml)
     except UnicodeDecodeError:
+        try:
+            from importlib import reload
+        except ImportError:
+            pass
         import sys
         reload(sys)
         sys.setdefaultencoding('utf8')

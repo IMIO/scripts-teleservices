@@ -20,7 +20,7 @@ def cpt_users_with_rights():
     cpt = 0
     for user in users:
         if user.roles.count() > 0:
-            cpt = cpt + 1 
+            cpt = cpt + 1
     return cpt
 
 
@@ -52,9 +52,10 @@ cpt_users_with_recent_connexion = cpt_users_with_recent_connexion(nb_month_retur
 # print(cpt_users_with_recent_connexion)
 
 
-data = {'all_users':cpt_all_users,
-        'users_with_rights':cpt_users_with_rights,
-        'users_with_recent_connexion':cpt_users_with_recent_connexion
-        }
+data = {
+    'all_users': cpt_all_users,
+    'users_with_rights': cpt_users_with_rights,
+    'users_with_recent_connexion': cpt_users_with_recent_connexion
+}
 
 print(data)

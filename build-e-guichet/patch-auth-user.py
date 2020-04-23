@@ -23,5 +23,6 @@ def patch_authentic_user():
         # Set role to user
         role_agent_fabriques.members.add(user_admin_commune)
 
+
 patch_authentic_user()
 

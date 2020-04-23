@@ -1,14 +1,15 @@
 from quixote import get_publisher
 import sys
+
 pub = get_publisher()
 permissions = {
-    'users':[],
-    'roles':[],
-    'settings':[],
-    'bounces':[],
-    'forms':[],
-    'workflows':[],
-    'categories':[]
+    'users': [],
+    'roles': [],
+    'settings': [],
+    'bounces': [],
+    'forms': [],
+    'workflows': [],
+    'categories': []
 }
 
 with open("/tmp/tmp_uuid_agent_fabriques.txt", 'r') as file_aa:
@@ -29,4 +30,3 @@ with open("/tmp/tmp_uuid_debug.txt", 'r') as file_debug:
 
 pub.cfg['admin-permissions'] = permissions
 pub.write_cfg()
-

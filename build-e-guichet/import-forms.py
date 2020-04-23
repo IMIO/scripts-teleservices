@@ -3,6 +3,7 @@
 import os
 import sys
 from wcs.formdef import FormDef
+
 lst_formdef_ids = []
 lst_formdef_names = []
 conv = lambda x: int(x)
@@ -23,18 +24,18 @@ for fichier in os.listdir(folder_path):
                     try:
                         with open("/tmp/tmp_uuid_agent_traitant_pop.txt", 'r') as file_at:
                             uuid_at = file_at.read()
-                            formdef.workflow_roles = {'_receiver':uuid_at}
+                            formdef.workflow_roles = {'_receiver': uuid_at}
                     except:
                         uuid_at = 12
-                        formdef.workflow_roles = {'_receiver':uuid_at}
+                        formdef.workflow_roles = {'_receiver': uuid_at}
                 else:
                     try:
                         with open("/tmp/tmp_uuid_agent_traitant_trav.txt", 'r') as file_at:
                             uuid_at = file_at.read()
-                            formdef.workflow_roles = {'_receiver':uuid_at}
+                            formdef.workflow_roles = {'_receiver': uuid_at}
                     except:
                         uuid_at = 13
-                        formdef.workflow_roles = {'_receiver':uuid_at}
+                        formdef.workflow_roles = {'_receiver': uuid_at}
                 try:
                     if len(lst_formdef_ids) < 1:
                         new_id = 1
@@ -45,4 +46,3 @@ for fichier in os.listdir(folder_path):
                     formdef.store()
                 except:
                     print("import error : {}".format(formdef.id))
-

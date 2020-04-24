@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/build-e-guichet/cpt_auth_users.py -d lalouviere-auth.guichet-citoyen.be
 
-from calendar import monthrange
 from datetime import datetime
 from dateutil import relativedelta
 from django.contrib.auth import get_user_model

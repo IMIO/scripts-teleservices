@@ -135,7 +135,7 @@
           "text": "Envoi \u00e0 domicile",
           "price": "1.0",
           "paymentrequired": true,
-          "slug": "poste",
+          "slug": "envoi-a-domicile",
           "description": "Mode de r\u00e9ception : envoi \u00e0 domicile"
         },
         {

@@ -4,6 +4,6 @@
   <description>Acte de naissance</description>
   <data_source>
     <type>formula</type>
-    <value>[('{0}'.format(commune_slug), 'Je suis n&#233;(e) &#224; {0}'.format(commune_name)), ('Pas {0}'.format(commune_slug), 'Je ne suis pas n&#233;(e) &#224; {0}'.format(commune_name'))]</value>
+    <value>[('{0}'.format(commune_slug), 'Je suis né(e) à {0}'.format(commune_name)), ('Pas {0}'.format(commune_slug), 'Je ne suis pas né(e) à {0}'.format(commune_name'))]</value>
   </data_source>
 </datasources>

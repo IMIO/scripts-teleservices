@@ -72,7 +72,7 @@
       "name": "num_house",
       "label": "Numéro",
       "asked_on_registration": true,
-      "description": "Ex. de num\u00e9ro : 12, 147 et pas 1c ou 124/14. (Compl\u00e9ment \u00E0 indiquer dans le champ bo\u00EEte)",
+      "description": "Ex. de numéro : 12, 147 et pas 1c ou 124/14. (Complément à indiquer dans le champ boite)",
       "required": true,
       "kind": "num_house",
       "order": 7
@@ -134,7 +134,7 @@
       "order": 14,
       "asked_on_registration": true,
       "kind": "nrn",
-      "description": "Le n\u00B0 d'identification au Registre national se trouve sur la carte d'identit\u00e9.",
+      "description": "Le n° d'identification au registre national se trouve sur la carte d'identité.",
       "label": "Numéro national"
     }}
   ]

@@ -33,7 +33,7 @@
           "description": "Banque"
         },
         {
-          "text": "Bourse d'\u00e9tudes",
+          "text": "Bourse d'études",
           "price": "0.0",
           "slug": "bourse-d-etudes",
           "description": "Bourse d'\u00e9tudes"
@@ -45,10 +45,10 @@
           "description": "Consulat"
         },
         {
-          "text": "Cr\u00e8che",
+          "text": "Crêche",
           "price": "0.0",
           "slug": "creche",
-          "description": "Cr\u00e8che"
+          "description": "Crêche"
         },
         {
           "text": "Demande d'emploi",
@@ -99,13 +99,13 @@
           "description": "Pour mariage en Belgique"
         },
         {
-          "text": "R\u00e9gion Wallonne",
+          "text": "Région Wallonne",
           "price": "0.0",
           "slug": "region-wallonne",
-          "description": "R\u00e9gion Wallonne"
+          "description": "Région Wallonne"
         },
         {
-          "text": "Succession : co\u00fbt 2\u20ac",
+          "text": "Succession : coût 2€",
           "price": "2.0",
           "slug": "succession",
           "description": "Succession"
@@ -117,10 +117,10 @@
           "description": "Syndicat"
         },
         {
-          "text": "Usage \u00e0 l'\u00e9tranger : co\u00fbt 2\u20ac",
+          "text": "Usage à l'étranger : coût 2€",
           "price": "2.0",
           "slug": "usage-etranger",
-          "description": "Usage \u00e0 l'\u00e9tranger"
+          "description": "Usage à l'étranger"
         }
       ],
       "log_level": "NOTSET",
@@ -135,15 +135,15 @@
           "text": "Envoi \u00e0 domicile",
           "price": "1.0",
           "paymentrequired": true,
-          "slug": "poste",
-          "description": "Mode de r\u00e9ception : envoi \u00e0 domicile"
+          "slug": "envoi-a-domicile",
+          "description": "Mode de réception : envoi à domicile"
         },
         {
-          "text": "R\u00e9cup\u00e9rer le document \u00e0 la commune lorsqu'il est pr\u00eat",
+          "text": "Récupérer le document à la commune lorsqu'il est prêt",
           "price": "0.0",
           "paymentrequired": false,
           "slug": "commune",
-          "description": "Mode de r\u00e9ception \u00e0 la commune"
+          "description": "Mode de réception à la commune"
         }
       ]
     }

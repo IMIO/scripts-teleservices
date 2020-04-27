@@ -1,7 +1,7 @@
 <datasources id="98">
   <name>passerelle_motifs</name>
   <slug>passerelle_motifs</slug>
-  <description>Fait r&#233;f&#233;rence au plugins passerelle afin de r&#233;cup&#233;rer les motifs.</description>
+  <description>Fait référence au plugins passerelle afin de récupérer les motifs.</description>
   <data_source>
     <type>json</type>
     <value>http://local-passerelle.example.net/imio-ts1-datasources/gestion-des-motifs-et-des-destinations/motivationterms/</value>

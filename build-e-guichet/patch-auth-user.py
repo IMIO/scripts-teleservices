@@ -3,7 +3,6 @@
 from authentic2.compat import get_user_model
 from django_rbac.utils import get_role_model, get_ou_model
 from hobo.agent.authentic2.provisionning import provisionning
-import hashlib
 
 
 def patch_authentic_user():

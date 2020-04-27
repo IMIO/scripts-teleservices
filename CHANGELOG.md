@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file.
   - PEP8 warnings (missing whitespaces, indentations,... )
   - Removed unused statements
   
+## [0.0.18] - 27-04-2020 -
+### Changed
+  - removes \u00.. special chars from json to fix error in my local instance (I can't run build-e-guichet without encoding errors tracebacks)
+
 ## [0.0.17] - 24-04-2020 -
 ### Changed
   - delete branches from pull requests

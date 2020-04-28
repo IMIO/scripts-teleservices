@@ -1,16 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-
-## [0.0.00] - 23-04-2020 -- TEMPLATE
-### Added
-  - template
-  - something (example)
+    
+## [0.0.19] - 28-04-2020 -
 ### Changed
-  - everything (example)
-### Fixed
-  - PEP8 warnings (missing whitespaces, indentations,... )
-  - Removed unused statements
-  
+  - build-e-guichet.sh 
+    - espace \[ \] chars to makes sed work again
+    - add condition to sed extra params json and to make it work for local
+   
 ## [0.0.18] - 27-04-2020 -
 ### Changed
   - removes \u00.. special chars from json to fix error in my local instance (I can't run build-e-guichet without encoding errors tracebacks)

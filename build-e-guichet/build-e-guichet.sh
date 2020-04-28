@@ -35,7 +35,7 @@ sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-p
 sleep 0.1
 
 # Create passerelle "pays" datasource. (To choice country in users' profile).
-echo "-- Creating passerelle 'pays' datasource."
+echo "-- Creating passerelle 'pays' datasource ..."
 sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/build-e-guichet/passerelle/pays.json --import-users
 sleep 0.1
 
@@ -107,7 +107,7 @@ fi
 sleep 0.1
 
 # Import combo site structure
-echo -- Importing combo site structure ..."
+echo "-- Importing combo site structure ..."
 if [ $3 = "full" ]
     then
     sed -i "s/COMMUNE/$1/g" combo-site/combo-site-structure-full.json

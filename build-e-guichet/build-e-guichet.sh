@@ -28,6 +28,11 @@ sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-p
 # Add hobo extra params
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
 sed "s~commune~$1~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
+if [ $1 == "local" ]
+then
+  sed "s~guichet-citoyen.be~local~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
+  sed "s~https~http~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
+fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
 
 # Adapt country field in DB to have a list field instead a text field

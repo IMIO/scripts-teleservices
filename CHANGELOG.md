@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
-    
+
+## [0.0.20] - 28-04-2020 -
+### Changed
+  - build-e-guichet.sh 
+    - add better feebacks about what is going on (echo)
+
 ## [0.0.19] - 28-04-2020 -
 ### Changed
   - build-e-guichet.sh 

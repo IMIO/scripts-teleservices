@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.20] - 28-04-2020 -
+## [0.0.21] - 28-04-2020 -
 ### Changed
   - build-e-guichet.sh 
     - add category model on a form who had no category and it causes crashed during our build-e-guichet.sh.

@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.21] - 12-05-2020 -
+### Changed
+  -  build-e-guichet/forms/models/form-prise-de-rendez-vous.wcs
+    - add category model on a form who had no category and it caused crashes during our build-e-guichet.sh.
+    https://github.com/IMIO/scripts-teleservices/commit/88c165ee6c502d325a6fa718d8e6ab7c47bb0748
+
 ## [0.0.20] - 28-04-2020 -
 ### Changed
   - build-e-guichet.sh 

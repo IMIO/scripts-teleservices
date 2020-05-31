@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [0.0.22] - 31-05-2020 -
+### Changed
+  -  build-e-guichet/hobo_create_variables.py
+    - avoir no-reply usage (default mail sender)
+    https://github.com/IMIO/scripts-teleservices/commit/f487b0c77543043ae117820e3a50c86a5d83e8e3
+
 ## [0.0.21] - 12-05-2020 -
 ### Changed
   -  build-e-guichet/forms/models/form-prise-de-rendez-vous.wcs

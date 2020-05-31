@@ -12,7 +12,7 @@ Variable(name='global_title', label='Intitulé de l\'instance et mails', value='
 Variable(name='logo', label='Logo', value='False').save()
 Variable(name='banner', label='Bannière', value='False').save()
 variables = Variable.objects
-variables.filter(name='default_from_email').update(value='no-reply@imio.be')
+variables.filter(name='default_from_email').update(value='e-guichet@imio.be')
 
 #  dic_default_from_email = ''
 # for variable in variables.values():

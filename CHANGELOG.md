@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.23] - 09-06-2020 -
+### Changed
+  -  recipe-$1-extra.json wasn't properly set during a local instance build-e-guichet launch
+The json has "guichet-citoyen.be" (default) instead of "$2" (most of time "local" for a local instance).
+So sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json was cooking with wrong json data.
+https://github.com/IMIO/scripts-teleservices/commit/5e63fd1b996761676006e488a2687695c4cdbfba
+
+## [0.0.22] - 31-05-2020 -
+### Changed
+  -  build-e-guichet/hobo_create_variables.py
+    - avoir no-reply usage (default mail sender)
+    https://github.com/IMIO/scripts-teleservices/commit/f487b0c77543043ae117820e3a50c86a5d83e8e3
+
 ## [0.0.21] - 12-05-2020 -
 ### Changed
   -  build-e-guichet/forms/models/form-prise-de-rendez-vous.wcs

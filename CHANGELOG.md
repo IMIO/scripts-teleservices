@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.25] - 16/06/2020 -
+### Changed
+  -  fix bad syntax in a condition (build-e-guichet.sh)
+
+## [0.0.24] - ? -
+### Changed
+  -  ?
+
 ## [0.0.23] - 09-06-2020 -
 ### Changed
   -  recipe-$1-extra.json wasn't properly set during a local instance build-e-guichet launch

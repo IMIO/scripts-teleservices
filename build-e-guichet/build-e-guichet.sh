@@ -43,7 +43,7 @@ sleep 0.1
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
 sed "s~commune~$1~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
-if [ "$1" == "local" ];then
+if [ $1 = "local" ];then
   sed "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
   sed "s~https~http~g" /etc/hobo/recipe-$1-extra.json
 fi

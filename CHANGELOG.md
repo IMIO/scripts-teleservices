@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.26] - 16/06/2020 -
+### Changed
+  -  fix add hobo extra params section (build-e-guichet.sh)
+      some sed didn't worked as expected in local
+
 ## [0.0.25] - 16/06/2020 -
 ### Changed
   -  fix bad syntax in a condition (build-e-guichet.sh)

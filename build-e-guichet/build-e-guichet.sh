@@ -1,3 +1,4 @@
+#!/bin/bash
 # USAGE : 
 # $1 : commune_id (test, demo, local, huy, liege,...)
 # $2 : domain (guichet-citoyen.be, example.net, ...)

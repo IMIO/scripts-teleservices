@@ -1,3 +1,4 @@
+#!/bin/bash
 # USAGE : 
 # $1 : commune_id (test, demo, local, huy, liege,...)
 # $2 : domain (guichet-citoyen.be, example.net, ...)
@@ -42,10 +43,10 @@ sleep 0.1
 # Add hobo extra params
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
-sed "s~commune~$1~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
-if [ "$1" == "local" ];then
-  sed "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
-  sed "s~https~http~g" /etc/hobo/recipe-$1-extra.json
+sed -e "s~commune~$1~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
+if [ $1 = "local" ];then
+  sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
+  sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
 fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
 sleep 0.1

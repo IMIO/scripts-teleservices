@@ -173,9 +173,11 @@ Bien cordialement,</body>
           <notify_on_errors>True</notify_on_errors>
           <record_errors>True</record_errors>
         </item><item id="2" type="register-comment">
-          <comment>&lt;p&gt;L'article se trouve dans votre panier.
-Veuillez r&#233;gler &lt;a href="{{portal_user_url}}panier"&gt;votre panier&lt;/a&gt;.
-&lt;p&gt;</comment>
+          <comment>&lt;p&gt;L'article se trouve dans votre panier.&lt;br&gt;
+Veuillez r&#233;gler votre commande.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="{{portal_user_url}}panier" class="pk-button"&gt;Acc&#233;der au panier&lt;/a&gt;
+&lt;/p&gt;</comment>
         </item><item id="3" type="jump">
           <status>12</status>
           <trigger>cancelled</trigger>

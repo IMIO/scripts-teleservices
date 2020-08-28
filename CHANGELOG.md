@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.28] - 28/08/2020 -
+### Changed
+  - [nse] : add "regie payment" as a form option
+  - [nse] : normalize form option name and label
+
 ## [0.0.27] - 19/08/2020 -
 ### Changed
   - [dmu, nse, nhi] : remove link in a action of the departement citoyen wf and add button (link to basket after submission)

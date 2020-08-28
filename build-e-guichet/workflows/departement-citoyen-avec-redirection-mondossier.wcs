@@ -4,7 +4,7 @@
   <roles>
     <role id="_receiver">Agent traitant</role>
     <role id="_validateur-pc-banking">Validateur pc banking</role>
-  </roles><last_modification user_id="1">2019-03-07 15:47:04</last_modification>
+  </roles><last_modification user_id="1">2020-08-24 13:57:28</last_modification>
   <possible_status>
     <status>
       <id>just_submitted</id>
@@ -15,8 +15,8 @@
         <item id="1" type="jump">
           <status>20</status>
           <condition>
-            <type>python</type>
             <value>vars().get('form_option_lien_mondossier') is not None and 'form_var_mode_delivrance_raw' in locals() and form_var_mode_delivrance_raw != 'commune'</value>
+            <type>python</type>
           </condition><set_marker_on_status>False</set_marker_on_status>
         </item><item id="2" type="set-backoffice-fields">
           <fields>
@@ -40,7 +40,7 @@
               <value>=locals().get("form_var_nb_exemplaire") or 1</value>
             </field><field>
               <field_id>bo3</field_id>
-              <value>=str(((Decimal(form_option_cost) + Decimal(locals().get('form_var_motifs_price') or '0')) * int(locals().get('form_var_nb_exemplaire' or '1')))) or '0.00'</value>
+              <value>=str(((Decimal(form_option_cout) + Decimal(locals().get('form_var_motifs_price') or '0')) * int(locals().get('form_var_nb_exemplaire' or '1')))) or '0.00'</value>
             </field><field>
               <field_id>bo9</field_id>
               <value>=True</value>
@@ -49,14 +49,14 @@
         </item><item id="3" type="jump">
           <status>13</status>
           <condition>
-            <type>python</type>
             <value>Decimal(form_var_destinations_price) == Decimal('0') and Decimal(form_var_wf_total_commande) == Decimal('0')</value>
+            <type>python</type>
           </condition><set_marker_on_status>False</set_marker_on_status>
         </item><item id="4" type="jump">
           <status>21</status>
           <condition>
-            <type>python</type>
             <value>vars().get('form_var_wf_paiement_en_ligne_raw') is False</value>
+            <type>python</type>
           </condition><set_marker_on_status>False</set_marker_on_status>
         </item><item id="5" type="jump">
           <status>10</status>
@@ -82,8 +82,8 @@
         </item><item id="3" type="jump">
           <status>24</status>
           <condition>
-            <type>python</type>
             <value>Decimal(form_var_wf_total_commande) &gt; 0</value>
+            <type>python</type>
           </condition><set_marker_on_status>False</set_marker_on_status>
         </item>
       </items>
@@ -116,6 +116,7 @@ Pour r&#233;f&#233;rence, voici le d&#233;tail du formulaire :
             <item role_id="_receiver">_receiver</item>
           </by><status>finished</status>
           <require_confirmation>False</require_confirmation>
+          <ignore_form_errors>False</ignore_form_errors>
           <set_marker_on_status>False</set_marker_on_status>
         </item><item id="3" type="choice">
           <label>Refuser la demande</label>
@@ -123,6 +124,7 @@ Pour r&#233;f&#233;rence, voici le d&#233;tail du formulaire :
             <item role_id="_receiver">_receiver</item>
           </by><status>19</status>
           <require_confirmation>False</require_confirmation>
+          <ignore_form_errors>False</ignore_form_errors>
           <set_marker_on_status>False</set_marker_on_status>
         </item>
       </items>
@@ -150,18 +152,29 @@ Bien cordialement,</body>
       <colour>FFFFFF</colour>
       <visibility />
       <items>
-        <item id="1" type="webservice_call">
+        <item id="2" type="webservice_call">
           <label>Paiement en ligne</label>
           <url>{{portal_url}}api/lingo/add-basket-item?NameId={{form_user_name_identifier_0}}</url>
-          <method>POST</method>
-          <post>True</post>
+          <qs_data>
+            <item>
+              <name>regie_id</name>
+              <value>{{form_option_regie_de_paiement_raw}}</value>
+            </item>
+          </qs_data><method>POST</method>
+          <post>False</post>
           <post_data>
             <item>
-              <name>amount</name>
-              <value>{{form_var_wf_total_commande}}</value>
+              <name>display_name</name>
+              <value>{{form_display_name}}</value>
+            </item><item>
+              <name>url</name>
+              <value>{{form_url}}</value>
             </item><item>
               <name>nb_documents</name>
               <value>{{form_var_wf_nb_exemplaires}}</value>
+            </item><item>
+              <name>amount</name>
+              <value>{{form_var_wf_total_commande}}</value>
             </item>
           </post_data><response_type>json</response_type>
           <varname>transaction_info</varname>
@@ -172,17 +185,17 @@ Bien cordialement,</body>
           <action_on_network_errors>:stop</action_on_network_errors>
           <notify_on_errors>True</notify_on_errors>
           <record_errors>True</record_errors>
-        </item><item id="2" type="register-comment">
+        </item><item id="3" type="register-comment">
           <comment>&lt;p&gt;L'article se trouve dans votre panier.&lt;br&gt;
 Veuillez r&#233;gler votre commande.&lt;/p&gt;
 &lt;p&gt;
 &lt;a href="{{portal_user_url}}panier" class="pk-button"&gt;Acc&#233;der au panier&lt;/a&gt;
 &lt;/p&gt;</comment>
-        </item><item id="3" type="jump">
+        </item><item id="4" type="jump">
           <status>12</status>
           <trigger>cancelled</trigger>
           <set_marker_on_status>False</set_marker_on_status>
-        </item><item id="4" type="jump">
+        </item><item id="5" type="jump">
           <status>17</status>
           <trigger>paid</trigger>
           <set_marker_on_status>False</set_marker_on_status>
@@ -257,11 +270,11 @@ Bien cordialement,
           <post>True</post>
           <post_data>
             <item>
-              <name>skip_notification</name>
-              <value>skip</value>
-            </item><item>
               <name>basket_item_id</name>
               <value>{{panier_response_id}}</value>
+            </item><item>
+              <name>skip_notification</name>
+              <value>skip</value>
             </item>
           </post_data><response_type>json</response_type>
           <action_on_app_error>:pass</action_on_app_error>
@@ -289,7 +302,10 @@ Bien cordialement,
               <field>
                 <label>Motif du refus</label>
                 <type>title</type>
-                <id>3</id>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><id>3</id>
               </field><field>
                 <label>Le motif du refus sera envoy&#233; par mail &#224; l'usager.</label>
                 <type>comment</type>
@@ -299,8 +315,10 @@ Bien cordialement,
                 <type>string</type>
                 <required>True</required>
                 <varname>object</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>formula</type>
                   <value>"Administration de {0} : Refus : {1} ".format(commune_name, form_name)</value>
                 </prefill><anonymise>True</anonymise>
@@ -310,8 +328,10 @@ Bien cordialement,
                 <type>text</type>
                 <required>True</required>
                 <varname>body</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>formula</type>
                   <value>"Bonjour,\r\n\r\nNous sommes au regret de vous annoncer que votre d&#233;marche n'a pu aboutir.\r\n\r\nLa raison de ce refus est la suivante : \r\n\r\n\r\n\r\nBien cordialement, "</value>
                 </prefill><pre>False</pre>
@@ -421,6 +441,7 @@ Bien cordialement,
             <item role_id="_validateur-pc-banking">_validateur-pc-banking</item>
           </by><status>23</status>
           <require_confirmation>False</require_confirmation>
+          <ignore_form_errors>False</ignore_form_errors>
           <set_marker_on_status>False</set_marker_on_status>
         </item>
       </items>
@@ -445,11 +466,11 @@ Bien cordialement,
           <url>{{portal_url}}/api/lingo/cancel-transaction</url>
           <qs_data>
             <item>
-              <name>amount</name>
-              <value>{{form_var_wf_total_commande}}</value>
-            </item><item>
               <name>transaction_id</name>
               <value>{{transaction_id}}</value>
+            </item><item>
+              <name>amount</name>
+              <value>{{form_var_wf_total_commande}}</value>
             </item>
           </qs_data><method>POST</method>
           <post>False</post>
@@ -505,8 +526,10 @@ Exemple de num&#233;ro IBAN : BE1234567890</message>
                 <type>string</type>
                 <required>True</required>
                 <varname>iban</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>none</type>
                 </prefill><anonymise>True</anonymise>
                 <id>1</id>
@@ -515,8 +538,10 @@ Exemple de num&#233;ro IBAN : BE1234567890</message>
                 <type>string</type>
                 <required>True</required>
                 <varname>nom</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>user</type>
                   <value>_last_name</value>
                 </prefill><anonymise>True</anonymise>
@@ -526,8 +551,10 @@ Exemple de num&#233;ro IBAN : BE1234567890</message>
                 <type>string</type>
                 <required>False</required>
                 <varname>adresse1</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>none</type>
                 </prefill><anonymise>True</anonymise>
                 <id>3</id>
@@ -536,8 +563,10 @@ Exemple de num&#233;ro IBAN : BE1234567890</message>
                 <type>string</type>
                 <required>False</required>
                 <varname>adresse2</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>none</type>
                 </prefill><anonymise>True</anonymise>
                 <id>4</id>
@@ -546,12 +575,14 @@ Exemple de num&#233;ro IBAN : BE1234567890</message>
                 <type>item</type>
                 <required>True</required>
                 <varname>pays</varname>
-                <in_listing>True</in_listing>
-                <prefill>
+                <display_locations>
+                  <display_location>validation</display_location>
+                  <display_location>summary</display_location>
+                </display_locations><prefill>
                   <type>user</type>
                   <value>_country</value>
                 </prefill><items />
-                <show_as_radio>False</show_as_radio>
+                <display_mode>list</display_mode>
                 <data_source>
                   <type>pays</type>
                 </data_source><in_filters>False</in_filters>
@@ -610,6 +641,7 @@ Cordialement, </body>
             <item role_id="_receiver">_receiver</item>
           </by><status>27</status>
           <require_confirmation>False</require_confirmation>
+          <ignore_form_errors>False</ignore_form_errors>
           <set_marker_on_status>False</set_marker_on_status>
         </item>
       </items>
@@ -624,9 +656,9 @@ Cordialement, </body>
           <set_marker_on_status>False</set_marker_on_status>
         </item>
       </items><triggers>
-        <trigger id="9d1da440-5f3f-4620-af4b-e6cd9d2897d7" type="manual">
+        <trigger id="b121c7da-c5aa-40dd-90a4-2e0031b90f3d" type="manual">
           <roles>
-            <item role_id="421076dbd1424b4dbf23f3b972fdb982">Debug</item>
+            <item role_id="43190215712647a89376713be142a4f5">Debug</item>
           </roles>
         </trigger>
       </triggers>
@@ -636,9 +668,9 @@ Cordialement, </body>
       <items>
         <item id="1" type="remove" />
       </items><triggers>
-        <trigger id="d37046bc-46aa-46cb-9b51-0c4d6f2998af" type="manual">
+        <trigger id="38ae1533-1623-45bc-a7ea-f1f0b0e281a2" type="manual">
           <roles>
-            <item role_id="421076dbd1424b4dbf23f3b972fdb982">Debug</item>
+            <item role_id="43190215712647a89376713be142a4f5">Debug</item>
           </roles>
         </trigger>
       </triggers>
@@ -651,9 +683,9 @@ Cordialement, </body>
           <set_marker_on_status>False</set_marker_on_status>
         </item>
       </items><triggers>
-        <trigger id="759814e1-adc4-47fd-88c1-8566f2871992" type="manual">
+        <trigger id="06835605-48e7-4836-8e12-a905bf305c93" type="manual">
           <roles>
-            <item role_id="77e9495a5ab84a10954668022dbfd0dc">Debug</item>
+            <item role_id="43190215712647a89376713be142a4f5">Debug</item>
           </roles>
         </trigger>
       </triggers>
@@ -663,12 +695,14 @@ Cordialement, </body>
       <name>-</name>
       <fields>
         <field>
-          <label>cout du document</label>
+          <label>Co&#251;t du document</label>
           <type>string</type>
           <required>False</required>
-          <varname>cost</varname>
-          <in_listing>False</in_listing>
-          <prefill>
+          <varname>cout</varname>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>string</type>
             <value>"0"</value>
           </prefill><anonymise>True</anonymise>
@@ -681,8 +715,10 @@ Cordialement, </body>
 Coll&#233;s et s&#233;par&#233;s par une ","
 ex : 4000,4020,4030,4031</hint>
           <varname>cp_commune</varname>
-          <in_listing>True</in_listing>
-          <prefill>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><anonymise>True</anonymise>
           <id>6</id>
@@ -691,8 +727,10 @@ ex : 4000,4020,4030,4031</hint>
           <type>items</type>
           <required>False</required>
           <varname>motifs_disponibles</varname>
-          <in_listing>False</in_listing>
-          <prefill>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><max_choices>0</max_choices>
           <data_source>
@@ -706,8 +744,10 @@ ex : 4000,4020,4030,4031</hint>
           <type>items</type>
           <required>False</required>
           <varname>mode_recup_disponibles</varname>
-          <in_listing>False</in_listing>
-          <prefill>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><max_choices>0</max_choices>
           <data_source>
@@ -721,18 +761,22 @@ ex : 4000,4020,4030,4031</hint>
           <type>string</type>
           <required>False</required>
           <varname>lien_mondossier</varname>
-          <in_listing>True</in_listing>
-          <prefill>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><anonymise>True</anonymise>
           <id>7</id>
         </field><field>
-          <label>iban</label>
+          <label>IBAN</label>
           <type>string</type>
           <required>False</required>
           <varname>iban</varname>
-          <in_listing>True</in_listing>
-          <prefill>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><anonymise>True</anonymise>
           <id>9</id>
@@ -740,12 +784,33 @@ ex : 4000,4020,4030,4031</hint>
           <label>BAEC</label>
           <type>bool</type>
           <required>False</required>
-	  <hint>Cette option est &#224; activer (case coch&#233;e) pour les actes et &#224; d&#233;sactiver pour les autres d&#233;marches. (+ d'info : https://docs.imio.be/imio-doc/ia.teleservices/faq/a_quoi_sert_la_case_baec.html)</hint>
-          <varname>BAEC</varname>
-          <in_listing>False</in_listing>
-          <prefill>
+          <hint>Cette option est &#224; activer (case coch&#233;e) pour les actes et &#224; d&#233;sactiver pour les autres d&#233;marches. (+ d'info : https://docs.imio.be/imio-doc/ia.teleservices/faq/a_quoi_sert_la_case_baec.html)</hint>
+          <varname>baec</varname>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
             <type>none</type>
           </prefill><id>10</id>
+        </field><field>
+          <label>R&#233;gie de paiement</label>
+          <type>item</type>
+          <required>False</required>
+          <hint>---</hint>
+          <varname>regie_de_paiement</varname>
+          <display_locations>
+            <display_location>summary</display_location>
+          </display_locations><prefill>
+            <locked>False</locked>
+            <type>none</type>
+          </prefill><display_mode>list</display_mode>
+          <data_source>
+            <type>json</type>
+            <value>{{portal_url}}/api/lingo/regies</value>
+          </data_source><in_filters>False</in_filters>
+          <anonymise>False</anonymise>
+          <display_disabled_items>False</display_disabled_items>
+          <id>11</id>
         </field>
       </fields>
     </formdef>
@@ -757,53 +822,67 @@ ex : 4000,4020,4030,4031</hint>
           <label>Nom de l'int&#233;ress&#233;</label>
           <type>string</type>
           <required>True</required>
-          <in_listing>True</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo10</id>
         </field><field>
           <label>Pr&#233;nom de l'int&#233;ress&#233;</label>
           <type>string</type>
           <required>True</required>
-          <in_listing>True</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo11</id>
         </field><field>
           <label>NN de l'int&#233;ress&#233;</label>
           <type>string</type>
           <required>False</required>
           <varname>wf_nn</varname>
-          <in_listing>False</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo6</id>
         </field><field>
           <label>Adresse de l'int&#233;ress&#233;</label>
           <type>string</type>
           <required>True</required>
-          <in_listing>True</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo13</id>
         </field><field>
           <label>N&#176; t&#233;l&#233;phone de l'int&#233;ress&#233;</label>
           <type>string</type>
           <required>True</required>
-          <in_listing>True</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo12</id>
         </field><field>
           <label>Nombre d'exemplaires</label>
           <type>string</type>
           <required>True</required>
           <varname>wf_nb_exemplaires</varname>
-          <in_listing>False</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo2</id>
         </field><field>
           <label>Total de la commande</label>
           <type>string</type>
           <required>True</required>
           <varname>wf_total_commande</varname>
-          <in_listing>False</in_listing>
-          <anonymise>True</anonymise>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><anonymise>True</anonymise>
           <id>bo3</id>
         </field><field>
           <label>Paiement en ligne</label>
@@ -811,8 +890,10 @@ ex : 4000,4020,4030,4031</hint>
           <required>False</required>
           <hint>Est-ce que le citoyen a choisit un paiement en ligne oui/non?</hint>
           <varname>wf_paiement_en_ligne</varname>
-          <in_listing>False</in_listing>
-          <id>bo9</id>
+          <display_locations>
+            <display_location>validation</display_location>
+            <display_location>summary</display_location>
+          </display_locations><id>bo9</id>
         </field>
       </fields>
     </formdef>

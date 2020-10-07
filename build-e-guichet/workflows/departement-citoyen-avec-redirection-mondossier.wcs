@@ -49,7 +49,7 @@
         </item><item id="3" type="jump">
           <status>13</status>
           <condition>
-            <value>Decimal(form_var_destinations_price) == Decimal('0') and Decimal(form_var_wf_total_commande) == Decimal('0')</value>
+            <value>Decimal(form_var_wf_total_commande) == Decimal('0') and 'commune' in form_var_destinations</value>
             <type>python</type>
           </condition><set_marker_on_status>False</set_marker_on_status>
         </item><item id="4" type="jump">
@@ -164,17 +164,20 @@ Bien cordialement,</body>
           <post>False</post>
           <post_data>
             <item>
-              <name>display_name</name>
-              <value>{{form_display_name}}</value>
-            </item><item>
-              <name>url</name>
-              <value>{{form_url}}</value>
+              <name>amount</name>
+              <value>{{form_var_wf_total_commande}}</value>
             </item><item>
               <name>nb_documents</name>
               <value>{{form_var_wf_nb_exemplaires}}</value>
             </item><item>
-              <name>amount</name>
-              <value>{{form_var_wf_total_commande}}</value>
+              <name>destination</name>
+              <value>{{form_var_destinations_raw}}</value>
+            </item><item>
+              <name>url</name>
+              <value>{{form_url}}</value>
+            </item><item>
+              <name>display_name</name>
+              <value>{{form_display_name}}</value>
             </item>
           </post_data><response_type>json</response_type>
           <varname>transaction_info</varname>

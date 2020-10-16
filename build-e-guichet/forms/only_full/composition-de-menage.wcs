@@ -16,8 +16,8 @@
   <skip_from_360_view>false</skip_from_360_view>
   <category category_id="1">Population</category>
   <workflow workflow_id="7">D&#233;partement Citoyen (avec redirection MONDOSSIER)</workflow>
-  <max_field_id>69</max_field_id>
-  <last_modification user_id="1">2020-08-21 13:43:02</last_modification>
+  <max_field_id>70</max_field_id>
+  <last_modification user_id="1">2020-10-16 10:28:41</last_modification>
   <fields>
     <field>
       <label>Comment obtenir mon document</label>
@@ -76,7 +76,8 @@
         <display_location>summary</display_location>
       </display_locations><prefill>
         <type>none</type>
-      </prefill><display_mode>radio</display_mode>
+      </prefill><items />
+      <display_mode>radio</display_mode>
       <data_source>
         <type>ds_personne_concernee</type>
       </data_source><in_filters>False</in_filters>
@@ -93,8 +94,7 @@
         <display_location>summary</display_location>
       </display_locations><prefill>
         <type>none</type>
-      </prefill><items />
-      <display_mode>radio</display_mode>
+      </prefill><display_mode>radio</display_mode>
       <data_source>
         <type>py_mon_domicile_est_menage</type>
       </data_source><in_filters>False</in_filters>
@@ -233,7 +233,8 @@
       </display_locations><extra_css_class>grid-2-4</extra_css_class>
       <prefill>
         <type>none</type>
-      </prefill><display_mode>list</display_mode>
+      </prefill><items />
+      <display_mode>list</display_mode>
       <data_source>
         <type>pays</type>
       </data_source><in_filters>False</in_filters>
@@ -253,8 +254,8 @@
         <type>none</type>
       </prefill><id>26</id>
     </field><field>
-      <label>T&#233;l&#233;phone</label>
-      <type>email</type>
+      <label>Num&#233;ro de t&#233;l&#233;phone</label>
+      <type>string</type>
       <required>False</required>
       <varname>tel_perscon</varname>
       <display_locations>
@@ -262,8 +263,11 @@
         <display_location>summary</display_location>
       </display_locations><extra_css_class>grid-1-2</extra_css_class>
       <prefill>
-        <type>none</type>
-      </prefill><id>67</id>
+        <locked>False</locked>
+        <type>user</type>
+        <value>_phone</value>
+      </prefill><anonymise>True</anonymise>
+      <id>70</id>
     </field><field>
       <label>Mes coordonn&#233;es</label>
       <type>page</type>
@@ -426,7 +430,8 @@
       <prefill>
         <type>user</type>
         <value>_country</value>
-      </prefill><display_mode>list</display_mode>
+      </prefill><items />
+      <display_mode>list</display_mode>
       <data_source>
         <type>pays</type>
       </data_source><in_filters>False</in_filters>
@@ -464,7 +469,6 @@
     </field><field>
       <label>&lt;p&gt;Si vos informations personnelles ont chang&amp;eacute;, vous devez changer votre siganl&amp;eacute;tique dans vos pr&amp;eacute;f&amp;eacute;rences personnelles (&lt;a href="[idp_account_url]edit/"&gt;page de profil&lt;/a&gt;) avant de r&amp;eacute;aliser votre demande. Merci.&lt;/p&gt;</label>
       <type>comment</type>
-      <display_locations />
       <id>16</id>
     </field><field>
       <label>Informations compl&#233;mentaires</label>
@@ -499,7 +503,8 @@
       </display_locations><extra_css_class>newline grid-1-2</extra_css_class>
       <prefill>
         <type>none</type>
-      </prefill><display_mode>list</display_mode>
+      </prefill><items />
+      <display_mode>list</display_mode>
       <data_source>
         <type>formula</type>
         <value>form_option_motifs_disponibles_structured or data_source.passerelle_motifs</value>
@@ -530,7 +535,8 @@
       </display_locations><extra_css_class>newline grid-1-2</extra_css_class>
       <prefill>
         <type>none</type>
-      </prefill><display_mode>radio</display_mode>
+      </prefill><items />
+      <display_mode>radio</display_mode>
       <data_source>
         <type>formula</type>
         <value>form_option_mode_recup_disponibles_structured or data_source.passerelle_destinations</value>
@@ -566,18 +572,16 @@
     </field><field>
       <label>&lt;p&gt;Ci-dessous, veuillez prendre connaissance du montant de votre demande.&lt;/p&gt;&lt;p&gt;Votre d&#233;marche sera automatiquement mise dans votre panier pour un paiement global de votre commande&lt;/p&gt;&lt;p&gt;&lt;strong&gt;A ce montant, devra &#233;ventuellement s'ajouter les frais de port.&lt;/strong&gt;&lt;/p&gt;</label>
       <type>comment</type>
-      <display_locations />
       <id>33</id>
     </field><field>
       <label>&lt;p&gt;Montant (hors &#233;ventuels frais de port)&lt;p&gt;[script.commune "safe_total" "(form_option_cout + form_var_motifs_price) * form_var_nb_exemplaire"]&#8364;</label>
       <type>comment</type>
-      <display_locations />
       <id>34</id>
     </field>
   </fields><user-roles>
     <role role_id="0631c0b072a64a5583a0f99f0f2bf47f">Citoyen (test)</role>
   </user-roles><roles>
-    <role role_id="5d9f3005462045b4b2bbc9ca21954b5c" role_key="_receiver">Agents traitants - Population, etat civil</role>
+    <role role_id="0631c0b072a64a5583a0f99f0f2bf47f" role_key="_receiver">Agents traitants - Population, etat civil</role>
   </roles><options>
     <option varname="cout">0</option>
     <option varname="cp_commune">[cp_commune]</option>

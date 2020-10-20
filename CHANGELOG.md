@@ -1,6 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.30] - 20/10/2020 -
+### Changed
+  - [dmu] : WF - Gestion des rendez-vous : Reminder deletion 
+    Since Entr'Ouvert september 2020 update : Reminder send is
+     now native and can be set in each agenda.
+
+## [0.0.29] - 19/10/2020 -
+### Changed
+  - [dmu] : add "mondossier" to "cohabitation legale" form
+  - [dmu] : add "mondossier" to "certificat de residence avec historique" form
+
+
 ## [0.0.28] - 28/08/2020 -
 ### Changed
   - [dmu] : add "mondossier" to "cohabitation legale" form

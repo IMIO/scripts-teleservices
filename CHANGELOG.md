@@ -1,9 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.31] - 03/11/2020 -
+### Changed
+  - [dmu] : add 2 models (Modèles - Liste pays, Modèles - Champ fichier)
+
+
 ## [0.0.30] - 20/10/2020 -
 ### Changed
-  - [dmu] : WF - Gestion des rendez-vous : Reminder deletion 
+  - [dmu] : WF - Gestion des rendez-vous : Reminder deletion
     Since Entr'Ouvert september 2020 update : Reminder send is
      now native and can be set in each agenda.
 
@@ -62,15 +67,15 @@ https://github.com/IMIO/scripts-teleservices/commit/5e63fd1b996761676006e488a268
 
 ## [0.0.20] - 28-04-2020 -
 ### Changed
-  - build-e-guichet.sh 
+  - build-e-guichet.sh
     - add better feebacks about what is going on (echo)
 
 ## [0.0.19] - 28-04-2020 -
 ### Changed
-  - build-e-guichet.sh 
+  - build-e-guichet.sh
     - espace \[ \] chars to makes sed work again
     - add condition to sed extra params json and to make it work for local
-   
+
 ## [0.0.18] - 27-04-2020 -
 ### Changed
   - removes \u00.. special chars from json to fix error in my local instance (I can't run build-e-guichet without encoding errors tracebacks)
@@ -81,7 +86,7 @@ https://github.com/IMIO/scripts-teleservices/commit/5e63fd1b996761676006e488a268
 ### Fixed
   - PEP8 warnings (missing whitespaces, indentations,... )
   - Removed unused statements
-  
+
 ## [0.0.16] - 23-04-2020 -
 ### Added
   - Readme changelog init

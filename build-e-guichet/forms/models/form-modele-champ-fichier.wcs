@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<formdef id="27">
+  <name>Mod&#232;le - Champ fichier</name>
+  <url_name>modele-champ-fichier</url_name>
+  <internal_identifier>modele-champ-fichier</internal_identifier>
+  <discussion>false</discussion>
+  <detailed_emails>true</detailed_emails>
+  <disabled>true</disabled>
+  <only_allow_one>false</only_allow_one>
+  <enable_tracking_codes>false</enable_tracking_codes>
+  <confirmation>true</confirmation>
+  <always_advertise>false</always_advertise>
+  <include_download_all_button>false</include_download_all_button>
+  <has_captcha>false</has_captcha>
+  <skip_from_360_view>false</skip_from_360_view>
+  <category category_id="96">Mod&#232;les</category>
+  <workflow workflow_id="_default">Par d&#233;faut</workflow>
+  <max_field_id>2</max_field_id>
+  <last_modification user_id="1">2020-11-03 10:27:31</last_modification>
+  <fields>
+    <field>
+      <label>Joindre un document &#224; cette demande</label>
+      <type>file</type>
+      <required>True</required>
+      <hint>Veuillez s&#233;lectionner un document</hint>
+      <varname>document_demandeur1</varname>
+      <display_locations>
+        <display_location>validation</display_location>
+        <display_location>summary</display_location>
+        <display_location>listings</display_location>
+      </display_locations><extra_css_class>grid-1-1</extra_css_class>
+      <prefill>
+        <locked>False</locked>
+        <type>none</type>
+      </prefill><max_file_size>25Mo</max_file_size>
+      <allow_portfolio_picking>True</allow_portfolio_picking>
+      <automatic_image_resize>True</automatic_image_resize>
+      <storage>default</storage>
+      <id>1</id>
+    </field>
+  </fields><options />
+  <geolocations />
+</formdef>

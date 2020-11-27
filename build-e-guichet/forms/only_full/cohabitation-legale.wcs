@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<formdef id="46">
+<formdef id="2">
   <name>Cohabitation L&#233;gale</name>
   <url_name>cohabitation-legale</url_name>
   <description>&lt;p class="accroche"&gt;&lt;em&gt;Document attestant qu'une d&amp;eacute;claration de cohabitation l&amp;eacute;gale a bien &amp;eacute;t&amp;eacute; enregistr&amp;eacute;e.&lt;/em&gt;&lt;/p&gt;</description>
@@ -14,8 +14,8 @@
   <include_download_all_button>false</include_download_all_button>
   <has_captcha>false</has_captcha>
   <skip_from_360_view>false</skip_from_360_view>
-  <category category_id="99">Population / Etat civil</category>
-  <workflow workflow_id="6">D&#233;partement Citoyen (avec redirection MONDOSSIER) (Octobre 2020)</workflow>
+  <category category_id="1">Population</category>
+  <workflow workflow_id="7">D&#233;partement Citoyen (avec redirection MONDOSSIER)</workflow>
   <max_field_id>42</max_field_id>
   <last_modification user_id="1">2020-10-19 15:03:04</last_modification>
   <fields>
@@ -413,13 +413,13 @@
       <id>34</id>
     </field>
   </fields><user-roles>
-    <role role_id="logged-users">logged-users</role>
+    <role role_id="0631c0b072a64a5583a0f99f0f2bf47f">Citoyen (test)</role>
   </user-roles><roles>
-    <role role_id="cda28d6a0a0f400f8d2fadd362c15316" role_key="_receiver">Agent traitant - Etat civil</role>
+    <role role_id="0631c0b072a64a5583a0f99f0f2bf47f" role_key="_receiver">Agents traitants - Population, etat civil</role>
   </roles><options>
     <option varname="baec" />
     <option varname="cout">0</option>
-    <option varname="cp_commune">4430, 4431, 4432</option>
+    <option varname="cp_commune">[cp_commune]</option>
     <option varname="destinations" />
     <option varname="destinations_display" />
     <option varname="destinations_structured" />
@@ -427,13 +427,10 @@
     <option varname="lien_bosa">https://mondossier.rrn.fgov.be/fr/certificats.do#tab_tx_31</option>
     <option varname="lien_mondossier">https://mondossier.rrn.fgov.be/fr/certificats.do#tab_tx_B31</option>
     <option varname="mode_recup_disponibles" />
-    <option varname="mode_recup_disponibles_display" />
+    <option varname="mode_recup_disponibles_display">Envoi &#224; domicile (Belgique), R&#233;cup&#233;rer le document &#224; la commune lorsqu'il est pr&#234;t</option>
     <option varname="mode_recup_disponibles_structured" />
     <option varname="motifs_disponibles" />
     <option varname="motifs_disponibles_display" />
     <option varname="motifs_disponibles_structured" />
-    <option varname="regie_de_paiement">atos_test</option>
-    <option varname="regie_de_paiement_display">Atos test</option>
-    <option varname="regie_de_paiement_structured" />
   </options><geolocations />
 </formdef>

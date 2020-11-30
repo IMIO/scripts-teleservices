@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.32] - 27/11/2020 -
+### Changed
+  - [nse] : patch 0.0.29
+
+
 ## [0.0.31] - 03/11/2020 -
 ### Changed
   - [dmu] : add 2 models (Modèles - Liste pays, Modèles - Champ fichier)

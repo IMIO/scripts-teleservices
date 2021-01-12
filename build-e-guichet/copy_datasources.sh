@@ -17,3 +17,4 @@ sed "s~http://local-passerelle.example.net~https://$1-passerelle.$2~g" datasourc
 sed "s~http://local-passerelle.example.net~https://$1-passerelle.$2~g" datasources/109 > /var/lib/wcs/$1-formulaires.$2/datasources/109
 sed "s~http://local-passerelle.example.net~https://$1-passerelle.$2~g" datasources/110 > /var/lib/wcs/$1-formulaires.$2/datasources/110
 sed "s~http://local-passerelle.example.net~https://$1-passerelle.$2~g" datasources/111 > /var/lib/wcs/$1-formulaires.$2/datasources/111
+sed "s~http://local-passerelle.example.net~https://$1-passerelle.$2~g" datasources/112 > /var/lib/wcs/$1-formulaires.$2/datasources/112

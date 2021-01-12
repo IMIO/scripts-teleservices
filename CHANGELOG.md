@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.35] - 12/01/2021 -
+### Changed
+  - [dmu] : add missing datasource (2nd)
+    copy_datasources.sh had to be modified too 
+
+
 ## [0.0.34] - 12/01/2021 -
 ### Changed
   - [dmu] : add missing datasource (2nd)

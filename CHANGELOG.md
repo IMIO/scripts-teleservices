@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.34] - 12/01/2021 -
+### Changed
+  - [dmu] : add missing datasource (2nd)
+    There was a problem with the id not following the logic of datasources already there
+    The xml file was also different from those already there
+    This version is trying to fix the build-e-guichet who was impacted by that
+
+
+
 ## [0.0.33] - 06/01/2021 -
 ### Changed
   - [nhi] : add missing datasource

@@ -58,9 +58,7 @@ sleep 0.1
 
 # Import defaults authentic users
 echo "-- Importing authentic users and roles ..."
-sed -i "s/COMMUNE_ID/$1/g" /opt/publik/scripts/build-e-guichet/import-authentic-user.py
 authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/build-e-guichet/import-authentic-user.py -d $1-auth.$2
-sed -i "s/$1/COMMUNE_ID/g" /opt/publik/scripts/build-e-guichet/import-authentic-user.py
 sleep 0.1
 
 echo "-- Waiting 30 seconds to be certain authentic and wcs are synchronized ..."

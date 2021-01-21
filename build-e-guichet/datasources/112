@@ -4,4 +4,5 @@
   <data_source>
     <type>formula</type>
     <value>[{"id":"unknown","text":"Pas de liens vers MONDOSSIER pour ce document"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificate.do?tx=38&amp;language=FR","text":"Certificat de r&#233;sidence ou de domicile"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificate.do?tx=39&amp;language=FR","text":"Certificat de r&#233;sidence ou de domicile avec historique"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificate.do?tx=44","text":"Certificat de nationalit&#233;"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificats.do#tx_43/&amp;language=FR","text":"Certificat de vie"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificats.do#tab_tx_31","text":"Cohabitation l&#233;gale"}, {"id":"https://mondossier.rrn.fgov.be/fr/certificate.do?tx=42&amp;language=FR","text":"Composition de m&#233;nage"}]</value>
-</data_source>
+  </data_source>
+</datasources>

@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.36] - 21/01/2021 -
+### Changed
+  - [nhi] : fix datasource's xml
+
 ## [0.0.35] - 12/01/2021 -
 ### Changed
   - [dmu] : add missing datasource (2nd)

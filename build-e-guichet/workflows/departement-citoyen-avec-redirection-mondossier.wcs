@@ -267,7 +267,7 @@ Bien cordialement,
       <items>
         <item id="1" type="webservice_call">
           <label>Supprimer du panier</label>
-          <url>{{portal_url}}/api/lingo/remove-basket-item?NameId={{form_user_name_identifier_0}}</url>
+          <url>{{portal_url}}api/lingo/remove-basket-item?NameId={{form_user_name_identifier_0}}</url>
           <request_signature_key>13245</request_signature_key>
           <method>POST</method>
           <post>True</post>
@@ -466,7 +466,7 @@ Bien cordialement,
       <visibility />
       <items>
         <item id="1" type="webservice_call">
-          <url>{{portal_url}}/api/lingo/cancel-transaction</url>
+          <url>{{portal_url}}api/lingo/cancel-transaction</url>
           <qs_data>
             <item>
               <name>transaction_id</name>
@@ -809,7 +809,7 @@ ex : 4000,4020,4030,4031</hint>
           </prefill><display_mode>list</display_mode>
           <data_source>
             <type>json</type>
-            <value>{{portal_url}}/api/lingo/regies</value>
+            <value>{{portal_url}}api/lingo/regies</value>
           </data_source><in_filters>False</in_filters>
           <anonymise>False</anonymise>
           <display_disabled_items>False</display_disabled_items>

@@ -135,3 +135,7 @@ sleep 0.1
 echo "-- cat /etc/combo/settings.py : "
 cat /etc/combo/settings.py
 sleep 0.1
+
+# Create fedict.py in /etc/authentic2-multitenant/settings.d/
+echo "-- initalizing fedict.py : "
+sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py

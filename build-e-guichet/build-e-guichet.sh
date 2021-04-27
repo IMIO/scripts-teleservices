@@ -1,5 +1,5 @@
 #!/bin/bash
-# USAGE : 
+# USAGE :
 # $1 : commune_id (test, demo, local, huy, liege,...)
 # $2 : domain (guichet-citoyen.be, example.net, ...)
 # $3 : Type Instance light or full (case sensitive)
@@ -43,10 +43,10 @@ sleep 0.1
 # Add hobo extra params
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
-sed -e "s~commune~$1~g" hobo/recipe-commune-extra.json > /etc/hobo/recipe-$1-extra.json
-if [ $1 = "local" ];then
-  sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
-  sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
+sed -e "s~commune~$1~g" hobo/recipe-commune-extra.json >/etc/hobo/recipe-$1-extra.json
+if [ $1 = "local" ]; then
+    sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
+    sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
 fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
 sleep 0.1
@@ -66,31 +66,29 @@ sleep 30
 
 # Set permissions
 echo "-- Setting permissions ..."
-sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-permissions.py $3
+sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-permissions.py $3
 sleep 0.1
 
 # Import workflows
 echo "-- Generic workflows installation ..."
-sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/
-if [ $3 = "full" ]
-    then
+sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/
+if [ $3 = "full" ]; then
     echo "INSTALL WORKFLOWS FOR FULL INSTANCE."
-    sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/only_full/
+    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/only_full/
 fi
 sleep 0.1
 
 # Import forms
 echo "-- Generic forms installation ..."
-if [ $3 = "full" ]
-    then
+if [ $3 = "full" ]; then
     echo "INSTALL FORMS FOR FULL INSTANCE."
     sed -i "s/<option varname="cp_commune">\[cp_commune\]<\/option>/<option varname="cp_commune">$4<\/option>/g" /opt/publik/scripts/build-e-guichet/forms/only_full/*.wcs
-    sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_full/
+    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_full/
     sed -i "s/<option varname="cp_commune">$4<\/option>/<option varname="cp_commune">\[cp_commune\]<\/option>/g" /opt/publik/scripts/build-e-guichet/forms/only_full/*.wcs
-    sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/models/
+    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/models/
 else
     echo "INSTALL FORMS FOR LIGHT INSTANCE."
-    sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_light/
+    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_light/
 fi
 sleep 0.1
 
@@ -98,16 +96,14 @@ sleep 0.1
 echo "-- Payment managament creation (régie) ..."
 sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py
 # Puppet deploy search for : create_regie.py.erb
-if [ -f /var/lib/combo/create_regie.py ]
-    then
-sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
+if [ -f /var/lib/combo/create_regie.py ]; then
+    sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
 fi
 sleep 0.1
 
 # Import combo site structure
 echo "-- Importing combo site structure ..."
-if [ $3 = "full" ]
-    then
+if [ $3 = "full" ]; then
     sed -i "s/COMMUNE/$1/g" combo-site/combo-site-structure-full.json
     sed -i "s/DOMAINE/$2/g" combo-site/combo-site-structure-full.json
     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/build-e-guichet/combo-site/combo-site-structure-full.json
@@ -139,9 +135,3 @@ sleep 0.1
 echo "-- cat /etc/combo/settings.py : "
 cat /etc/combo/settings.py
 sleep 0.1
-
-# Deploy wcs properties : postgresql, smtp_server, homepage_redirect.
-# sudo -u  wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/wcs_config.py $1 $2
-# echo "sudo -u wcs wcs-manage convert-to-sql --dbname=teleservices_"$1"_wcs --user=teleservices_"$1"_teleservices --password=... --host=database.lan.imio.be" $1"-formulaires.guichet-citoyen.be"
-
-echo " -- Config mail : mailrelay.imio.be"

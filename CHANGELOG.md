@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.36] - 21/01/2021 -
+
+## [0.0.38] - 27/04/2021 -
+### added
+  - [dmu] : add fedict.py in ./build-e-guichet
+  - init fedict.py with build-e-guichet.sh 
+
+## [0.0.37] - 21/01/2021 -
 ### Changed
   - [dmu] : remove not necessary slash char in url that might
     cause future probblems.

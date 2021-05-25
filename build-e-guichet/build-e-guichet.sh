@@ -6,13 +6,13 @@
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
 
 # Use postgresql with wcs
-echo "-- Writing 'postgresql = true' in /var/lib/wcs/$1-formulaires.$2/site-options.cfg "
-sed -i '/\[options\]/a postgresql = true' /var/lib/wcs/$1-formulaires.$2/site-options.cfg
+echo "-- Writing 'postgresql = true' in the site-options.cfg "
+sed -i '/\[options\]/a postgresql = true' /var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg
 sleep 0.1
 
 # Add resubmit action in workflows
-echo "-- Writing 'workflow-resubmit-action = true' in /var/lib/wcs/$1-formulaires.$2/site-options.cfg "
-sed -i '/\[options\]/a workflow-resubmit-action = true' /var/lib/wcs/$1-formulaires.$2/site-options.cfg
+echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
+sed -i '/\[options\]/a workflow-resubmit-action = true' /var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg
 sleep 0.1
 
 # Create categories

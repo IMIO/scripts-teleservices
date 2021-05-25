@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.38] - 25/05/2021 -
+### Changed
+  - [dmu] : fix wcs tenant path in install scripts
+
 
 ## [0.0.38] - 27/04/2021 -
 ### added

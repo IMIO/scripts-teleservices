@@ -3,7 +3,7 @@
 
 from datetime import date,timedelta
 from django.contrib.auth import get_user_model
-
+import json 
 
 def ct_all_users():
     return User.objects.all().count()
@@ -23,8 +23,8 @@ User = get_user_model()
 cpt_all_users = cpt_all_users()
 cpt_users_with_rights = cpt_users_with_rights()
 cpt_users_with_recent_connexion = cpt_users_with_recent_connexion()
-print ({
+print (json.dumps({
     'all_users': cpt_all_users,
     'users_with_rights': cpt_users_with_rights,
     'users_with_recent_connexion': cpt_users_with_recent_connexion
-})
+}))

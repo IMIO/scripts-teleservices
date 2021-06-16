@@ -5,7 +5,7 @@ from datetime import date,timedelta
 from django.contrib.auth import get_user_model
 import json 
 
-def ct_all_users():
+def cpt_all_users():
     return User.objects.all().count()
 
 

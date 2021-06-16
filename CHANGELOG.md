@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.40] - 16/06/2021 -
+### Changed
+  - [cdw] : Update script count_users.py
+
 ## [0.0.38] - 25/05/2021 -
 ### Changed
   - [dmu] : fix wcs tenant path in install scripts

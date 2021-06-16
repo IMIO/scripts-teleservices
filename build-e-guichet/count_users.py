@@ -1,60 +1,30 @@
 # -*- coding: utf-8 -*-
 # authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/build-e-guichet/cpt_auth_users.py -d lalouviere-auth.guichet-citoyen.be
 
-from datetime import datetime
-from dateutil import relativedelta
+from datetime import date,timedelta
 from django.contrib.auth import get_user_model
+import json 
 
-import pytz
-
-User = get_user_model()
-users = User.objects.all()
-
-
-def cpt_all_users():
-    return len(users)
+def ct_all_users():
+    return User.objects.all().count()
 
 
 def cpt_users_with_rights():
-    cpt = 0
-    for user in users:
-        if user.roles.count() > 0:
-            cpt = cpt + 1
-    return cpt
+    return User.objects.filter(roles__isnull=False).distinct().count()
 
 
-def cpt_users_with_recent_connexion(nb_month_return_to=1):
-    cpt = 0
-    utc = pytz.utc
-    now = datetime.now()
-    now = utc.localize(now)
-    for user in users:
-        if user.last_login is not None:
-            delta = relativedelta.relativedelta(now, user.last_login)
-            if delta.months < nb_month_return_to:
-                if delta.days > 0:
-                    cpt = cpt + 1
-    return cpt
+def cpt_users_with_recent_connexion(days=90):
+    today = date.today()
+    last_login_limit = today - timedelta(days=days)
+    return User.objects.filter(last_login__range=(last_login_limit, today)).count()
 
 
+User = get_user_model()
 cpt_all_users = cpt_all_users()
 cpt_users_with_rights = cpt_users_with_rights()
-cpt_users_with_recent_connexion = cpt_users_with_recent_connexion(nb_month_return_to=3)
-
-# Nombre d'utilisateurs totaux    
-# print(cpt_all_users)
-
-# Nombre d'utilisateurs avec au moins 1 droit
-# print(cpt_users_with_rights)
-
-# Nombre d'utilisateur avec une connection recente
-# print(cpt_users_with_recent_connexion)
-
-
-data = {
+cpt_users_with_recent_connexion = cpt_users_with_recent_connexion()
+print (json.dumps({
     'all_users': cpt_all_users,
     'users_with_rights': cpt_users_with_rights,
     'users_with_recent_connexion': cpt_users_with_recent_connexion
-}
-
-print(data)
+}))

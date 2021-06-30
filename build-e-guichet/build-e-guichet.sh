@@ -4,6 +4,8 @@
 # $2 : domain (guichet-citoyen.be, example.net, ...)
 # $3 : Type Instance light or full (case sensitive)
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
+# $5 : Latitude of the map pointer
+# $6 : Longitude of the map pointer
 
 # add custom settings in wcs site-options.cfg
 match="\[options\]"
@@ -16,6 +18,11 @@ sleep 0.1
 
 echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
 insert='workflow-resubmit-action = true'
+grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
+sleep 0.1
+
+echo "-- Set default map pointer (ex: default_position = 48.8336428;2.3233045) in $file"
+insert="default_position = $5;$6"
 grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
 sleep 0.1
 

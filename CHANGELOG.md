@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.45] - 30/06/2021 -
+### added
+  - [TELE-937] add 2 new parameters to set default map pointer [dmu]
+
 ## [0.0.44] - 30/06/2021 -
 ### changed
   - [TELE-936] avoir multiple sed insert when script is run multiple times [dmu]

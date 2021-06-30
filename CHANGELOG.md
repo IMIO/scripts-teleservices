@@ -1,7 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.42[ - 30/06/2021 -
+## [0.0.43] - 30/06/2021 -
+### changed
+  - clean code (I committed merge syntax by mistake) [dmu]
+
+
+## [0.0.42] - 30/06/2021 -
 ### fixed
   - [TOWS-45] : fix command not run as wcs user causing user:group perm issues [dmu]
 

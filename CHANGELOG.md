@@ -1,10 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.44] - 30/06/2021 -
+### changed
+  - [TELE-936] avoir multiple sed insert when script is run multiple times [dmu]
+
 ## [0.0.43] - 30/06/2021 -
 ### changed
   - clean code (I committed merge syntax by mistake) [dmu]
-
 
 ## [0.0.42] - 30/06/2021 -
 ### fixed

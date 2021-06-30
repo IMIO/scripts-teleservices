@@ -5,14 +5,18 @@
 # $3 : Type Instance light or full (case sensitive)
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
 
-# Use postgresql with wcs
+# add custom settings in wcs site-options.cfg
+match="\[options\]"
+insert='postgresql = true'
+file="/var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg"
+
 echo "-- Writing 'postgresql = true' in the site-options.cfg "
-sed -i '/\[options\]/a postgresql = true' /var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg
+grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
 sleep 0.1
 
-# Add resubmit action in workflows
 echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
-sed -i '/\[options\]/a workflow-resubmit-action = true' /var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg
+insert='workflow-resubmit-action = true'
+grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
 sleep 0.1
 
 # Create categories

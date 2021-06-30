@@ -4,7 +4,6 @@
 from datetime import date,timedelta
 from django.contrib.auth import get_user_model
 import json 
-<<<<<<< HEAD
 
 def ct_all_users():
     return User.objects.all().count()
@@ -20,8 +19,6 @@ def cpt_users_with_recent_connexion(days=90):
     return User.objects.filter(last_login__range=(last_login_limit, today)).count()
 
 
-=======
-
 def cpt_all_users():
     return User.objects.all().count()
 
@@ -36,7 +33,6 @@ def cpt_users_with_recent_connexion(days=90):
     return User.objects.filter(last_login__range=(last_login_limit, today)).count()
 
 
->>>>>>> master
 User = get_user_model()
 cpt_all_users = cpt_all_users()
 cpt_users_with_rights = cpt_users_with_rights()

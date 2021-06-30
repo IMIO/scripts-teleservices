@@ -17,12 +17,12 @@ sleep 0.1
 
 # Create categories
 echo "-- Creating categories ..."
-sh copy_categories.sh $1 $2
+sudo -u wcs sh copy_categories.sh $1 $2
 sleep 0.1
 
 # Create datasources
 echo "-- Creating datasources ..."
-sh copy_datasources.sh $1 $2
+sudo -u wcs sh copy_datasources.sh $1 $2
 sleep 0.1
 
 # Create passerelle api user.

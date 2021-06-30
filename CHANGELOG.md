@@ -1,11 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.42[ - 30/06/2021 -
+### fixed
+  - [TOWS-45] : fix command not run as wcs user causing user:group perm issues [dmu]
+
+## [0.0.41] - 16/06/2021 -
+### Changed
+  - [cdw] : Update script count_users.py (2nd)
+
 ## [0.0.40] - 16/06/2021 -
 ### Changed
   - [cdw] : Update script count_users.py
 
-## [0.0.38] - 25/05/2021 -
+## [0.0.39] - 25/05/2021 -
 ### Changed
   - [dmu] : fix wcs tenant path in install scripts
 

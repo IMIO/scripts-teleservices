@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.46] - 20/07/2021 -
+### changed
+  - [TELE-972] use idp_url instead of harcoded authentic url to redirect to my profile [nhi]
+
 ## [0.0.45] - 30/06/2021 -
 ### added
   - [TELE-937] add 2 new parameters to set default map pointer [dmu]

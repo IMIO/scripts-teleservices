@@ -246,7 +246,7 @@
     {
       "fields": {
         "picture": "",
-        "redirect_url": "https://COMMUNE-auth.DOMAINE/accounts",
+        "redirect_url": "{{ idp_url }}/accounts",
         "exclude_from_navigation": false,
         "parent": null,
         "title": "Profil",

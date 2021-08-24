@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.47] - 24/08/2021 -
+### removed
+  - [TELE-1046] Removed unused code [dmshd]
+### changed
+  - [TELE-1046] fix wrong echo [dmshd]
+
 ## [0.0.46] - 20/07/2021 -
 ### changed
   - [TELE-972] use idp_url instead of harcoded authentic url to redirect to my profile [nhi]

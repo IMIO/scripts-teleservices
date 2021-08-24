@@ -63,7 +63,7 @@ test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hob
 sleep 0.1
 
 # Adapt country field in DB to have a list field instead a text field
-echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
+echo "-- Adapt country field in DB to have a list field instead a text field  ..."
 authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/build-e-guichet/auth_fedict_var.py -d $1-auth.$2
 sleep 0.1
 

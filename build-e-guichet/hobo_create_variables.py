@@ -11,14 +11,3 @@ Variable(name='administration_site', label='Site Internet de la commune', value=
 Variable(name='global_title', label='Intitulé de l\'instance et mails', value='Commune - Guichet en ligne').save()
 Variable(name='logo', label='Logo', value='False').save()
 Variable(name='banner', label='Bannière', value='False').save()
-variables = Variable.objects
-variables.filter(name='default_from_email').update(value='e-guichet@imio.be')
-
-#  dic_default_from_email = ''
-# for variable in variables.values():
-#    if variable.get('name') == 'default_from_email':
-#        dic_default_from_email = variable
-# obj, created = variables.update_or_create(
-#    name='default_from_email', value='no-reply@imio.be',
-#    defaults=dic_default_from_email,
-# )

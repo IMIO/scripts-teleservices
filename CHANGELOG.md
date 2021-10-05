@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.49] - 05/10/2021 -
+### changed
+- [INFRA-4003] [TELE-1119] add -k to avoid SSL error following the Infra advice about that
+- 
 ## [0.0.47] - 24/08/2021 -
 ### removed
   - [TELE-1046] Removed unused code [dmshd]

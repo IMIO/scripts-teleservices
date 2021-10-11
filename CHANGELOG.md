@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.50] - 05/10/2021 -
+### changed
+- [TELE-653] optimize detection for admints mail setting detection [dmshd]
+
 ## [0.0.49] - 05/10/2021 -
 ### changed
 - [INFRA-4003] [TELE-1119] add -k to avoid SSL error following the Infra advice about that

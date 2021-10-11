@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.50] - 05/10/2021 -
+## [0.0.51] - 11/10/2021 -
+### added
+- [TELE-653] set admints@imio.be at build [dmshd]
+
+## [0.0.50] - 11/10/2021 -
 ### changed
 - [TELE-653] optimize detection for admints mail setting detection [dmshd]
 

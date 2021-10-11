@@ -150,3 +150,8 @@ sleep 0.1
 # Create fedict.py in /etc/authentic2-multitenant/settings.d/
 echo "-- initalizing fedict.py : "
 sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py
+
+# Setting mail to reveice trace errors
+echo "-- Setting admints@imio.be as 'mail for trace errors' ..."
+sudo -u wcs wcs-manage runscript --all-tenants /opt/publik/scripts/build-e-guichet/set-error-mail-to-admints.py
+sleep 0.1

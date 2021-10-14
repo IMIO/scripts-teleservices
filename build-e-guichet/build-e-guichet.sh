@@ -80,29 +80,6 @@ echo "-- Setting permissions ..."
 sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-permissions.py $3
 sleep 0.1
 
-# Import workflows
-echo "-- Generic workflows installation ..."
-sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/
-if [ $3 = "full" ]; then
-    echo "INSTALL WORKFLOWS FOR FULL INSTANCE."
-    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-workflows.py /opt/publik/scripts/build-e-guichet/workflows/only_full/
-fi
-sleep 0.1
-
-# Import forms
-echo "-- Generic forms installation ..."
-if [ $3 = "full" ]; then
-    echo "INSTALL FORMS FOR FULL INSTANCE."
-    sed -i "s/<option varname="cp_commune">\[cp_commune\]<\/option>/<option varname="cp_commune">$4<\/option>/g" /opt/publik/scripts/build-e-guichet/forms/only_full/*.wcs
-    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_full/
-    sed -i "s/<option varname="cp_commune">$4<\/option>/<option varname="cp_commune">\[cp_commune\]<\/option>/g" /opt/publik/scripts/build-e-guichet/forms/only_full/*.wcs
-    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/models/
-else
-    echo "INSTALL FORMS FOR LIGHT INSTANCE."
-    sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-forms.py /opt/publik/scripts/build-e-guichet/forms/only_light/
-fi
-sleep 0.1
-
 # Create regie
 echo "-- Payment managament creation (régie) ..."
 sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py

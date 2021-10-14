@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.52] - 14/10/2021 -
+### removed
+- [MTELEVOIA-3] remove old generic forms and workflows since we now use teleservices-package [dmshd]
+
 ## [0.0.51] - 11/10/2021 -
 ### added
 - [TELE-653] set admints@imio.be at build [dmshd]

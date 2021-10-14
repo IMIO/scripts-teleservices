@@ -8,13 +8,9 @@
 # $6 : Longitude of the map pointer
 
 # add custom settings in wcs site-options.cfg
+## set var for following sed commands
 match="\[options\]"
-insert='postgresql = true'
 file="/var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg"
-
-echo "-- Writing 'postgresql = true' in the site-options.cfg "
-grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
-sleep 0.1
 
 echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
 insert='workflow-resubmit-action = true'

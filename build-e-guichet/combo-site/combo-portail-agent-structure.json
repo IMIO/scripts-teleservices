@@ -1,33 +1,60 @@
-[
-  {
-    "fields": {
-      "picture": "",
-      "redirect_url": "",
-      "exclude_from_navigation": false,
-      "parent": null,
-      "title": "Accueil",
-      "last_update_timestamp": "2017-06-30T11:34:59.873Z",
-      "template_name": "standard",
-      "public": true,
-      "groups": [],
-      "order": 1,
-      "slug": "index"
-    },
-    "cells": [
-      {
-        "fields": {
-          "extra_css_class": "",
-          "restricted_to_unlogged": false,
-          "last_update_timestamp": "2017-06-30T11:35:52.498Z",
-          "text": "<h2>Bienvenue sur le portail agent de COMMUNE</h2>\r\n",
-          "order": 1,
-          "public": true,
-          "groups": [],
-          "placeholder": "content",
-          "slug": "services"
+{
+  "pages": [
+    {
+      "fields": {
+        "title": "Accueil",
+        "slug": "index",
+        "sub_slug": "",
+        "description": "",
+        "template_name": "standard",
+        "parent": null,
+        "order": 1,
+        "exclude_from_navigation": false,
+        "redirect_url": "",
+        "public": true,
+        "creation_timestamp": "2021-10-14T12:35:03.711Z",
+        "last_update_timestamp": "2021-10-14T15:05:01.025Z",
+        "picture": "",
+        "edit_role": null,
+        "subpages_edit_role": null,
+        "snapshot": null,
+        "groups": []
+      },
+      "cells": [
+        {
+          "model": "data.textcell",
+          "fields": {
+            "placeholder": "content",
+            "order": 1,
+            "slug": "services",
+            "extra_css_class": "",
+            "template_name": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2021-10-14T14:57:50.430Z",
+            "text": "<h2>Bienvenue sur votre portail agent</h2>",
+            "groups": []
+          }
         },
-        "model": "data.textcell"
-      }
-    ]
-  }
-]
+        {
+          "model": "wcs.wcscareformscell",
+          "fields": {
+            "placeholder": "content",
+            "order": 2,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "public": false,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2021-10-14T15:05:01.007Z",
+            "wcs_site": "",
+            "categories": {
+              "data": []
+            },
+            "groups": []
+          }
+        }
+      ]
+    }
+  ]
+}

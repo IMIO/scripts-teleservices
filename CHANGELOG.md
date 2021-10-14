@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [0.0.54] - 14/10/2021 -
+### changed
+- [TELE-1051] use newer wcs runscript command [dmshd]
+
 ## [0.0.53] - 14/10/2021 -
 ### removed
 - [TELE-1050] remove postgresql = true from site-options since entr'ouvert told us it's no longer needed [dmshd]

@@ -73,7 +73,7 @@ sleep 30
 
 # Set permissions
 echo "-- Setting permissions ..."
-sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-permissions.py $3
+sudo -u wcs wcs-manage runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/build-e-guichet/import-permissions.py $3
 sleep 0.1
 
 # Create regie

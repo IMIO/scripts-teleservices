@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.55] - 14/10/2021 -
+### added
+- add example build command in comment so we do not have to search for latitude longitude during local instance ici [dmshd]
 
 ## [0.0.54] - 14/10/2021 -
 ### changed

@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.57] - 15/10/2021 -
+### Fixed
+-  fix JSON syntax error (additionnal comma) [dmshd]
+
 ## [0.0.56] - 14/10/2021 -
 ### changed
 -  [MTELEVOIA-3] update combo site strucutre JSONs (portail agent, site-strucure) so it looks like what we showed at the mandatories saloon and the actual demo teleservices website [dmshd]

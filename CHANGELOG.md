@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.58] - 18/10/2021 -
+### Fixed
+-  fix errors in links [dmshd]
+  
 ## [0.0.57] - 15/10/2021 -
 ### Fixed
 -  fix JSON syntax error (additionnal comma) [dmshd]

@@ -5,13 +5,17 @@
 # $3 : Type Instance light or full (case sensitive)
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
 # $5 : Latitude of the map pointer
-# $6 : Longitude of the map pointer
+# $6 : Longitude of the map pointer 
 # example (lat lon of namur): ./build-e-guicher.sh local example.net full 5000 50.466575 4.865341
 
 # add custom settings in wcs site-options.cfg
 ## set var for following sed commands
 match="\[options\]"
 file="/var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg"
+
+insert='postgresql = true'
+grep -qxF "$insert" $file || echo "-- Writing 'postgresql = true' in the site-options.cfg"; sed -i "s/$match/$match\n$insert/" $file
+sleep 0.1
 
 echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
 insert='workflow-resubmit-action = true'

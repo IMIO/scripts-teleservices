@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.60] - 29/10/2021 -
+### Fixed
+- [SUP-20664] restore postgresql = true insertion since it is definitively necessary! [dmshd]
+
 ## [0.0.59] - 18/10/2021 -
 ### Changed
 -  Replace "portail citoyen" by "e-guichet" in our text cells, links [dmshd]

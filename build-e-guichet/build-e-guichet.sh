@@ -13,8 +13,9 @@
 match="\[options\]"
 file="/var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg"
 
+echo "-- Writing 'postgresql = true' in the site-options.cfg"
 insert='postgresql = true'
-grep -qxF "$insert" $file || echo "-- Writing 'postgresql = true' in the site-options.cfg"; sed -i "s/$match/$match\n$insert/" $file
+grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
 sleep 0.1
 
 echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "

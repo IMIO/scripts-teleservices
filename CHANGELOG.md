@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.61] - 29/10/2021 -
+### Fixed
+- [SUP-20664] fix my mistake making sed duplicate the insertion at rerun of the script [dmshd]
+
 ## [0.0.60] - 29/10/2021 -
 ### Fixed
 - [SUP-20664] restore postgresql = true insertion since it is definitively necessary! [dmshd]

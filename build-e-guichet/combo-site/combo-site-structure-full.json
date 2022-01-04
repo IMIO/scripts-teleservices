@@ -32,7 +32,7 @@
             "public": false,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2021-10-14T12:48:58.708Z",
-            "text": "<p>Vous &ecirc;tes connect&eacute;&middot;e en tant qu&#39;agent&middot;e.</p>\r\n\r\n<p><a class=\"pk-button\" href=\"{{portal_url}}backoffice\" title=\"Vers le backoffice du e-guichet\">Acc&eacute;der au backoffice</a></p>",
+            "text": "<p>Vous &ecirc;tes connect&eacute;&middot;e en tant qu&#39;agent&middot;e.</p>\r\n\r\n<p><a class=\"pk-button\" href=\"https://{{commune_slug}}-formulaires.guichet-citoyen.be/backoffice\" title=\"Vers le backoffice du e-guichet\">Acc&eacute;der au backoffice</a></p>",
             "groups": [
               "Debug",
               "Agent ayant acces aux fabriques",

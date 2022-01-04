@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.62] - 04/01/2022 -
+### Fixed
+- [MTELEPEQA-1] fix link to backoffice not working [dmshd]
+
 ## [0.0.61] - 29/10/2021 -
 ### Fixed
 - [SUP-20664] fix my mistake making sed duplicate the insertion at rerun of the script [dmshd]

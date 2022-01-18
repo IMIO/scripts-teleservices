@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+
+## [0.0.6] - 18/01/2022 -
+### Fixed
+- [TELE-1207] add an echoing of a default cmd example [dmshd]
+
 ## [0.0.62] - 04/01/2022 -
 ### Fixed
 - [MTELEPEQA-1] fix link to backoffice not working [dmshd]
@@ -20,7 +26,7 @@ All notable changes to this project will be documented in this file.
 ## [0.0.58] - 18/10/2021 -
 ### Fixed
 -  fix errors in links [dmshd]
-  
+
 ## [0.0.57] - 15/10/2021 -
 ### Fixed
 -  fix JSON syntax error (additionnal comma) [dmshd]
@@ -56,7 +62,7 @@ All notable changes to this project will be documented in this file.
 ## [0.0.49] - 05/10/2021 -
 ### changed
 - [INFRA-4003] [TELE-1119] add -k to avoid SSL error following the Infra advice about that
-- 
+-
 ## [0.0.47] - 24/08/2021 -
 ### removed
   - [TELE-1046] Removed unused code [dmshd]
@@ -99,7 +105,7 @@ All notable changes to this project will be documented in this file.
 ## [0.0.38] - 27/04/2021 -
 ### added
   - [dmu] : add fedict.py in ./build-e-guichet
-  - init fedict.py with build-e-guichet.sh 
+  - init fedict.py with build-e-guichet.sh
 
 ## [0.0.37] - 21/01/2021 -
 ### Changed
@@ -114,7 +120,7 @@ All notable changes to this project will be documented in this file.
 ## [0.0.35] - 12/01/2021 -
 ### Changed
   - [dmu] : add missing datasource (2nd)
-    copy_datasources.sh had to be modified too 
+    copy_datasources.sh had to be modified too
 
 
 ## [0.0.34] - 12/01/2021 -

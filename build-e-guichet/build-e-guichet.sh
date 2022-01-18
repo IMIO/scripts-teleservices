@@ -5,8 +5,13 @@
 # $3 : Type Instance light or full (case sensitive)
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
 # $5 : Latitude of the map pointer
-# $6 : Longitude of the map pointer 
-# example (lat lon of namur): ./build-e-guicher.sh local example.net full 5000 50.466575 4.865341
+# $6 : Longitude of the map pointer
+
+# echoing example if no args
+if [ -z "$1" ]; then
+    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 50.466575 4.865341"
+    exit 1
+fi
 
 # add custom settings in wcs site-options.cfg
 ## set var for following sed commands

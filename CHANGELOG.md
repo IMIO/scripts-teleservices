@@ -1,9 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.64] - 18/01/2022 -
+### Added
+- add script to make basket item deletion more easy [dmshd]
 
 
-## [0.0.6] - 18/01/2022 -
+## [0.0.63] - 18/01/2022 -
 ### Fixed
 - [TELE-1207] add an echoing of a default cmd example [dmshd]
 

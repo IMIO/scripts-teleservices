@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.67] - 07/02/2022 -
+### Added
+- init python scripts to handle secret keys [dmshd]
 ## [0.0.66] - 02/02/2022 -
 ### Added
 - init bash-scripts folder with scripts to echo or change secret keys [dmshd]

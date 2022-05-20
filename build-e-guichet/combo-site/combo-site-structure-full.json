@@ -66,7 +66,7 @@
             "public": true,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2021-10-14T13:54:57.786Z",
-            "text": "<p style=\"text-align: center;\">--- Vos d&eacute;marches administratives rendues accessibles en quelques &eacute;tapes\u202f! ---</p>\r\n\r\n<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
+            "text": "<p style=\"text-align: center;\">Vos d&eacute;marches administratives rendues accessibles en quelques &eacute;tapes\u202f!</p>\r\n\r\n<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
             "groups": []
           }
         },

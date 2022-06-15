@@ -1,0 +1,3 @@
+recursive-include scripts_teleservices *
+include MANIFEST.in
+include README.md

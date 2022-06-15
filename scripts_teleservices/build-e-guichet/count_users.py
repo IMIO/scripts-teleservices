@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/build-e-guichet/cpt_auth_users.py -d lalouviere-auth.guichet-citoyen.be
+# authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/cpt_auth_users.py -d lalouviere-auth.guichet-citoyen.be
 
 from datetime import date,timedelta
 from django.contrib.auth import get_user_model

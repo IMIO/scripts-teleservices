@@ -1,4 +1,4 @@
-# usage : sudo -u hobo hobo-manage tenant_command runscript -d demo-hobo.guichet-citoyen.be /opt/publik/scripts/build-e-guichet/hobo_create_variables.py
+# usage : sudo -u hobo hobo-manage tenant_command runscript -d demo-hobo.guichet-citoyen.be /opt/publik/scripts/scripts_teleservices/build-e-guichet/hobo_create_variables.py
 from hobo.environment.models import Variable
 
 Variable(name='commune_name', label='Nom de la commune', value='Ma Commune').save()

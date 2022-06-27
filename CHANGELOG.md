@@ -1,12 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.69] - 27/06/2022
+### Added
+- bijoe cron randomizer [nhi]
+
+## [0.0.68] - 15/06/2022 
+### Changed
+- set package as python package [nhi, nse]
+
 ## [0.0.67] - 07/02/2022 -
 ### Added
 - init python scripts to handle secret keys [dmshd]
+
 ## [0.0.66] - 02/02/2022 -
 ### Added
 - init bash-scripts folder with scripts to echo or change secret keys [dmshd]
+
 ## [0.0.65] - 25/01/2022 -
 ### Fixed
 - Update script that clean all forms in all baskets to make it work following #61027 [dmshd]

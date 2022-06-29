@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.70] - 29/06/2022
+### Added
+- list wcs tenants [nhi]
+
 ## [0.0.69] - 27/06/2022
 ### Added
 - bijoe cron randomizer [nhi]

@@ -1,4 +1,4 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 
-0 2 * * * root /opt/publik/scripts/scripts_teleservices/randomize_bijoe_cron.sh
+0 2 * * * root /opt/publik/scripts/scripts_teleservices/bijoe_cron_randomizer/randomize_bijoe_cron.sh

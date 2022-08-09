@@ -35,7 +35,7 @@
             "public": false,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2022-08-09T07:34:43.252Z",
-            "text": "<p>Vous &ecirc;tes connect&eacute;&middot;e en tant qu&#39;agent&middot;e.</p>\r\n\r\n<p><a class=\"pk-button\" href=\"https://{{commune_slug}}-formulaires.DOMAINE/backoffice\" title=\"Vers le backoffice du e-guichet\">Acc&eacute;der au backoffice</a></p>",
+            "text": "<p>Vous &ecirc;tes connect&eacute;&middot;e en tant qu&#39;agent&middot;e.</p>\r\n\r\n<p><a class=\"pk-button\" href=\"https://{{ eservices_url }}backoffice\" title=\"Vers le backoffice du e-guichet\">Acc&eacute;der au backoffice</a></p>",
             "groups": [
               "Debug",
               "Agents traitants - Population, etat civil",
@@ -86,7 +86,7 @@
             "public": true,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2022-06-08T11:42:50.205Z",
-            "text": "<p><a class=\"pk-button\" href=\"https://COMMUNE-formulaires.DOMAINE/formulaire-de-contact/\" title=\"Formulaire de contact\">Formulaire de contact</a></p>\r\n<p><a class=\"pk-button\" href=\"https://COMMUNE-formulaires.DOMAINE/formulaire-de-signalement/\" title=\"Signaler une erreur sur le site\">Signaler une erreur sur le site</a></p>",
+            "text": "<p><a class=\"pk-button\" href=\"{{ eservices_url }}formulaire-de-contact/\" title=\"Formulaire de contact\">Formulaire de contact</a></p>\r\n<p><a class=\"pk-button\" href=\"{{ eservices_url }}formulaire-de-signalement/\" title=\"Signaler une erreur sur le site\">Signaler une erreur sur le site</a></p>",
             "groups": []
           }
         }
@@ -184,7 +184,7 @@
             "public": true,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2022-08-09T07:41:45.271Z",
-            "text": "<p>Vous &ecirc;tes un agent\u202f? Connectez-vous au&nbsp;<a href=\"https://COMMUNE-portail-agent.guichet-citoyen.be/\">portail agent</a>.</p>\r\n\r\n<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
+            "text": "<p>Vous &ecirc;tes un agent\u202f? Connectez-vous au&nbsp;<a href=\"{{ portal_agent_url }}\">portail agent</a>.</p>\r\n\r\n<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
             "groups": []
           }
         }

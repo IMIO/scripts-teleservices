@@ -110,18 +110,10 @@ fi
 # Import combo site structure
 echo "-- Importing $3 combo site structure ..."
 if [ $3 = "full" ]; then
-    sed -i "s/COMMUNE/$1/g" combo-site/combo-site-structure-full.json
-    sed -i "s/DOMAINE/$2/g" combo-site/combo-site-structure-full.json
     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
-    sed -i "s/$1/COMMUNE/g" combo-site/combo-site-structure-full.json
-    sed -i "s/$2/DOMAINE/g" combo-site/combo-site-structure-full.json
 fi
 if [ $3 = "light" ]; then
-    sed -i "s/COMMUNE/$1/g" combo-site/combo-site-structure-light.json
-    sed -i "s/DOMAINE/$2/g" combo-site/combo-site-structure-light.json
     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
-    sed -i "s/$1/COMMUNE/g" combo-site/combo-site-structure-light.json
-    sed -i "s/$2/DOMAINE/g" combo-site/combo-site-structure-light.json
 fi
 sleep 0.1
 

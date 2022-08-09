@@ -10,7 +10,7 @@
 
 # echoing example if no args
 if [ -z "$1" ]; then
-    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 50.466575 4.865341"
+    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 50.466575 4.865341 Local"
     exit 1
 fi
 

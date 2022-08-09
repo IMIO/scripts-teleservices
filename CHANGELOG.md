@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.71] - 09/08/2022
+### Updated
+- build-e-guichet for ts-light [njphspv, dmshd]
+- datasources for ts-light [njphspv, dmshd]
+- hobo for ts-light [njphspv, dmshd]
+- combo-site for ts-light [njphspv, dmshd]
+
 ## [0.0.70] - 29/06/2022
 ### Added
 - list wcs tenants [nhi]

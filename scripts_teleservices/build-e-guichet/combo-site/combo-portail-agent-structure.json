@@ -11,7 +11,7 @@
         "order": 1,
         "exclude_from_navigation": false,
         "redirect_url": "",
-        "public": true,
+        "public": false,
         "creation_timestamp": "2021-10-14T12:35:03.711Z",
         "last_update_timestamp": "2021-10-14T15:05:01.025Z",
         "picture": "",

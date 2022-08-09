@@ -1,275 +1,192 @@
 {
-  "map-layers": [],
   "pages": [
     {
       "fields": {
-        "picture": "",
-        "redirect_url": "",
-        "exclude_from_navigation": false,
-        "parent": null,
         "title": "Accueil",
-        "last_update_timestamp": "2018-01-15T10:49:28.555Z",
+        "slug": "index",
+        "sub_slug": "",
+        "description": "",
         "template_name": "two-columns",
-        "public": true,
-        "groups": [],
+        "parent": null,
         "order": 1,
-        "slug": "index"
-      },
-      "cells": [
-        {
-          "fields": {
-            "extra_css_class": "home_welcome",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-03-24T13:12:59.655Z",
-            "text": "<h2>BIENVENUE SUR LE GUICHET EN LIGNE.<br />\r\n&nbsp;</h2>\r\n\r\n<p>Vos démarches administratives sont disponibles en quelques clics !</p>\r\n",
-            "order": 0,
-            "public": true,
-            "groups": [],
-            "placeholder": "content",
-            "slug": ""
-          },
-          "model": "data.textcell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "home_connexion",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-03-24T13:14:51.281Z",
-            "text": "<a href=\"login\"><h2>SE CONNECTER</h2></a>",
-            "order": 1,
-            "public": true,
-            "groups": [],
-            "placeholder": "right",
-            "slug": ""
-          },
-          "model": "data.textcell"
-        },
-        {
-          "model": "data.linkcell",
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": true,
-            "link_page": null,
-            "title": "SE CONNECTER AU GUICHET",
-            "last_update_timestamp": "2019-10-09T08:19:36.318Z",
-            "slug": "bouton-accueil-se-connecter-au-guichet",
-            "url": "login",
-            "groups": [],
-            "anchor": "",
-            "order": 2,
-            "placeholder": "right",
-            "public": true
-          }
-        },
-        {
-          "model": "data.linkcell",
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "link_page": null,
-            "title": "SE DÉCONNECTER DU GUICHET",
-            "last_update_timestamp": "2019-10-09T08:19:37.303Z",
-            "slug": "bouton-accueil-se-deconnecter-du-guichet",
-            "url": "logout",
-            "groups": [],
-            "anchor": "",
-            "order": 3,
-            "placeholder": "right",
-            "public": false
-          }
-        },
-        {
-          "model": "data.linkcell",
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "link_page": null,
-            "title": "ACCÉDER AU PORTAIL-AGENT",
-            "last_update_timestamp": "2019-10-09T15:15:11.316Z",
-            "slug": "",
-            "url": "https://COMMUNE-portail-agent.guichet-citoyen.be",
-            "groups": [
-              "Agent ayant acces aux fabriques",
-              "Agents traitants - Population, etat civil",
-              "Agents traitants - Travaux"
-            ],
-            "anchor": "",
-            "order": 4,
-            "placeholder": "right",
-            "public": false
-          }
-        },
-        {
-          "fields": {
-            "extra_css_class": "home_procedure_in_progress",
-            "restricted_to_unlogged": false,
-            "done_forms": false,
-            "current_forms": true,
-            "last_update_timestamp": "2017-03-24T13:15:52.792Z",
-            "wcs_site": "",
-            "order": 5,
-            "public": false,
-            "groups": [],
-            "placeholder": "right",
-            "slug": ""
-          },
-          "model": "wcs.wcscurrentformscell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "home_procedure_draft",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-03-24T13:16:06.259Z",
-            "wcs_site": "",
-            "order": 6,
-            "public": false,
-            "groups": [],
-            "placeholder": "right",
-            "slug": ""
-          },
-          "model": "wcs.wcscurrentdraftscell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-03-24T13:11:09.541Z",
-            "order": 7,
-            "public": true,
-            "groups": [],
-            "placeholder": "footer",
-            "slug": ""
-          },
-          "model": "data.parentcontentcell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "home_footer_text",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-03-24T13:18:50.213Z",
-            "text": "<p>E-Guichet, vos démarches administratives en quelques clics!</p>",
-            "order": 8,
-            "public": true,
-            "groups": [],
-            "placeholder": "footer",
-            "slug": ""
-          },
-          "model": "data.textcell"
-        }
-      ]
-    },
-    {
-      "fields": {
-        "picture": "",
+        "exclude_from_navigation": false,
         "redirect_url": "",
-        "exclude_from_navigation": false,
-        "parent": null,
-        "title": "Démarches",
-        "last_update_timestamp": "2018-01-15T10:49:28.557Z",
-        "template_name": "two-columns",
+        "extra_variables": {},
+        "placeholder_options": {},
         "public": true,
-        "groups": [],
-        "order": 2,
-        "slug": "demarches"
+        "creation_timestamp": "2021-10-14T12:35:01.191Z",
+        "last_update_timestamp": "2022-08-09T07:34:43.272Z",
+        "picture": "",
+        "edit_role": null,
+        "subpages_edit_role": null,
+        "snapshot": null,
+        "groups": []
       },
       "cells": [
         {
+          "model": "data.textcell",
           "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2018-01-15T10:49:09.442Z",
-            "placeholder": "content",
-            "public": true,
-            "ordering": "alpha",
-            "order": 0,
-            "limit": null,
-            "groups": [],
-            "manual_order": {},
-            "category_reference": "",
-            "slug": ""
-          },
-          "model": "wcs.wcsformsofcategorycell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2018-01-15T10:49:12.178Z",
-            "placeholder": "content",
-            "public": true,
-            "ordering": "alpha",
-            "order": 1,
-            "limit": null,
-            "groups": [],
-            "manual_order": {
-              "data": []
-            },
-            "category_reference": "eservices:etat-civil-population",
-            "slug": ""
-          },
-          "model": "wcs.wcsformsofcategorycell"
-        },
-        {
-          "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2018-01-15T10:49:09.862Z",
             "placeholder": "right",
-            "public": true,
-            "ordering": "alpha",
-            "order": 2,
-            "limit": null,
-            "groups": [],
-            "manual_order": {
-              "data": []
-            },
-            "category_reference": "eservices:travaux",
-            "slug": ""
-          },
-          "model": "wcs.wcsformsofcategorycell"
+            "order": 1,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": false,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-08-09T07:34:43.252Z",
+            "text": "<p>Vous &ecirc;tes connect&eacute;&middot;e en tant qu&#39;agent&middot;e.</p>\r\n\r\n<p><a class=\"pk-button\" href=\"https://{{commune_slug}}-formulaires.DOMAINE/backoffice\" title=\"Vers le backoffice du e-guichet\">Acc&eacute;der au backoffice</a></p>",
+            "groups": [
+              "Debug",
+              "Agents traitants - Population, etat civil",
+              "Agent ayant acces aux fabriques"
+            ]
+          }
         },
         {
+          "model": "data.parentcontentcell",
           "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2018-01-15T10:49:09.439Z",
-            "order": 3,
-            "public": true,
-            "groups": [],
             "placeholder": "footer",
-            "slug": ""
-          },
-          "model": "data.parentcontentcell"
+            "order": 5,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-04-13T14:39:51.772Z",
+            "groups": []
+          }
+        },
+        {
+          "model": "data.textcell",
+          "fields": {
+            "placeholder": "footer",
+            "order": 6,
+            "slug": "",
+            "extra_css_class": "home_footer_text",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-08-09T07:29:31.019Z",
+            "text": "<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
+            "groups": []
+          }
+        },
+        {
+          "model": "data.textcell",
+          "fields": {
+            "placeholder": "content",
+            "order": 10,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-06-08T11:42:50.205Z",
+            "text": "<p><a class=\"pk-button\" href=\"https://COMMUNE-formulaires.DOMAINE/formulaire-de-contact/\" title=\"Formulaire de contact\">Formulaire de contact</a></p>\r\n<p><a class=\"pk-button\" href=\"https://COMMUNE-formulaires.DOMAINE/formulaire-de-signalement/\" title=\"Signaler une erreur sur le site\">Signaler une erreur sur le site</a></p>",
+            "groups": []
+          }
         }
       ]
     },
     {
       "fields": {
-        "picture": "",
-        "redirect_url": "{{ idp_url }}/accounts",
-        "exclude_from_navigation": false,
-        "parent": null,
         "title": "Profil",
-        "last_update_timestamp": "2018-01-15T10:49:28.559Z",
+        "slug": "profil",
+        "sub_slug": "",
+        "description": "",
         "template_name": "standard",
-        "public": true,
-        "groups": [],
+        "parent": null,
         "order": 3,
-        "slug": "profil"
+        "exclude_from_navigation": true,
+        "redirect_url": "{{ idp_url }}accounts",
+        "extra_variables": {},
+        "placeholder_options": {},
+        "public": false,
+        "creation_timestamp": "2021-10-14T12:35:01.203Z",
+        "last_update_timestamp": "2022-08-09T07:40:17.941Z",
+        "picture": "",
+        "edit_role": null,
+        "subpages_edit_role": null,
+        "snapshot": null,
+        "groups": [
+          "Agents traitants - Population, etat civil"
+        ]
       },
       "cells": [
         {
+          "model": "data.parentcontentcell",
           "fields": {
-            "extra_css_class": "",
-            "restricted_to_unlogged": false,
-            "last_update_timestamp": "2017-02-22T04:00:54.690Z",
-            "order": 0,
-            "public": true,
-            "groups": [],
             "placeholder": "footer",
-            "slug": ""
-          },
-          "model": "data.parentcontentcell"
+            "order": 0,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-04-13T14:39:51.916Z",
+            "groups": []
+          }
+        }
+      ]
+    },
+    {
+      "fields": {
+        "title": "Mentions l\u00e9gales",
+        "slug": "mentions-legales",
+        "sub_slug": "",
+        "description": "Mentions l\u00e9gales du e-guichet",
+        "template_name": "standard",
+        "parent": null,
+        "order": 8,
+        "exclude_from_navigation": true,
+        "redirect_url": "",
+        "extra_variables": {},
+        "placeholder_options": {},
+        "public": true,
+        "creation_timestamp": "2021-10-14T13:09:58.922Z",
+        "last_update_timestamp": "2022-08-09T07:41:45.291Z",
+        "picture": "",
+        "edit_role": null,
+        "subpages_edit_role": null,
+        "snapshot": null,
+        "groups": []
+      },
+      "cells": [
+        {
+          "model": "data.parentcontentcell",
+          "fields": {
+            "placeholder": "footer",
+            "order": 0,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-04-13T14:39:52.151Z",
+            "groups": []
+          }
+        },
+        {
+          "model": "data.textcell",
+          "fields": {
+            "placeholder": "content",
+            "order": 1,
+            "slug": "",
+            "extra_css_class": "",
+            "template_name": null,
+            "condition": null,
+            "public": true,
+            "restricted_to_unlogged": false,
+            "last_update_timestamp": "2022-08-09T07:41:45.271Z",
+            "text": "<h1>D&eacute;claration relative &agrave; la protection des donn&eacute;es &agrave; caract&egrave;re personnel</h1>\r\n\r\n<h2>Administration communale de ORGANISATION_LABEL</h2>\r\n\r\n<h3>I. Introduction</h3>\r\n\r\n<p>L&rsquo;administration communale est attach&eacute;e au respect de la vie priv&eacute;e.</p>\r\n\r\n<p>Notre politique en mati&egrave;re de protection des personnes physiques &agrave; l&#39;&eacute;gard du traitement des donn&eacute;es &agrave; caract&egrave;re se fonde sur le R&egrave;glement (UE) 2016/679 du Parlement europ&eacute;en et du Conseil du 27 avril 2016 (aussi connu sous l&rsquo;acronyme RGPD).</p>\r\n\r\n<h3>II. &Agrave; quelles fins recueillons-nous, traitons-nous et conservons-nous vos donn&eacute;es &agrave; caract&egrave;re personnel?</h3>\r\n\r\n<p>Les donn&eacute;es &agrave; caract&egrave;re personnel vous concernant sont recueillies afin:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>de vous permettre de fournir les informations requises pour l&rsquo;ex&eacute;cution du traitement de vos d&eacute;marches administratives via ce e-guichet;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>de vous permettre de fournir les informations requises pour votre inscription au compte citoyen. Ce dernier permet de proposer du contenu sur le site de la commune (fiche annuaire, &eacute;v&eacute;nement,...);</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>de vous permettre de de recevoir notre Newsletter apr&egrave;s vous y &ecirc;tre inscrit.</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>de vous permettre de faire une demande via un formulaire.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Les donn&eacute;es seront &eacute;galement exploit&eacute;es afin de r&eacute;aliser des statistiques anonymes concernant l&#39;utilisation du site.</p>\r\n\r\n<p>Ces donn&eacute;es sont trait&eacute;es conform&eacute;ment &agrave; la politique d&eacute;crite dans le r&egrave;glement RGPD susmentionn&eacute;.</p>\r\n\r\n<p>Elles ne seront trait&eacute;es que par le personnel du service responsable du site web (informatique, communication) de l&rsquo;administration communale et les sous-traitants de celui-ci, aux seules fins d&eacute;crites ci-dessus et afin d&#39;am&eacute;liorer le service.</p>\r\n\r\n<h3>III. Qui est le &laquo;responsable du traitement des donn&eacute;es&raquo;?</h3>\r\n\r\n<p>Le responsable du traitement des donn&eacute;es est le DPD de l&rsquo;administration communale: Monsieur Leveau.&nbsp;&nbsp;Si vous avez des questions concernant le traitement de votre courrier &eacute;lectronique et des donn&eacute;es &agrave; caract&egrave;re personnel qui y sont li&eacute;es, vous pouvez les envoyer &agrave; l&#39;adresse suivante&nbsp;: [ADRESSE MAIL DU DPO]</p>\r\n\r\n<h3>IV. Quelles sont les donn&eacute;es &agrave; caract&egrave;re personnel que nous collectons?</h3>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>aux fins de personnalisation de l&#39;acc&egrave;s au syst&egrave;me (enregistrement) et de fourniture d&#39;informations, nous conservons les donn&eacute;es suivantes: nom, pr&eacute;nom, adresse &eacute;lectronique, adresse postale, coordonn&eacute;es de g&eacute;olocalisation, photo de profil, identifiant, mot de passe, date de naissance, num&eacute;ro de registre national telles que fournies par vos soins,</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>aux fins d&#39;information et d&#39;assistance: les courriels stock&eacute;s dans les bo&icirc;tes fonctionnelles auxquelles les questions sont adress&eacute;es peuvent contenir, outre l&#39;adresse &eacute;lectronique de l&#39;exp&eacute;diteur, les nom et pr&eacute;nom de celui-ci, l&rsquo;adresse email;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<h3>V. &Agrave; qui vos donn&eacute;es sont-elles communiqu&eacute;es?</h3>\r\n\r\n<p>Les donn&eacute;es recueillies &agrave; votre sujet sont trait&eacute;es de mani&egrave;re confidentielle et utilis&eacute;es seulement par les services de l&rsquo;administration communale et ses sous-traitants responsables:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>pour la personnalisation de l&#39;acc&egrave;s au syst&egrave;me (l&#39;&eacute;quipe technique de l&rsquo;administration communale ORGANISATION_LABEL);</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>pour les demandes adress&eacute;es au service d&#39;aide (le service d&#39;aide et le sous-traitant de ORGANISATION_LABEL&nbsp;charg&eacute; des activit&eacute;s li&eacute;es au service d&#39;aide).</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>pour la maintenance et le support de l&#39;application et de l&rsquo;infrastructure qui l&rsquo;h&eacute;berge, iMio\u202f;</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Les donn&eacute;es recueillies seront enregistr&eacute;es:</p>\r\n\r\n<ul>\r\n\t<li>\r\n\t<p>dans la base de donn&eacute;es d&rsquo;enregistrement h&eacute;berg&eacute;e par l&rsquo;administration communale ou son sous-traitant;</p>\r\n\t</li>\r\n\t<li>\r\n\t<p>dans les bo&icirc;tes aux lettres &eacute;lectroniques de premier niveau du service d&#39;aide des services concern&eacute;s de l&rsquo;administration communale.</p>\r\n\t</li>\r\n</ul>\r\n\r\n<p>Les donn&eacute;es collect&eacute;es et trait&eacute;es sont g&eacute;r&eacute;es par le service responsable de l&rsquo;administration communale.</p>\r\n\r\n<p>Aucune donn&eacute;e &agrave; caract&egrave;re personnel n&#39;est transmise &agrave; des tiers ne faisant pas partie des destinataires mentionn&eacute;s ou ne relevant pas du cadre juridique indiqu&eacute;, sans pr&eacute;judice de leur &eacute;ventuelle transmission aux organes charg&eacute;s d&#39;une mission de contr&ocirc;le ou d&#39;inspection en application du droit belge, tel qu&#39;un juge d&#39;instruction.</p>\r\n\r\n<p>L&rsquo;administration communale ne divulguera pas de donn&eacute;es &agrave; caract&egrave;re personnel &agrave; des tiers &agrave; des fins de marketing direct.</p>\r\n\r\n<h3>VI. Combien de temps vos donn&eacute;es sont-elles conserv&eacute;es?</h3>\r\n\r\n<p>Pour les besoins du traitement des services, vos donn&eacute;es sont conserv&eacute;es aussi longtemps que vous &ecirc;tes inscrits au(x) services concern&eacute;s. Elles peuvent &ecirc;tre supprim&eacute;es, sauf si une enqu&ecirc;te est en cours (Les donn&eacute;es seront alors conserv&eacute;es pendant le temps n&eacute;cessaire &agrave; la conclusion de l&rsquo;enqu&ecirc;te), sur simple base d&rsquo;une demande de votre part.</p>\r\n\r\n<h3>VII. Comment consulter vos donn&eacute;es, en v&eacute;rifier l&#39;exactitude et, au besoin, les corriger?</h3>\r\n\r\n<p>Vous avez le droit de demander &agrave; tout moment une copie de vos donn&eacute;es &agrave; caract&egrave;re personnel pour v&eacute;rifier l&#39;exactitude des informations qui sont conserv&eacute;es et/ou pour les corriger ou les mettre &agrave; jour. Vous pouvez aussi demander que vos donn&eacute;es &agrave; caract&egrave;re personnel soient totalement effac&eacute;es si aucune demande de votre part n&#39;est en cours de traitement.</p>\r\n\r\n<p>Si vous supprimez votre enregistrement dans ce e-guichet, la newsletter, le compte citoyen,, vos donn&eacute;es seront &eacute;galement supprim&eacute;es des applications concern&eacute;es.</p>\r\n\r\n<p>Pour garantir le respect de votre vie priv&eacute;e et assurer votre s&eacute;curit&eacute;, nous prendrons les mesures n&eacute;cessaires pour v&eacute;rifier votre identit&eacute; avant de vous permettre de consulter, et &eacute;ventuellement de corriger, des donn&eacute;es.</p>\r\n\r\n<p>Veuillez envoyer vos demandes &agrave; l&rsquo;adresse &eacute;lectronique suivante: [ADRESSE MAIL DU DPO DE L&#39;ORGANISME].</p>\r\n\r\n<h3>VIII. Quels sont les moyens que nous mettons en &oelig;uvre pour &eacute;viter tout abus ou acc&egrave;s non autoris&eacute;?</h3>\r\n\r\n<p>L&rsquo;administration communale ORGANISATION_LABEL&nbsp;a mis en place un certain nombre de proc&eacute;dures (mat&eacute;rielles, &eacute;lectroniques et administratives), qu&#39;il r&eacute;&eacute;value et actualise r&eacute;guli&egrave;rement, afin de prot&eacute;ger ces donn&eacute;es contre tout acc&egrave;s non autoris&eacute;, d&rsquo;en assurer la s&eacute;curit&eacute; et de garantir l&rsquo;utilisation correcte des informations recueillies en vue de r&eacute;aliser le traitement concern&eacute;.</p>\r\n\r\n<p>Vos donn&eacute;es sont conserv&eacute;es sur le serveur de notre sous-traitant avant d&#39;&ecirc;tre trait&eacute;es.</p>\r\n\r\n<p>Les sous-traitants ext&eacute;rieurs ont sign&eacute; un contrat avec l&rsquo;administration communale de ORGANISATION_LABEL&nbsp;en vertu duquel il sont l&eacute;galement tenus de respecter la l&eacute;gislation applicable en mati&egrave;re de protection et de traitement des donn&eacute;es &agrave; caract&egrave;re personnel, et plus pr&eacute;cis&eacute;ment le R&egrave;glement (UE) 2016/679 du Parlement europ&eacute;en et du Conseil du 27 avril 2016 (aussi connu sous l&rsquo;acronyme RGPD) .</p>\r\n\r\n<p>Le personnel de l&rsquo;administration communale ORGANISATION_LABEL qui a acc&egrave;s &agrave; des informations permettant d&#39;identifier des personnes est tenu de prot&eacute;ger ces informations conform&eacute;ment &agrave; la pr&eacute;sente d&eacute;claration relative &agrave; la protection des donn&eacute;es &agrave; caract&egrave;re personnel, et notamment en s&#39;abstenant d&#39;utiliser ces informations &agrave; des fins autres que la prestation des services qu&#39;il est cens&eacute; assurer.</p>\r\n\r\n<p>Des fonctionnaires d&eacute;sign&eacute;s par l&rsquo;administration communale ORGANISATION_LABEL peuvent acc&eacute;der aux donn&eacute;es au moyen de leur identifiant et de leur mot de passe personnel. Seuls ces fonctionnaires autoris&eacute;s ont acc&egrave;s aux donn&eacute;es (en utilisant un syst&egrave;me sp&eacute;cifique).</p>\r\n\r\n<h3>IX. &Agrave; qui adresser des questions ou des plaintes?</h3>\r\n\r\n<p>Pour consulter, supprimer (dans certains cas) ou corriger les informations &agrave; caract&egrave;re personnel vous concernant, veuillez contacter:</p>\r\n\r\n<p>Le responsable du traitement des donn&eacute;es (DPD) de l&rsquo;administration communale [MONSIEUR/MADAME NOM PR&Eacute;NOM]&nbsp;- [ADRESSE MAIL DU DPO]&nbsp;- [NUM&Eacute;RO DE T&Eacute;L&Eacute;PHONE DU DPO]</p>\r\n\r\n<p>En cas de litige, les plaintes peuvent &ecirc;tre adress&eacute;es au D&eacute;l&eacute;gu&eacute; &agrave; la Protection des Donn&eacute;es de l&rsquo;administration communale ou au l&rsquo;Autorit&eacute; Locale Belge en charge de l&rsquo;application de la protection des donn&eacute;es.</p>",
+            "groups": []
+          }
         }
       ]
     }

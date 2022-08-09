@@ -43,7 +43,7 @@ fi
 
 # Create datasources
 echo "-- Creating datasources ..."
-sudo -u wcs sh copy_datasources.sh $1 $2 $3
+sudo -u wcs bash copy_datasources.sh $1 $2 $3
 sleep 0.1
 
 # Create passerelle api user.

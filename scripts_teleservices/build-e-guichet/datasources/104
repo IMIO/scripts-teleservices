@@ -4,6 +4,6 @@
   <description>Liste des pays</description>
   <data_source>
     <type>json</type>
-    <value>[passerelle_url]/csvdatasource/pays/data</value>
+    <value>{{ passerelle_url }}/csvdatasource/pays/data</value>
   </data_source>
 </datasources>

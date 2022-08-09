@@ -66,13 +66,16 @@ sleep 0.1
 # Add hobo extra params
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
-sed -e "s~commune~$1~g" hobo/recipe-commune-extra.json >/etc/hobo/recipe-$1-extra.json
-sed -e "s~ORGANISATION_LABEL~$7~g" hobo/recipe-commune-extra.json >/etc/hobo/recipe-$1-extra.json
+sed -i "s~ORGANISATION_LABEL~$7~g" hobo/recipe-commune-extra.json
+sed -i "s~commune~$1~g" hobo/recipe-commune-extra.json
+cp hobo/recipe-commune-extra.json /etc/hobo/recipe-$1-extra.json
 if [ $1 = "local" ]; then
     sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
     sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
 fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
+sed -i "s~$7~ORGANISATION_LABEL~g" hobo/recipe-commune-extra.json
+sed -i "s~$1~commune~g" hobo/recipe-commune-extra.json
 sleep 0.1
 
 # Adapt country field in DB to have a list field instead a text field

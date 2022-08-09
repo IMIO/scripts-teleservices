@@ -6,6 +6,7 @@
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
 # $5 : Latitude of the map pointer
 # $6 : Longitude of the map pointer
+# $7 : Organisation label : if many words use " "
 
 # echoing example if no args
 if [ -z "$1" ]; then
@@ -66,6 +67,7 @@ sleep 0.1
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
 sed -e "s~commune~$1~g" hobo/recipe-commune-extra.json >/etc/hobo/recipe-$1-extra.json
+sed -e "s~ORAGNISATION_LABEL~$7~g" hobo/recipe-commune-extra.json >/etc/hobo/recipe-$1-extra.json
 if [ $1 = "local" ]; then
     sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
     sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json

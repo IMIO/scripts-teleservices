@@ -14,13 +14,13 @@
     }},
     {"create-combo": {
       "url": "https://${combo}/",
-      "title": "Portail - commune - E-Guichet",
+      "title": "Portail - ORGANISATION_LABEL - E-Guichet",
       "template_name": "portal-user"
     }},
     {"create-combo": {
       "url": "https://${combo_agent}/",
       "slug": "portal-agent",
-      "title": "Portail agent - commune - E-Guichet",
+      "title": "Portail agent - ORGANISATION_LABEL - E-Guichet",
       "template_name": "portal-agent"
     }},
     {"enable-attribute": {

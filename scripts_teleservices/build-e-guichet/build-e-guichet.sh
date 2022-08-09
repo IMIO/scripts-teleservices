@@ -34,9 +34,11 @@ grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
 sleep 0.1
 
 # Create categories
-echo "-- Creating categories ..."
-sudo -u wcs sh copy_categories.sh $1 $2
-sleep 0.1
+if [ $3 == "full" ]; then
+  echo "-- Creating categories ..."
+  sudo -u wcs sh copy_categories.sh $1 $2
+  sleep 0.1
+fi
 
 # Create datasources
 echo "-- Creating datasources ..."
@@ -49,9 +51,11 @@ sudo -u passerelle /usr/bin/passerelle-manage tenant_command runscript /opt/publ
 sleep 0.1
 
 # Create passerelle "ts1 datasources connector" with prefilled motivations and destinations terms.
-echo "-- Creating passerelle 'ts1 datasources' connector with prefilled motivations and destinations terms ..."
-sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/datasources.json
-sleep 0.1
+if [ $3 == "full" ]; then
+  echo "-- Creating passerelle 'ts1 datasources' connector with prefilled motivations and destinations terms ..."
+  sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/datasources.json
+  sleep 0.1
+fi
 
 # Create passerelle "pays" datasource. (To choice country in users' profile).
 echo "-- Creating passerelle 'pays' datasource ..."
@@ -88,13 +92,15 @@ sudo -u wcs wcs-manage runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/s
 sleep 0.1
 
 # Create regie
-echo "-- Payment managament creation (régie) ..."
-sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py
-# Puppet deploy search for : create_regie.py.erb
-if [ -f /var/lib/combo/create_regie.py ]; then
-    sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
+if [ $3 == "full" ]; then
+  echo "-- Payment managament creation (régie) ..."
+  sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py
+  # Puppet deploy search for : create_regie.py.erb
+  if [ -f /var/lib/combo/create_regie.py ]; then
+      sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
+  fi
+  sleep 0.1
 fi
-sleep 0.1
 
 # Import combo site structure
 echo "-- Importing $3 combo site structure ..."
@@ -125,7 +131,12 @@ sleep 0.1
 
 # Create global hobo variables
 echo "-- Creating hobo variables ..."
-sudo -u hobo hobo-manage tenant_command runscript -d $1-hobo.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/hobo_create_variables.py
+if [ $3 = "full" ]; then
+  sudo -u hobo hobo-manage tenant_command runscript -d $1-hobo.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/hobo_create_variables.py
+fi
+if [ $3 = "light" ]; then
+  sudo -u hobo hobo-manage tenant_command runscript -d $1-hobo.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/hobo_create_variables_light.py
+fi
 sleep 0.1
 
 echo "-- cat /etc/combo/settings.py : "
@@ -133,8 +144,10 @@ cat /etc/combo/settings.py
 sleep 0.1
 
 # Create fedict.py in /etc/authentic2-multitenant/settings.d/
-echo "-- initalizing fedict.py : "
-sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py
+if [ $3 = "full" ]; then
+  echo "-- initalizing fedict.py : "
+  sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py
+fi
 
 # Setting mail to reveice trace errors
 echo "-- Setting admints@imio.be as 'mail for trace errors' ..."

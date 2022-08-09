@@ -9,4 +9,5 @@ Variable(name='administration_adresse', label="Adresse complète de l'administra
          value="1, Place de l'administration - 1111 Ma Commune").save()
 Variable(name='administration_site', label='Site Internet de la commune', value='https://www.ma-commune.be').save()
 Variable(name='global_title', label='Intitulé de l\'instance et mails', value='Commune - E-Guichet').save()
+Variable(name='is_ts_light', label='Est un TS-light ?', value="Oui").save()
 Variable(name='organisme', label='Type d\'organisme', value="commune de").save()

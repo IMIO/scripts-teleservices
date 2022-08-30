@@ -114,10 +114,6 @@ if [ $3 = "light" ]; then
 fi
 sleep 0.1
 
-echo "-- cat /etc/combo/settings.py : "
-cat /etc/combo/settings.py
-sleep 0.1
-
 # Create fedict.py in /etc/authentic2-multitenant/settings.d/
 if [ $3 = "full" ]; then
   echo "-- initalizing fedict.py : "

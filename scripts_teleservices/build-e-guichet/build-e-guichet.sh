@@ -4,35 +4,13 @@
 # $2 : domain (guichet-citoyen.be, example.net, ...)
 # $3 : Type Instance light or full (case sensitive)
 # $4 : All town's postcodes with a comma as separator (4000,4020,...)
-# $5 : Latitude of the map pointer
-# $6 : Longitude of the map pointer
-# $7 : Organisation label : if many words use " "
+# $5 : Organisation label : if many words use " "
 
 # echoing example if no args
 if [ -z "$1" ]; then
-    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 50.466575 4.865341 Local"
+    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 Local"
     exit 1
 fi
-
-# add custom settings in wcs site-options.cfg
-## set var for following sed commands
-match="\[options\]"
-file="/var/lib/wcs/tenants/$1-formulaires.$2/site-options.cfg"
-
-echo "-- Writing 'postgresql = true' in the site-options.cfg"
-insert='postgresql = true'
-grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
-sleep 0.1
-
-echo "-- Setting 'workflow-resubmit-action = true' in the site-options.cfg "
-insert='workflow-resubmit-action = true'
-grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
-sleep 0.1
-
-echo "-- Set default map pointer (ex: default_position = 48.8336428;2.3233045) in $file"
-insert="default_position = $5;$6"
-grep -qxF "$insert" $file || sed -i "s/$match/$match\n$insert/" $file
-sleep 0.1
 
 # Create categories
 if [ $3 == "full" ]; then
@@ -66,7 +44,7 @@ sleep 0.1
 # Add hobo extra params
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
-sed -i "s~ORGANISATION_LABEL~$7~g" hobo/recipe-commune-extra.json
+sed -i "s~ORGANISATION_LABEL~$5~g" hobo/recipe-commune-extra.json
 sed -i "s~commune~$1~g" hobo/recipe-commune-extra.json
 cp hobo/recipe-commune-extra.json /etc/hobo/recipe-$1-extra.json
 if [ $1 = "local" ]; then
@@ -74,7 +52,7 @@ if [ $1 = "local" ]; then
     sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
 fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
-sed -i "s~$7~ORGANISATION_LABEL~g" hobo/recipe-commune-extra.json
+sed -i "s~$5~ORGANISATION_LABEL~g" hobo/recipe-commune-extra.json
 sed -i "s~$1~commune~g" hobo/recipe-commune-extra.json
 sleep 0.1
 

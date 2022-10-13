@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.72] - 13/10/2022
+### Fixed
+[SUP-26104] Fix link not workint since the django var already generate protocol 'https://'
+
 ## [0.0.71] - 09/08/2022
 ### Updated
 - build-e-guichet for ts-light [njphspv, dmshd]

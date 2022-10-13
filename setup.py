@@ -17,7 +17,7 @@ class inst(install):
         )
 
 
-version = "0.0.71"
+version = "0.0.72"
 
 setup(
     name="scripts-teleservices",

@@ -20,7 +20,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 - bijoe cron randomizer [nhi]
 
-## [0.0.68] - 15/06/2022 
+## [0.0.68] - 15/06/2022
 ### Changed
 - set package as python package [nhi, nse]
 

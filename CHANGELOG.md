@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.0.73] - 31/10/2022
+### Added
+[MTELECELA-1] add missing link in footer (backoffice link) [dmshd]
 ## [0.0.72] - 13/10/2022
 ### Fixed
 [SUP-26104] Fix link not workint since the django var already generate protocol 'https://'

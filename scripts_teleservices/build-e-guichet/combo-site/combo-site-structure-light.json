@@ -70,7 +70,7 @@
             "public": true,
             "restricted_to_unlogged": false,
             "last_update_timestamp": "2022-08-09T07:29:31.019Z",
-            "text": "<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l&eacute;gales</a></p>",
+            "text": "<p>Vous \u00eates un agent\u202f? Connectez-vous au <a href=\"{{ portal_agent_url }}\">portail agent</a>.</p>\r\n\r\n<p style=\"text-align: center;\"><a href=\"{{portal_url}}mentions-legales/\" target=\"_self\" title=\"Lire les mentions l\u00e9gales\">Mentions l\u00e9gales</a></p>",
             "groups": []
           }
         },

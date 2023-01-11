@@ -12,17 +12,20 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+# Commented on 2023-01-11 following mismatch with categories import
+# Categories are imported with teleservices-package and this is
+# obsolete and should be deleted [dmshd]
+#
 # Create categories
-if [ $3 == "full" ]; then
-  echo "-- Creating categories ..."
-  sudo -u wcs sh copy_categories.sh $1 $2
-  sleep 0.1
-fi
-
+#if [ $3 == "full" ]; then
+#  echo "-- Creating categories ..."
+#  sudo -u wcs sh copy_categories.sh $1 $2
+#  sleep 0.1
+#fi
 # Create datasources
-echo "-- Creating datasources ..."
-sudo -u wcs bash copy_datasources.sh $1 $2 $3
-sleep 0.1
+# echo "-- Creating datasources ..."
+# sudo -u wcs bash copy_datasources.sh $1 $2 $3
+# sleep 0.1
 
 # Create passerelle api user.
 echo "-- Creating passerelle API user ..."
@@ -88,9 +91,14 @@ fi
 
 # Import combo site structure
 echo "-- Importing $3 combo site structure ..."
-if [ $3 = "full" ]; then
-    sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
-fi
+
+# Commented on 2023-01-11 following new combo structure imported manually
+# as a whole .tar file containing all the actual and up to date content
+#
+# if [ $3 = "full" ]; then
+#     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
+# fi
+
 if [ $3 = "light" ]; then
     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
 fi

@@ -61,18 +61,19 @@ echo "-- Adapt country field in DB to have a list field instead a text field  ..
 authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/auth_fedict_var.py -d $1-auth.$2
 sleep 0.1
 
-# Import defaults authentic users
-echo "-- Importing authentic users and roles ..."
-authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/import-authentic-user.py -d $1-auth.$2
-sleep 0.1
+# Broken since 2023-01-10 following Entr'Ouvert changes in their code
+# # Import defaults authentic users
+# echo "-- Importing authentic users and roles ..."
+# authentic2-multitenant-manage tenant_command runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/import-authentic-user.py -d $1-auth.$2
+# sleep 0.1
 
-echo "-- Waiting 30 seconds to be certain authentic and wcs are synchronized ..."
-sleep 30
+# echo "-- Waiting 30 seconds to be certain authentic and wcs are synchronized ..."
+# sleep 30
 
-# Set permissions
-echo "-- Setting permissions ..."
-sudo -u wcs wcs-manage runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/import-permissions.py $3
-sleep 0.1
+# # Set permissions
+# echo "-- Setting permissions ..."
+# sudo -u wcs wcs-manage runscript --vhost=$1-formulaires.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/import-permissions.py $3
+# sleep 0.1
 
 # Create regie
 if [ $3 == "full" ]; then

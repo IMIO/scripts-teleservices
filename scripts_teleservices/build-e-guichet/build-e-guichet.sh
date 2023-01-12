@@ -133,3 +133,13 @@ fi
 echo "-- Setting admints@imio.be as 'mail for trace errors' ..."
 sudo -u wcs wcs-manage runscript --all-tenants /opt/publik/scripts/scripts_teleservices/build-e-guichet/set-error-mail-to-admints.py
 sleep 0.1
+
+# Init apims baec connector in INSTALLED_APPS passerelle
+FILE=/etc/passerelle/settings.d/baec.py
+echo "-- Verifying for baec.py presence in $FILE"
+if test -f "$FILE"; then
+    echo "-- $FILE already exists. This is what we want so that's fine !"
+else
+    echo "-- $FILE does not exist yet so I'm gonna create it and reboot passerelle..."
+    cp /opt/publik/scripts/scripts_teleservices/build-e-guichet/baec.py /etc/passerelle/settings.d/ && service passerelle restart
+fi

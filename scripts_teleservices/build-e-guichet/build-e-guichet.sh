@@ -143,3 +143,7 @@ else
     echo "-- $FILE does not exist yet so I'm gonna create it and reboot passerelle..."
     cp /opt/publik/scripts/scripts_teleservices/build-e-guichet/baec.py /etc/passerelle/settings.d/ && service passerelle restart
 fi
+
+# Init auth-contexts = fedict in site-options.cfg if not already done (now needed everywhere for 'Extrait de casier judiciaire' form)
+echo "-- Verifying for auth-contexts = fedict in site-options.cfg and adding it if not already done... (grep should output something like 'auth-contexts = fedict' in any case below this echo)"
+grep -nF --color 'auth-contexts' /var/lib/wcs/tenants/*/site-options.cfg || (sed -i "s~\[options\]~\[options\]\nauth-contexts = fedict~" /var/lib/wcs/tenants/*/site-options.cfg && grep -nF --color 'auth-contexts' /var/lib/wcs/tenants/*/site-options.cfg)

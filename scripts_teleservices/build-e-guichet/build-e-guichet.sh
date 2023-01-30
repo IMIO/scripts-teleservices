@@ -8,12 +8,16 @@
 
 # echoing example if no args
 if [ -z "$1" ]; then
-    echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 Local"
-    exit 1
+  echo "Exemple pour instance locale : ./build-e-guichet.sh local example.net full 5000 Local"
+  exit 1
 fi
 
 # Commented on 2023-01-11 following the fact that we use teleservices-package
 # and the categories are imported by the package itself [dmshd]
+#
+# Commented on 2023-01-11 following mismatch with categories import
+# Categories are imported with teleservices-package and this is
+# obsolete and should be deleted [dmshd]
 #
 # Create categories
 # if [ $3 == "full" ]; then
@@ -21,7 +25,15 @@ fi
 #   sudo -u wcs sh copy_categories.sh $1 $2
 #   sleep 0.1
 # fi
+#if [ $3 == "full" ]; then
+#  echo "-- Creating categories ..."
+#  sudo -u wcs sh copy_categories.sh $1 $2
+#  sleep 0.1
+#fi
 # Create datasources
+# echo "-- Creating datasources ..."
+# sudo -u wcs bash copy_datasources.sh $1 $2 $3
+# sleep 0.1
 # echo "-- Creating datasources ..."
 # sudo -u wcs bash copy_datasources.sh $1 $2 $3
 # sleep 0.1
@@ -50,8 +62,8 @@ sed -i "s~ORGANISATION_LABEL~$5~g" hobo/recipe-commune-extra.json
 sed -i "s~commune~$1~g" hobo/recipe-commune-extra.json
 cp hobo/recipe-commune-extra.json /etc/hobo/recipe-$1-extra.json
 if [ $1 = "local" ]; then
-    sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
-    sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
+  sed -i "s~guichet-citoyen.be~$2~g" /etc/hobo/recipe-$1-extra.json
+  sed -i 's~https~http~g' /etc/hobo/recipe-$1-extra.json
 fi
 test -e /etc/hobo/recipe-$1-extra.json && sudo -u hobo hobo-manage cook /etc/hobo/recipe-$1-extra.json
 sed -i "s~$5~ORGANISATION_LABEL~g" hobo/recipe-commune-extra.json
@@ -83,18 +95,23 @@ if [ $3 == "full" ]; then
   sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py
   # Puppet deploy search for : create_regie.py.erb
   if [ -f /var/lib/combo/create_regie.py ]; then
-      sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
+    sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
   fi
   sleep 0.1
 fi
 
 # Import combo site structure
 echo "-- Importing $3 combo site structure ..."
-if [ $3 = "full" ]; then
-    sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
-fi
+
+# Commented on 2023-01-11 following new combo structure imported manually
+# as a whole .tar file containing all the actual and up to date content
+#
+# if [ $3 = "full" ]; then
+#     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
+# fi
+
 if [ $3 = "light" ]; then
-    sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
+  sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
 fi
 sleep 0.1
 

@@ -12,17 +12,19 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+# Commented on 2023-01-11 following the fact that we use teleservices-package
+# and the categories are imported by the package itself [dmshd]
+#
 # Create categories
-if [ $3 == "full" ]; then
-  echo "-- Creating categories ..."
-  sudo -u wcs sh copy_categories.sh $1 $2
-  sleep 0.1
-fi
-
+# if [ $3 == "full" ]; then
+#   echo "-- Creating categories ..."
+#   sudo -u wcs sh copy_categories.sh $1 $2
+#   sleep 0.1
+# fi
 # Create datasources
-echo "-- Creating datasources ..."
-sudo -u wcs bash copy_datasources.sh $1 $2 $3
-sleep 0.1
+# echo "-- Creating datasources ..."
+# sudo -u wcs bash copy_datasources.sh $1 $2 $3
+# sleep 0.1
 
 # Create passerelle api user.
 echo "-- Creating passerelle API user ..."

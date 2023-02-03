@@ -101,7 +101,7 @@ if [ $3 == "full" ]; then
 fi
 
 # Import combo site structure
-echo "-- Importing $3 combo site structure ..."
+# echo "-- Importing $3 combo site structure ..."
 
 # Commented on 2023-01-11 following new combo structure imported manually
 # as a whole .tar file containing all the actual and up to date content
@@ -110,19 +110,19 @@ echo "-- Importing $3 combo site structure ..."
 #     sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-full.json
 # fi
 
-if [ $3 = "light" ]; then
-  sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
-fi
-sleep 0.1
+# if [ $3 = "light" ]; then
+#   sudo -u combo combo-manage tenant_command import_site -d $1.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-site-structure-light.json
+# fi
+# sleep 0.1
 
 # Import combo portail agent structure
-echo "-- Importing combo agent portail structure ..."
-sed -i "s/COMMUNE/$1/g" combo-site/combo-portail-agent-structure.json
-sed -i "s/DOMAINE/$2/g" combo-site/combo-portail-agent-structure.json
-sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-portail-agent-structure.json
-sed -i "s/$1/COMMUNE/g" combo-site/combo-portail-agent-structure.json
-sed -i "s/$2/DOMAINE/g" combo-site/combo-portail-agent-structure.json
-sleep 0.1
+# echo "-- Importing combo agent portail structure ..."
+# sed -i "s/COMMUNE/$1/g" combo-site/combo-portail-agent-structure.json
+# sed -i "s/DOMAINE/$2/g" combo-site/combo-portail-agent-structure.json
+# sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/combo-site/combo-portail-agent-structure.json
+# sed -i "s/$1/COMMUNE/g" combo-site/combo-portail-agent-structure.json
+# sed -i "s/$2/DOMAINE/g" combo-site/combo-portail-agent-structure.json
+# sleep 0.1
 
 # Create global hobo variables
 echo "-- Creating hobo variables ..."

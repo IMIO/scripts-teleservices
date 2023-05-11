@@ -12,7 +12,7 @@ if test -f "$BAEC"; then
     echo "$BAEC already exists. This is what we want so that's fine !"
 else
     echo "$BAEC does not exist yet so I'm gonna create it and reboot passerelle..."
-    cp CURRENT_DIR/$BAEC_FILE /etc/passerelle/settings.d/ && service passerelle restart
+    cp $CURRENT_DIR/$BAEC_FILE /etc/passerelle/settings.d/ && service passerelle restart
 fi
 
 CASIER=/etc/passerelle/settings.d/casier_judiciaire.py
@@ -21,6 +21,5 @@ if test -f "$CASIER"; then
     echo "$CASIER already exists. This is what we want so that's fine !"
 else
     echo "$CASIER does not exist yet so I'm gonna create it and reboot passerelle..."
-    echo $CURRENT_DIR/$CASIER_FILE
     cp $CURRENT_DIR/$CASIER_FILE /etc/passerelle/settings.d/ && service passerelle restart
 fi

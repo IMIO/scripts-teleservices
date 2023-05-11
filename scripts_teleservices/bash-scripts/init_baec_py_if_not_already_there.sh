@@ -3,10 +3,21 @@
 set -e # Exit immediately if a command exits with a non-zero status.
 
 # setup passerelle connector
-FILE=/etc/passerelle/settings.d/baec.py
-if test -f "$FILE"; then
-    echo "$FILE already exists. This is what we want so that's fine !"
+BAEC=/etc/passerelle/settings.d/baec.py
+BAEC_FILE=baec.py
+echo "--- Install passerelle settings"
+if test -f "$BAEC"; then
+    echo "$BAEC already exists. This is what we want so that's fine !"
 else
-    echo "$FILE does not exist yet so I'm gonna create it and reboot passerelle..."
-    cp $(pwd)/baec.py /etc/passerelle/settings.d/ && service passerelle restart
+    echo "$BAEC does not exist yet so I'm gonna create it and reboot passerelle..."
+    cp $(pwd)/$BAEC_FILE /etc/passerelle/settings.d/ && service passerelle restart
+fi
+
+CASIER=/etc/passerelle/settings.d/casier_judiciaire.py
+CASIER_FILE=casier_judiciaire.py
+if test -f "$CASIER"; then
+    echo "$CASIER already exists. This is what we want so that's fine !"
+else
+    echo "$CASIER does not exist yet so I'm gonna create it and reboot passerelle..."
+    cp $(pwd)/$CASIER_FILE /etc/passerelle/settings.d/ && service passerelle restart
 fi

@@ -3,7 +3,6 @@
     "authentic": "commune-auth.guichet-citoyen.be",
     "combo": "commune.guichet-citoyen.be",
     "combo_agent": "commune-portail-agent.guichet-citoyen.be",
-    "fargo": "commune-documents.guichet-citoyen.be",
     "passerelle": "commune-passerelle.guichet-citoyen.be",
     "hobo": "commune-hobo.guichet-citoyen.be",
     "wcs": "commune-formulaires.guichet-citoyen.be"

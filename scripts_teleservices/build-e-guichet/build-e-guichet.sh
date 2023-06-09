@@ -46,13 +46,13 @@ sleep 0.1
 # Create passerelle "ts1 datasources connector" with prefilled motivations and destinations terms.
 if [ $3 == "full" ]; then
   echo "-- Creating passerelle 'ts1 datasources' connector with prefilled motivations and destinations terms ..."
-  sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/passerelle_legacy_motifs_et_destinations.json
+  sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site --overwrite -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/passerelle_legacy_motifs_et_destinations.json
   sleep 0.1
 fi
 
 # Create passerelle "pays" datasource. (To choice country in users' profile).
 echo "-- Creating passerelle 'pays' datasource ..."
-sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/passerelle/pays.json --import-users
+sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site --overwrite -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/passerelle/pays.json --import-users
 sleep 0.1
 
 # Add hobo extra params

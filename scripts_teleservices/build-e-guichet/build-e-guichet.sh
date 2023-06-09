@@ -46,7 +46,7 @@ sleep 0.1
 # Create passerelle "ts1 datasources connector" with prefilled motivations and destinations terms.
 if [ $3 == "full" ]; then
   echo "-- Creating passerelle 'ts1 datasources' connector with prefilled motivations and destinations terms ..."
-  sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/datasources.json
+  sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/datasources/passerelle_legacy_motifs_et_destinations.json
   sleep 0.1
 fi
 

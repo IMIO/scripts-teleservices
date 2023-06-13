@@ -13,15 +13,13 @@ def create_variable(name, label, value):
         print(f"Variable '{name}' already exists. Fine.")
 
 
-create_variable(
-    "commune_name", "Nom de la commune", "Publik local iA.Téléservices dmuyshond"
-)
+create_variable("commune_name", "Nom de la commune", "iA.Téléservices")
 create_variable(
     "commune_slug",
     "Nom de la commune sans accent, sans espace (mettre des tirets), en minuscule.",
-    "Isnes",
+    "Téléservices",
 )
-create_variable("commune_cp", "Code postal/postaux de la commune", "5032")
+create_variable("commune_cp", "Code postal/postaux de la commune", "1111")
 create_variable(
     "administration_adresse",
     "Adresse complète de l'administration",
@@ -33,6 +31,6 @@ create_variable(
 create_variable(
     "global_title",
     "Intitulé de l'instance et mails",
-    "Publik local iA.Téléservices dmuyshond",
+    "iA.Téléservices",
 )
 create_variable("organisme", "Type d'organisme", "commune de")

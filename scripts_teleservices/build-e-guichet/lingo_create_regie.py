@@ -1,8 +1,6 @@
 # sudo -u combo combo-manage tenant_command runscript -d local.example.net lingo_create_regie.py
 import eopayment
-
-from combo.apps.lingo.models import Regie
-from combo.apps.lingo.models import PaymentBackend
+from combo.apps.lingo.models import PaymentBackend, Regie
 
 service_opt = {
     "payment_means": "VISA,MASTERCARD,MAESTRO",

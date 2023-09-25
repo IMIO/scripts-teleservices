@@ -20,4 +20,4 @@ if os.path.exists(settings_json_path):
     else:
         print(f"{prefix}Seems fine.")
 else:
-    print("{prefix}File doesn't exist. Check manually.")
+    print(f"{prefix}File doesn't exist. Check manually.")

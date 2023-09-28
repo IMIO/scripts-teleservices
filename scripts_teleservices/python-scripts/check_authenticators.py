@@ -27,6 +27,8 @@ if tenant:
         for element in outputs:
             if "connexion" in element or "auth" in element:
                 tenant = element
-    for authenticator in BaseAuthenticator.objects.filter(enabled=True):
-        log_iter_string = f"{tenant} : {authenticator.slug} {authenticator.name}"
+    # filter activated authenticators only :
+    # BaseAuthenticator.objects.filter(enabled=True)
+    for authenticator in BaseAuthenticator.objects.all():
+        log_iter_string = f"{tenant} : Slug: {authenticator.slug} · Name: {authenticator.name or 'None'} · Enadled: {authenticator.enabled}"
         print(log_iter_string)

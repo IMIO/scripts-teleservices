@@ -22,11 +22,7 @@ tenant = subprocess.run(
 
 if tenant:
     tenant = tenant.stdout.decode("utf-8").split("\n")[0].strip()
-    outputs = tenant.split("\n")  # if there is multiple elements in the tenants folder
-    if len(outputs) > 1:
-        for element in outputs:
-            if "connexion" in element or "auth" in element:
-                tenant = element
+
     # filter activated authenticators only :
     # BaseAuthenticator.objects.filter(enabled=True)
     for authenticator in BaseAuthenticator.objects.all():

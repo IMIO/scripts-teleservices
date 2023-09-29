@@ -10,15 +10,18 @@ dir_path = "/var/lib/authentic2-multitenant/tenants/"
 # Iterate through folders
 for tenant in os.listdir(dir_path):
     if "auth" in tenant or "connexion" in tenant:
+        tenant = tenant.strip()
+        slug = tenant.split("_", maxsplit=1)[0]
+
         # Construct full path to settings.json
         settings_path = os.path.join(dir_path, tenant, "settings.json")
 
         # Check if settings.json exists
-        if os.path.exists(settings_path):
-            # Check if it's a symbolic link
-            if os.path.islink(settings_path):
-                print(f"{settings_path} is a symbolic link.")
-            else:
-                print(f"{settings_path} is not a symbolic link.")
+        if not os.path.exists(settings_path):
+            print(f"MISSING {settings_path}")
         else:
-            print(f"{settings_path} does not exist.")
+            # load settings.json and verify that THEME_SKELETON_URL value contains the slug
+            with open(settings_path, "r") as settings_file:
+                settings = settings_file.read()
+                if slug not in settings:
+                    print(f"ERROR {settings_path}")

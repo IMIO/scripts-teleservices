@@ -134,11 +134,18 @@ if [ $3 = "light" ]; then
 fi
 sleep 0.1
 
+# commented on 20231003 because now the authentic2 settings.json should be enough and
+# fedict.py deprecated. [dmshd]
+#
 # Create fedict.py in /etc/authentic2-multitenant/settings.d/
-if [ $3 = "full" ]; then
-  echo "-- initalizing fedict.py : "
-  sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py
-fi
+# if [ $3 = "full" ]; then
+#   echo "-- initalizing fedict.py : "
+#   sed "s/nomcommune/$1/g" fedict.py >/etc/authentic2-multitenant/settings.d/fedict.py
+# fi
+
+# Install authentic2 settings.json
+echo "-- Installing authentic2 settings.json ..."
+python3 /opt/publik/scripts/scripts_teleservices/build-e-guichet/install_authentic2_tenant_settings_json.py $1 $2
 
 # Setting mail to reveice trace errors
 echo "-- Setting admints@imio.be as 'mail for trace errors' ..."

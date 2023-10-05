@@ -23,6 +23,7 @@ sudo -u authentic-multitenant authentic2-multitenant-manage tenant_command \
     mettet-auth.guichet-citoyen.be \
     /opt/publik/scripts/scripts_teleservices/python-scripts/generate_1000_SQL_requests.py
 
+
 """
 
 from django.contrib.auth import get_user_model

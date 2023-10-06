@@ -13,6 +13,7 @@ def main():
     cmd_suffix = (
         f' -p {port} -d {database} -U {user} -c "SET SCHEMA '
         "'mettet_auth_guichet_citoyen_be'; "
+        "EXPLAIN ANALYZE VERBOSE "
         "SELECT id, password, last_login, uuid, username, first_name, "
         "last_name, email, email_verified, email_verified_date, "
         "email_verified_sources, is_superuser, phone, phone_verified_on, "

@@ -1,10 +1,12 @@
 import datetime
+import re
 import time
 
 import psycopg2
 
 
 def main():
+    requests_that_took_1_second = []
     query = """
         SELECT
             "custom_user_user"."id",
@@ -39,23 +41,73 @@ def main():
             "custom_user_user"."username" ASC
         LIMIT 1
     """
-
+    database, user, password, host, port, schema = get_psql_cmd_details()
     for i in range(1, 1001):
         start_time = time.time()
         connection = psycopg2.connect(
-            host="10.7.131.3",
-            port="5432",
-            database="teleservices_mettet_authentic2",
-            user="teleservices_mettet",
-            password="dTAaBesFc76LccIZ",
+            host=host,
+            port=port,
+            database=database,
+            user=user,
+            password=password,
         )
         cursor = connection.cursor()
-        cursor.execute("set schema 'mettet_auth_guichet_citoyen_be';")
+        cursor.execute(f"set schema '{schema}';")
         cursor.execute(query)
         cursor.close()
         end_time = time.time()
         timestamp = datetime.datetime.now().strftime("%H:%M:%S")
-        print(f"[{timestamp}] {i} {end_time - start_time}")
+        duration = end_time - start_time
+        result_str = f"[{timestamp}] {i} {duration}"
+        if duration > 1:
+            requests_that_took_1_second.append(result_str)
+        print(result_str)
+
+    if requests_that_took_1_second:
+        print("\n\n\nRequests that took more than 1 second:\n")
+        for request in requests_that_took_1_second:
+            print(request, end="\n")
+    else:
+        print("\n\n\nNo request took more than 1 second.", "I guess it's ok.")
+
+
+def get_psql_cmd_details():
+    with open("/etc/authentic2-multitenant/settings.d/config.py", "r") as file:
+        content = file.read()
+
+        database_name = re.search(
+            r"DATABASES\['default'\]\['NAME'\] = '(.+?)'", content
+        ).group(1)
+        user = re.search(r"DATABASES\['default'\]\['USER'\] = '(.+?)'", content).group(
+            1
+        )
+        password = re.search(
+            r"DATABASES\['default'\]\['PASSWORD'\] = '(.+?)'", content
+        ).group(1)
+        host = re.search(r"DATABASES\['default'\]\['HOST'\] = '(.+?)'", content).group(
+            1
+        )
+        port = re.search(r"DATABASES\['default'\]\['PORT'\] = '(.+?)'", content).group(
+            1
+        )
+        hostname_match = re.search(r"ALLOWED_HOSTS = \[\s*'(.+?)'", content)
+        schema = None
+        if hostname_match:
+            domain = hostname_match.group(1)
+            schema = domain.replace("-", "_").replace(".", "_")
+            print(
+                f"Found schema {schema} (extracted and parsed from ALLOWED_HOSTS in "
+                "config.py, may be wrong)"
+            )
+        else:
+            print(
+                "Could not find ALLOWED_HOSTS in "
+                "/etc/authentic2-multitenant/settings.d/config.py\nYou gave to manually "
+                "specify the 'set schema' in the query, editing this script.\nExample:\nset "
+                "schema 'mettet_auth_guichet_citoyen_be';"
+            )
+
+    return (database_name, user, password, host, port, schema)  # return as a tuple
 
 
 if __name__ == "__main__":

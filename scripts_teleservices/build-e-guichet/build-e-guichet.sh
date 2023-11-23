@@ -151,3 +151,7 @@ python3 /opt/publik/scripts/scripts_teleservices/build-e-guichet/install_authent
 echo "-- Setting admints@imio.be as 'mail for trace errors' ..."
 sudo -u wcs wcs-manage runscript --all-tenants /opt/publik/scripts/scripts_teleservices/build-e-guichet/set-error-mail-to-admints.py
 sleep 0.1
+
+# Verifying auth-context presence (for fedict)
+echo "-- Verifying auth-context presence in site-options.cfg ..."
+grep -nF --color 'auth-contexts' /var/lib/wcs/tenants/*/site-options.cfg || sed -i "s~\[options\]~\[options\]\nauth-contexts = fedict~" /var/lib/wcs/tenants/*/site-options.cfg

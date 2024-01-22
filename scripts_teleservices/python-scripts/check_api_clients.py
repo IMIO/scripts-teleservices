@@ -6,7 +6,7 @@ Example of usage:
 
     sudo -u authentic-multitenant authentic2-multitenant-manage \
         tenant_command runscript -d staging2-auth.guichet-citoyen.be \
-        /opt/publik/scripts/scripts_teleservices/python-scripts/test.py
+        /opt/publik/scripts/scripts_teleservices/python-scripts/check_api_clients.py
 
 """
 import subprocess
@@ -48,5 +48,7 @@ if api_clients:
         if identifier == "imio-maintenance":
             imio_maintenance_set = True
             print("IMIO MAINTENANCE SET ON", tenant)
-    if not imio_maintenance_set:
-        print("IMIO MAINTENANCE NOT SET ON", tenant)
+
+
+if not imio_maintenance_set:
+    print("IMIO MAINTENANCE NOT SET ON", tenant)

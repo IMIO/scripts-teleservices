@@ -47,8 +47,14 @@ if api_clients:
         identifier = api_client.identifier
         if identifier == "imio-maintenance":
             imio_maintenance_set = True
-            print("IMIO MAINTENANCE SET ON", tenant)
+            return_string = f"IMIO MAINTENANCE SET ON {tenant}"
 
 
 if not imio_maintenance_set:
-    print("IMIO MAINTENANCE NOT SET ON", tenant)
+    return_string = f"IMIO MAINTENANCE NOT SET ON {tenant}"
+
+if not tenant:
+    return_string = "No tenant found"
+
+if not return_string:
+    return_string = "Something went wrong"

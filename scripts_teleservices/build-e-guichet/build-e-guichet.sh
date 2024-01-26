@@ -12,6 +12,8 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+python_scripts_path="/opt/publik/scripts/scripts_teleservices/python-scripts"
+
 # Commented on 2023-01-11 following the fact that we use teleservices-package
 # and the categories are imported by the package itself [dmshd]
 #
@@ -90,12 +92,12 @@ sleep 0.1
 # sleep 0.1
 
 # Create regie
+# create_regie_script_file="/opt/publik/scripts/scripts_teleservices/python-scripts/create_regie.py"
+lingo_create_regie_script_file="$python_scripts_path/lingo_create_regie.py"
 if [ $3 == "full" ]; then
   echo "-- Payment managament creation (régie) ..."
-  sudo -u combo combo-manage tenant_command runscript -d $1.$2 lingo_create_regie.py
-  # Puppet deploy search for : create_regie.py.erb
-  if [ -f /var/lib/combo/create_regie.py ]; then
-    sudo -u combo combo-manage tenant_command import_site -d $1-portail-agent.$2 /var/lib/combo/create_regie.py
+  if [ -f $lingo_create_regie_script_file ] && [ -s $lingo_create_regie_script_file ]; then
+    sudo -u combo combo-manage tenant_command runscript -d $1.$2 $lingo_create_regie_script_file
   fi
   sleep 0.1
 fi

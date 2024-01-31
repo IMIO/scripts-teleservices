@@ -58,3 +58,5 @@ if not tenant:
 
 if not return_string:
     return_string = "Something went wrong"
+
+print(return_string)

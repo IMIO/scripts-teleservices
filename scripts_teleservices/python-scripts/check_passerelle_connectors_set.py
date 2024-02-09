@@ -1,9 +1,11 @@
 """List all Passerelle connectors activated and their types.
 
-sudo -u passerelle-multitenant passerelle-multitenant-manage \
-    tenant_command runscript -d staging2-passerelle.guichet-citoyen.be \
+sudo -u passerelle passerelle-manage \
+    tenant_command runscript -d demo-passerelle.guichet-citoyen.be \
     /opt/publik/scripts/scripts_teleservices/python-scripts/test.py
 """
+
+import os
 import subprocess
 
 from django.apps import apps
@@ -24,6 +26,19 @@ def get_all_apps():
     ]
 
 
+wcs_tenant = (
+    subprocess.run(
+        "ls /var/lib/authentic2-multitenant/tenants/",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        shell=True,
+        check=True,
+    )
+    .stdout.decode("utf-8")
+    .split("\n")[0]
+    .strip()
+)
+
 # Call the get_all_apps function and store the list of relevant model classes in all_apps
 all_apps = get_all_apps()
 
@@ -39,20 +54,32 @@ for app in all_apps:
 all_instances.sort(key=lambda x: x.title.lower())
 
 
+errors = []
+
+errors.append(wcs_tenant)
+
 for instance in all_instances:
-    absolute_url = instance.get_absolute_url()
-    if "aes" not in absolute_url:  # I don't want to change the log level of AES (another team is handling it)
-        logging_params = instance.logging_parameters
-        logging_params.trace_emails = trace_email_to_define
-        logging_params.log_level = log_level_to_define
-        try:
-            instance.logging_parameters.full_clean()
-        except Exception as e:
-            print("Error while cleaning instance", e)
+    import pprint
 
-        try:
-            logging_params.save()
-        except Exception as e:
-            print("Error while saving instance", e)
+    if instance.slug == "actualites":
+        if instance.client_id[-2:] != "16":
+            errors.append("client_id actualites incorrect")
+        if instance.client_secret[-2:] != "dc":
+            errors.append("client_secret actualites incorrect")
+    if instance.slug == "annuaire":
+        if instance.client_id[-2:] != "ee":
+            errors.append("client_id annuaire incorrect")
+        if instance.client_secret[-2:] != "07":
+            errors.append("client_secret annuaire incorrect")
+    if instance.slug == "evenements":
+        if instance.client_id[-2:] != "d5":
+            errors.append("client_id evenements incorrect")
+        if instance.client_secret[-2:] != "e2":
+            errors.append("client_secret evenements incorrect")
+    if instance.slug == "site-web":
+        if instance.client_id[-2:] != "dd":
+            errors.append("client_id site-web incorrect")
+        if instance.client_secret[-2:] != "df":
+            errors.append("client_secret site-web incorrect")
 
-        # logging_params.refresh_from_db() # to get the new values from the database
+print(errors)

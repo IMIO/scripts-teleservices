@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# sudo -u wcs wcsctl -f /etc/wcs/wcs-au-quotidien.cfg runscript --vhost=COMMUNE-formulaires.guichet-citoyen.be listing_forms.py COMMUNE
+# sudo -u wcs wcs-manage runscript --vhost=COMMUNE-formulaires.guichet-citoyen.be listing_forms.py COMMUNE
 
 from wcs.formdef import FormDef
 

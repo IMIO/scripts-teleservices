@@ -75,30 +75,17 @@ def get_psql_cmd_details():
     with open("/etc/authentic2-multitenant/settings.d/config.py", "r") as file:
         content = file.read()
 
-        database_name = re.search(
-            r"DATABASES\['default'\]\['NAME'\] = '(.+?)'", content
-        ).group(1)
-        user = re.search(r"DATABASES\['default'\]\['USER'\] = '(.+?)'", content).group(
-            1
-        )
-        password = re.search(
-            r"DATABASES\['default'\]\['PASSWORD'\] = '(.+?)'", content
-        ).group(1)
-        host = re.search(r"DATABASES\['default'\]\['HOST'\] = '(.+?)'", content).group(
-            1
-        )
-        port = re.search(r"DATABASES\['default'\]\['PORT'\] = '(.+?)'", content).group(
-            1
-        )
+        database_name = re.search(r"DATABASES\['default'\]\['NAME'\] = '(.+?)'", content).group(1)
+        user = re.search(r"DATABASES\['default'\]\['USER'\] = '(.+?)'", content).group(1)
+        password = re.search(r"DATABASES\['default'\]\['PASSWORD'\] = '(.+?)'", content).group(1)
+        host = re.search(r"DATABASES\['default'\]\['HOST'\] = '(.+?)'", content).group(1)
+        port = re.search(r"DATABASES\['default'\]\['PORT'\] = '(.+?)'", content).group(1)
         hostname_match = re.search(r"ALLOWED_HOSTS = \[\s*'(.+?)'", content)
         schema = None
         if hostname_match:
             domain = hostname_match.group(1)
             schema = domain.replace("-", "_").replace(".", "_")
-            print(
-                f"Found schema {schema} (extracted and parsed from ALLOWED_HOSTS in "
-                "config.py, may be wrong)"
-            )
+            print(f"Found schema {schema} (extracted and parsed from ALLOWED_HOSTS in " "config.py, may be wrong)")
         else:
             print(
                 "Could not find ALLOWED_HOSTS in "

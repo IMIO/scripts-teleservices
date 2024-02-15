@@ -69,15 +69,9 @@ def load_and_modify_json(slug):
 
     python_dict = json.loads(json_string)
 
-    python_dict["THEME_SKELETON_URL"] = python_dict["THEME_SKELETON_URL"].replace(
-        "communeSlug", slug
-    )
-    python_dict["MELLON_PUBLIC_KEYS"][0] = python_dict["MELLON_PUBLIC_KEYS"][0].replace(
-        "communeSlug", slug
-    )
-    python_dict["MELLON_PRIVATE_KEY"] = python_dict["MELLON_PRIVATE_KEY"].replace(
-        "communeSlug", slug
-    )
+    python_dict["THEME_SKELETON_URL"] = python_dict["THEME_SKELETON_URL"].replace("communeSlug", slug)
+    python_dict["MELLON_PUBLIC_KEYS"][0] = python_dict["MELLON_PUBLIC_KEYS"][0].replace("communeSlug", slug)
+    python_dict["MELLON_PRIVATE_KEY"] = python_dict["MELLON_PRIVATE_KEY"].replace("communeSlug", slug)
 
     return python_dict
 
@@ -104,12 +98,8 @@ def write_to_file(absolute_filename, python_dict):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(
-        description="Install the tenant settings file for the tenant with the given slug."
-    )
+    parser = argparse.ArgumentParser(description="Install the tenant settings file for the tenant with the given slug.")
     parser.add_argument("slug", help="The slug of the tenant (e.g. namur)")
-    parser.add_argument(
-        "domain", help="The domain of the tenant (e.g. guichet-citoyen.be)"
-    )
+    parser.add_argument("domain", help="The domain of the tenant (e.g. guichet-citoyen.be)")
     args = parser.parse_args()
     main(args.slug, args.domain)

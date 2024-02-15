@@ -11,10 +11,7 @@ from setuptools.command.install import install
 class inst(install):
     def run(self):
         install.run(self)
-        path = (
-            os.getcwd().replace(" ", r"\ ").replace("(", r"\(").replace(")", r"\)")
-            + "/bin/"
-        )
+        path = os.getcwd().replace(" ", r"\ ").replace("(", r"\(").replace(")", r"\)") + "/bin/"
 
 
 version = "0.0.73"

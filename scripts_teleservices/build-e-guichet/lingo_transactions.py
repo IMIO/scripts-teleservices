@@ -5,7 +5,7 @@
 from combo.apps.lingo.models import BasketItem
 import sys
 
-slug = '/{}/{}/'.format(sys.argv[1], sys.argv[2])
+slug = "/{}/{}/".format(sys.argv[1], sys.argv[2])
 BasketItem.objects.filter(source_url__endswith=slug)[0].transaction_set.all()
 # [<Transaction: Transaction object>, <Transaction: Transaction object>]
 BasketItem.objects.filter(source_url__endswith=slug)[0].transaction_set.all()[0].bank_data

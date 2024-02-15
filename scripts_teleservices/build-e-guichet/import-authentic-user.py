@@ -18,33 +18,21 @@ def create_authentic_user():
     with provisionning:
         # create default role in ts2.
         try:
-            role_agent_fabriques = Role.objects.get(
-                name="Agent ayant acces aux fabriques"
-            )
+            role_agent_fabriques = Role.objects.get(name="Agent ayant acces aux fabriques")
         except ObjectDoesNotExist:
-            role_agent_fabriques = Role(
-                name="Agent ayant acces aux fabriques", ou=organisation_unit
-            )
+            role_agent_fabriques = Role(name="Agent ayant acces aux fabriques", ou=organisation_unit)
             role_agent_fabriques.save()
 
         try:
-            role_agent_traitant_pop = Role.objects.get(
-                name="Agents traitants - Population, etat civil"
-            )
+            role_agent_traitant_pop = Role.objects.get(name="Agents traitants - Population, etat civil")
         except ObjectDoesNotExist:
-            role_agent_traitant_pop = Role(
-                name="Agents traitants - Population, etat civil", ou=organisation_unit
-            )
+            role_agent_traitant_pop = Role(name="Agents traitants - Population, etat civil", ou=organisation_unit)
             role_agent_traitant_pop.save()
 
         try:
-            role_agent_traitant_trav = Role.objects.get(
-                name="Agents traitants - Travaux"
-            )
+            role_agent_traitant_trav = Role.objects.get(name="Agents traitants - Travaux")
         except ObjectDoesNotExist:
-            role_agent_traitant_trav = Role(
-                name="Agents traitants - Travaux", ou=organisation_unit
-            )
+            role_agent_traitant_trav = Role(name="Agents traitants - Travaux", ou=organisation_unit)
             role_agent_traitant_trav.save()
 
         try:

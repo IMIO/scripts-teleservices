@@ -21,9 +21,7 @@ def create_variable(name, label, value):
 
         create_variable("queuefair", "Queue-Fair activé", "True")
     """
-    variable, created = Variable.objects.get_or_create(
-        name=name, defaults={"label": label, "value": value}
-    )
+    variable, created = Variable.objects.get_or_create(name=name, defaults={"label": label, "value": value})
     if created:
         print(f"Variable '{name}' has been created.")
     else:
@@ -38,9 +36,7 @@ def create_or_update_variable(name, label, value):
 
         create_or_update_variable("queuefair", "Queue-Fair activé", "True")
     """
-    variable, created = Variable.objects.update_or_create(
-        name=name, defaults={"label": label, "value": value}
-    )
+    variable, created = Variable.objects.update_or_create(name=name, defaults={"label": label, "value": value})
     if created:
         print(f"Variable '{variable}' has been created.")
     else:
@@ -57,9 +53,7 @@ def get_variable_info(name):
     """
     try:
         variable = Variable.objects.get(name=name)
-        print(
-            f"Name: {variable.name}, Label: {variable.label}, Value: {variable.value}"
-        )
+        print(f"Name: {variable.name}, Label: {variable.label}, Value: {variable.value}")
     except Variable.DoesNotExist:
         print(f"Variable '{name}' does not exist.")
 

@@ -31,21 +31,11 @@ def get_psql_cmd_details():
     with open("/etc/authentic2-multitenant/settings.d/config.py", "r") as file:
         content = file.read()
 
-        database_name = re.search(
-            r"DATABASES\['default'\]\['NAME'\] = '(.+?)'", content
-        ).group(1)
-        user = re.search(r"DATABASES\['default'\]\['USER'\] = '(.+?)'", content).group(
-            1
-        )
-        password = re.search(
-            r"DATABASES\['default'\]\['PASSWORD'\] = '(.+?)'", content
-        ).group(1)
-        host = re.search(r"DATABASES\['default'\]\['HOST'\] = '(.+?)'", content).group(
-            1
-        )
-        port = re.search(r"DATABASES\['default'\]\['PORT'\] = '(.+?)'", content).group(
-            1
-        )
+        database_name = re.search(r"DATABASES\['default'\]\['NAME'\] = '(.+?)'", content).group(1)
+        user = re.search(r"DATABASES\['default'\]\['USER'\] = '(.+?)'", content).group(1)
+        password = re.search(r"DATABASES\['default'\]\['PASSWORD'\] = '(.+?)'", content).group(1)
+        host = re.search(r"DATABASES\['default'\]\['HOST'\] = '(.+?)'", content).group(1)
+        port = re.search(r"DATABASES\['default'\]\['PORT'\] = '(.+?)'", content).group(1)
 
     return (database_name, user, password, host, port)  # return as a tuple
 

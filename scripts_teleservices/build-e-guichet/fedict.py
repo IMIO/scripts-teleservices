@@ -7,9 +7,7 @@ A2_NUMHOUSE_ERROR_MESSAGE = "Rentrez un format valide. Ex. de num\u00e9ro : 12, 
 A2_OPENED_SESSION_COOKIE_DOMAIN = "parent"
 MELLON_ADAPTER = ["authentic2_auth_fedict.adapters.AuthenticAdapter"]
 MELLON_LOGIN_URL = "fedict-login"
-MELLON_PUBLIC_KEYS = [
-    "/var/lib/authentic2-multitenant/tenants/nomcommune-auth.guichet-citoyen.be/saml.crt"
-]
+MELLON_PUBLIC_KEYS = ["/var/lib/authentic2-multitenant/tenants/nomcommune-auth.guichet-citoyen.be/saml.crt"]
 MELLON_PRIVATE_KEY = "/var/lib/authentic2-multitenant/tenants/nomcommune-auth.guichet-citoyen.be/saml.key"
 MELLON_IDENTITY_PROVIDERS = [
     {

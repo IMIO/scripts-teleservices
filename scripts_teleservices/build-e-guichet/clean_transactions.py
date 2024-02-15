@@ -6,7 +6,7 @@ from combo.apps.lingo.models import BasketItem, timezone
 import sys
 
 items = None
-if len(sys.argv) <= 1 or sys.argv[1] == 'all':
+if len(sys.argv) <= 1 or sys.argv[1] == "all":
     items = BasketItem.objects.all()
 else:
     items = BasketItem.objects.filter(source_url__endswith=sys.argv[1])

@@ -4,9 +4,7 @@ from hobo.environment.models import Variable
 
 
 def create_variable(name, label, value):
-    variable, created = Variable.objects.get_or_create(
-        name=name, defaults={"label": label, "value": value}
-    )
+    variable, created = Variable.objects.get_or_create(name=name, defaults={"label": label, "value": value})
     if created:
         print(f"Variable '{name}' has been created.")
     else:
@@ -25,9 +23,7 @@ create_variable(
     "Adresse complète de l'administration",
     "1, Rue Léon Morel - 5032 Isnes",
 )
-create_variable(
-    "administration_site", "Site Internet de la commune", "https://www.imio.be"
-)
+create_variable("administration_site", "Site Internet de la commune", "https://www.imio.be")
 create_variable(
     "global_title",
     "Intitulé de l'instance et mails",

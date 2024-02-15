@@ -10,13 +10,12 @@ def patch_authentic_user():
     OU = get_ou_model()
     Role = get_role_model()
     organisation_unit = OU.objects.get(default=True)
-    user_admin_commune = User.objects.get_or_create(username='admin_commune')[0]
+    user_admin_commune = User.objects.get_or_create(username="admin_commune")[0]
     with provisionning:
-
-        role_agent_fabriques = Role(name='Agent ayant acces aux fabriques', ou=organisation_unit)
+        role_agent_fabriques = Role(name="Agent ayant acces aux fabriques", ou=organisation_unit)
         role_agent_fabriques.save()
 
-        with open("/tmp/tmp_uuid_agent_fabriques.txt", 'w') as f:
+        with open("/tmp/tmp_uuid_agent_fabriques.txt", "w") as f:
             f.write(role_agent_fabriques.uuid)
 
         # Set role to user
@@ -24,4 +23,3 @@ def patch_authentic_user():
 
 
 patch_authentic_user()
-

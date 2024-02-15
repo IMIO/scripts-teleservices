@@ -11,13 +11,13 @@ from quixote import get_publisher
 
 pub = get_publisher()
 pub.reload_cfg()
-debug = pub.cfg.get('debug')
+debug = pub.cfg.get("debug")
 if not debug:
-    debug = {'error_email': 'admints@imio.be'}
+    debug = {"error_email": "admints@imio.be"}
     print(" --- admin TS mail adress has been set-up (mail for error traces).")
 else:
-    if 'admints' not in debug['error_email']:
+    if "admints" not in debug["error_email"]:
         print(" --- Attention, l'adresse admin TS n'est pas set.")
-        print("     'error_email' contient ceci : ", debug['error_email'])
-pub.cfg['debug'] = debug
+        print("     'error_email' contient ceci : ", debug["error_email"])
+pub.cfg["debug"] = debug
 pub.write_cfg()

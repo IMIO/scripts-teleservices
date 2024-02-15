@@ -2,8 +2,9 @@
 # $1 : all > cancel all transactions for all forms.
 # $1 : filter like stationnement/38/ > Remove transaction for *stationnement forms. Demand number 38?
 
-from combo.apps.lingo.models import BasketItem, timezone
 import sys
+
+from combo.apps.lingo.models import BasketItem, timezone
 
 items = None
 if len(sys.argv) <= 1 or sys.argv[1] == "all":

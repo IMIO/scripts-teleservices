@@ -62,8 +62,8 @@ feedback.append(passerelle_tenant)
 already_has_a_delib_connector = False
 delib_connector_working = False
 ia_citizen = False
-delib_connector = None
-delib_connector_url = None
+delib_connector = False
+delib_connector_url = False
 
 
 for instance in all_instances:

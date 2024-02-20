@@ -4,7 +4,7 @@ Made for project management / testing / quality assurance purposes.
 
 sudo -u passerelle passerelle-manage \
     tenant_command runscript -d frasneslezanvaing-passerelle.guichet-citoyen.be \
-    /opt/publik/scripts/scripts_teleservices/python-scripts/iacitizen_x_delib_check.py
+    /opt/publik/scripts/scripts_teleservices/python-scripts/has_citizen_but_delib_not_set.py
 """
 
 import os
@@ -63,6 +63,7 @@ already_has_a_delib_connector = False
 delib_connector_working = False
 ia_citizen = False
 delib_connector = None
+delib_connector_url = None
 
 
 for instance in all_instances:

@@ -1,4 +1,5 @@
 import json
+import os
 from hobo.environment.models import Variable
 
 # Chemin des fichiers JSON

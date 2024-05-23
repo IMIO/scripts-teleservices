@@ -3,7 +3,7 @@ import subprocess
 import os
 
 recipe_json_path = "/etc/hobo/recipe.json"
-hobo_json_path = "./hobo_variable.json"
+hobo_json_path = "/opt/publik/scripts/scripts_teleservices/python-scripts/hobo_variable.json"
 # Lire le fichier JSON recipe.json
 try:
     with open(recipe_json_path, "r", encoding="utf-8") as file:

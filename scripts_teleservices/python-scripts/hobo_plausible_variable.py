@@ -6,11 +6,12 @@ from hobo.environment.models import Variable
 # Chemin des fichiers JSON
 error_message = ""
 recipe_json_path = "/etc/hobo/recipe.json"
-hobo_json_path = "./hobo_variable.json"
+hobo_json_path = "/opt/publik/scripts/scripts_teleservices/python-scripts/hobo_variable.json"
 
 
 # Lire le fichier JSON hobo_variable.json
 def load_json_config():
+    global error_message
     try:
         with open(hobo_json_path, "r", encoding="utf-8") as json_file:
             return json.load(json_file)

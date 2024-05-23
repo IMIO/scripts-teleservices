@@ -34,7 +34,7 @@ try:
             "runscript",
             "-d",
             hobo_tenant,
-            "hobo_plausible_variable.py",
+            "/opt/publik/scripts/scripts_teleservices/python-scripts/hobo_plausible_variable.py",
         ]
     )
 except subprocess.CalledProcessError as e:

@@ -1,0 +1,6 @@
+{
+    "plausible_domain": {
+        "label": "Activer Plausible sur cette instance ?",
+        "value": "{{ commune_slug }}.guichet-citoyen.be"
+    }
+}

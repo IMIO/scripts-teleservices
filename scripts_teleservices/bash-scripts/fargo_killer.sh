@@ -9,4 +9,4 @@ fargo_tenant=$(echo "$tenants_output" | grep -oP '^\S+')
 echo "fargo tenant : $fargo_tenant"
 
 # tuer fargo
-sudo -u hobo hobo-manage dbshell; "delete from ${fargo_tenant}.environment_fargo;"
+echo "delete from ${fargo_tenant}.environment_fargo;" | sudo -u hobo hobo-manage dbshell

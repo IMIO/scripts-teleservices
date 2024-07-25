@@ -27,4 +27,4 @@ jobs:
           PACKAGE_INSTALL_PATH: '/opt/publik/scripts'
           SIGNER_KEY_PASSPHRASE: ${{ secrets.DEB_SIGNER_PASSPHRASE }}
           SIGNER_KEY: ${{ secrets.DEB_SIGNER_KEY }}
-          #MATTERMOST_WEBHOOK_URL: ${{ secrets.TELESERVICES_MATTERMOST_WEBHOOK_URL }}
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.TELESERVICES_MATTERMOST_WEBHOOK_URL }}

@@ -7,8 +7,7 @@ on:
 
 jobs:
   deb:
-    runs-on:
-      group: self-hosted
+    runs-on: gha-runners-smartweb
     steps:
       - name: Checkout
         uses: actions/checkout@v4

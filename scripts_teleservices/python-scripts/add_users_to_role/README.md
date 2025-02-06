@@ -13,7 +13,12 @@ users = [
     }
 ]
 
-role_uuid = "uuid_du_role"
-url_ts = "https://canary-auth.guichet-citoyen.be/"
 
+url_ts = "https://canary-auth.guichet-citoyen.be/"
+# identifiant court des rôles dans lesquels ajouter des users
+slugs = [
+    "agent-imio-portail-parents","schlagvuk"
+]
+url_role = f"{url_ts}api/roles/?slug="
 ```
+

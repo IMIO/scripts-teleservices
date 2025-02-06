@@ -1,8 +1,7 @@
-from settings import auth, users, role_uuid, url_ts, slugs, url_role
+from settings import auth, users, url_ts, slugs, url_role
 import requests
 
 ENDPOINT_USERS = "api/users/"
-ENDPOINT_ROLES = f"api/roles/{role_uuid}/relationships/members/"
 
 headers = {"Content-Type":"application/json"}
 user_uuid_dict = {"data": []}

@@ -21,10 +21,10 @@ print(f"Ajout du rôle à {len(user_uuid_dict['data'])} utilisateurs")
 for slug in slugs:
     get_role_uuid_request = requests.get(f"{url_role}{slug}", auth=auth, headers=headers)
     if get_role_uuid_request.json()['results']:
-        print("..Le rôle a été trouvé")
+        print(f"..Le rôle {slug} a été trouvé")
         role_uuid = get_role_uuid_request.json()['results'][0]['uuid']
         add_user_roles_request = requests.post(f"{url_ts}api/roles/{role_uuid}/relationships/members/", auth=auth, headers=headers, json=user_uuid_dict)
-        print(f"..Création du rôle :  {add_user_roles_request.status_code}")
+        print(f"..ajout au rôle :  {add_user_roles_request.status_code}")
     else:
-        print("..Le rôle n'a pas été trouvé, abandon")
+        print(f"..Le rôle {slug} n'a pas été trouvé, abandon")
 #print(add_user_role_request.json())

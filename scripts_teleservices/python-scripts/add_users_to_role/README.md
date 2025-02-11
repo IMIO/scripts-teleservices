@@ -1,6 +1,6 @@
 Ce script sert à créer des utilisateurs et les mettre dans un rôle.
 Créer un fichier `settings.py et y ajouter les variables auth, users et role_uuid comme indiqué dans les exemples ci-dessous :
-```
+``` python
 auth = ("login", "password")
 
 users = [

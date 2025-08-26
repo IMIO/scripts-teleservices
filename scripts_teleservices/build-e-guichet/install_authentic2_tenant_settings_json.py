@@ -53,7 +53,10 @@ def load_and_modify_json(slug):
         "AUTHN_CLASSREF": [
             "urn:be:fedict:iam:fas:citizen:eid",
             "urn:be:fedict:iam:fas:citizen:token",
-            "urn:be:fedict:iam:fas:citizen:bmid"
+            "urn:be:fedict:iam:fas:citizen:bmid",
+            "urn:be:fedict:iam:fas:citizen:Level500",
+	        "urn:be:fedict:iam:fas:citizen:Level450",
+            "urn:be:fedict:iam:fas:citizen:Level300"
         ]
         }
     ],

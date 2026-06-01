@@ -283,6 +283,12 @@ _NUM_TAIL_RE = re.compile(
 )
 
 
+def _looks_like_year(num):
+    """Vrai si `num` est un nombre de 4 chiffres dans 1700-2099 (probable année
+    en fin de nom de rue plutôt qu'un numéro de maison)."""
+    return bool(num) and len(num) == 4 and 1700 <= int(num) <= 2099
+
+
 def _clean_suffix(value):
     """Nettoie un suffixe (espaces, séparateurs) pour le stocker dans num_box."""
     if not value:
@@ -314,6 +320,9 @@ def parse_address(raw):
         return result
 
     text = " ".join(raw.split())
+    # Retire la ponctuation parasite aux extrémités (ex. "Quai Notre Dame, 16,")
+    # qui empêcherait le regex "numéro en queue" de matcher le chiffre final.
+    text = text.strip(" ,;.")
 
     box_match = _BOX_RE.search(text)
     if box_match:
@@ -330,14 +339,17 @@ def parse_address(raw):
         street = text[match.end():].strip(" ,;/-")
     else:
         match = _NUM_TAIL_RE.search(text)
-        if match:
+        # Garde anti-année : un nombre de 4 chiffres en fin de chaîne ressemblant
+        # à une année (ex. "rue du 8 mai 1945") fait partie du nom de rue, pas du
+        # numéro. On le laisse alors entièrement dans `street`.
+        if match and not _looks_like_year(match.group("num_house")):
             result["num_house"] = match.group("num_house")
             suffix = _clean_suffix(match.group("suffix"))
             if suffix and not result["num_box"]:
                 result["num_box"] = suffix
             street = text[: match.start()].strip(" ,;/-")
         else:
-            # Aucun numéro reconnaissable : on conserve tout dans la rue.
+            # Aucun numéro reconnaissable (ou année dans le nom) : tout dans la rue.
             street = text
 
     result["street"] = re.sub(r"\s+", " ", street).strip()

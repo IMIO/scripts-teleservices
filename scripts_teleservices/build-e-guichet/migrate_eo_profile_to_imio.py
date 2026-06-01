@@ -379,8 +379,14 @@ def migrate_address_values():
     }
     missing = [n for n, a in targets.items() if a is None]
     if missing:
-        log("ABORT  migration valeurs: attributs cibles manquants {!r}".format(missing))
-        return
+        if DRY_RUN:
+            # En dry-run la phase 1 n'a rien créé : on simule quand même le
+            # parsing pour produire les statistiques et la liste des suspects.
+            log("INFO   attributs cibles pas encore créés (normal en dry-run): {!r}. "
+                "Parsing simulé, aucune écriture.".format(missing))
+        else:
+            log("ABORT  migration valeurs: attributs cibles manquants {!r}".format(missing))
+            return
 
     legacy_values = AttributeValue.objects.filter(attribute=legacy)
     total = legacy_values.count()
@@ -440,6 +446,10 @@ def migrate_address_values():
                 if not value:
                     continue
                 attribute = targets[field_name]
+                if attribute is None:
+                    # dry-run : cible pas encore créée, rien à vérifier/écrire
+                    # (stats parsed_ok/no_num_house déjà comptées plus haut).
+                    continue
                 current = attribute.get_value(owner)
                 if isinstance(current, str) and current.strip():
                     stats["skipped_existing"] += 1

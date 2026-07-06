@@ -28,22 +28,43 @@ Ce script (périmètre "adresse uniquement", cas Tournai) :
     4. désactive le seul attribut `address` une fois les valeurs migrées
        (`mobile`, `initiales`, `aes_id` et les autres champs sont conservés).
 
-Usage
------
-    # mode simulation (par défaut) — n'écrit rien en base
-    MIGRATE_DRY_RUN=1 authentic2-multitenant-manage tenant_command \
-        runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py \
-        -d <slug>-auth.<domain>
+Lancement
+---------
+Le script doit s'exécuter DANS le contexte d'un tenant authentic2 (le search_path
+du schéma du tenant doit être positionné). La méthode fiable est de l'exécuter via
+`tenant_command shell` en ciblant le domaine du tenant avec `-d`.
 
-    # mode application réelle
-    MIGRATE_DRY_RUN=0 authentic2-multitenant-manage tenant_command \
-        runscript /opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py \
-        -d <slug>-auth.<domain>
+/!\ NE PAS utiliser `runscript <chemin.py>` (django-extensions) : il attend un
+    module importable, pas un chemin de fichier, et échoue SILENCIEUSEMENT ici
+    (aucune sortie, run() jamais appelé). Passer par `tenant_command shell`.
+
+Méthode recommandée — une ligne, sans piège d'indentation (`shell -c`) :
+
+    # mode simulation (défaut) — n'écrit RIEN en base ; produit quand même le
+    # rapport suspects complet (..._dryrun_<ts>.tsv) pour audit AVANT l'apply.
+    MIGRATE_DRY_RUN=1 authentic2-multitenant-manage tenant_command shell \
+        -d <slug>-auth.<domain> \
+        -c "exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
+
+    # mode application réelle — écrit en base + provisionning hobo (re-sync
+    # wcs/combo) + backup JSON + rapport suspects complet.
+    MIGRATE_DRY_RUN=0 authentic2-multitenant-manage tenant_command shell \
+        -d <slug>-auth.<domain> \
+        -c "exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
+
+Variante heredoc (coller SANS indentation, `EOF` final tout à gauche, sinon le
+shell ne ferme pas le bloc / Python lève IndentationError) :
+
+    MIGRATE_DRY_RUN=1 authentic2-multitenant-manage tenant_command shell -d <slug>-auth.<domain> <<'EOF'
+    exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read())
+    run()
+    EOF
 
 Variables d'environnement
 -------------------------
     MIGRATE_DRY_RUN     "1" (défaut) pour simuler, "0" pour appliquer.
-    MIGRATE_BACKUP_DIR  Dossier de dump JSON (défaut: /var/backups/authentic2).
+    MIGRATE_BACKUP_DIR  Dossier de dump JSON + rapport suspects TSV
+                        (défaut: /var/backups/authentic2).
 """
 
 import json
@@ -415,8 +436,9 @@ def migrate_address_values():
 
     suspect_log_path = os.path.join(
         BACKUP_DIR,
-        "migrate_eo_to_imio_suspects_{}.tsv".format(
-            datetime.now().strftime("%Y%m%d-%H%M%S")
+        "migrate_eo_to_imio_suspects_{}{}.tsv".format(
+            "dryrun_" if DRY_RUN else "",
+            datetime.now().strftime("%Y%m%d-%H%M%S"),
         ),
     )
     suspect_buffer = []  # cas sans num_house (à auditer)
@@ -476,20 +498,26 @@ def migrate_address_values():
         log("  {:<18s} : {}".format(key, value))
 
     if suspect_buffer:
-        if DRY_RUN:
-            log("Suspects ({} cas sans numéro reconnu) — extrait :".format(len(suspect_buffer)))
-            for line in suspect_buffer[:10]:
-                log("    " + line)
-            log("    ... (run en apply pour générer le fichier complet)")
-        else:
+        # Le rapport suspects est un artefact d'AUDIT (aucune donnée applicative
+        # écrite) : on le génère dans les deux modes pour permettre l'audit
+        # complet AVANT l'apply. En dry-run le fichier est préfixé "dryrun_".
+        try:
             if not os.path.isdir(BACKUP_DIR):
                 os.makedirs(BACKUP_DIR)
             with open(suspect_log_path, "w") as f:
                 f.write("object_id\traw_address\tstreet_after_parsing\n")
-                f.write("\n".join(suspect_buffer))
-            log("Rapport suspects écrit: {} ({} cas)".format(
+                f.write("\n".join(suspect_buffer) + "\n")
+            log("Rapport suspects écrit: {} ({} cas).".format(
                 suspect_log_path, len(suspect_buffer)
             ))
+        except OSError as exc:
+            # Dossier non inscriptible (fréquent en dry-run selon l'environnement) :
+            # on ne fait pas échouer le run, on retombe sur un extrait console.
+            log("WARN   rapport suspects non écrit ({}). Extrait ({} cas) :".format(
+                exc, len(suspect_buffer)
+            ))
+            for line in suspect_buffer[:10]:
+                log("    " + line)
 
 
 class _NullCM:

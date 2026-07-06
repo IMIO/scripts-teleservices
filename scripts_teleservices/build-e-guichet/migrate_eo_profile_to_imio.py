@@ -38,30 +38,38 @@ du schéma du tenant doit être positionné). La méthode fiable est de l'exécu
     module importable, pas un chemin de fichier, et échoue SILENCIEUSEMENT ici
     (aucune sortie, run() jamais appelé). Passer par `tenant_command shell`.
 
+/!\ Les variables d'env passées en préfixe (`MIGRATE_DRY_RUN=... cmd`) sont
+    PERDUES : `authentic2-multitenant-manage` s'exécute via sudo, qui purge
+    l'environnement. Il faut donc les positionner DANS l'interpréteur, via
+    `os.environ`, AVANT le `exec()` (le script lit ses réglages à l'import).
+
 Méthode recommandée — une ligne, sans piège d'indentation (`shell -c`) :
 
     # mode simulation (défaut) — n'écrit RIEN en base ; produit quand même le
     # rapport suspects complet (..._dryrun_<ts>.tsv) pour audit AVANT l'apply.
-    MIGRATE_DRY_RUN=1 authentic2-multitenant-manage tenant_command shell \
-        -d <slug>-auth.<domain> \
-        -c "exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
+    authentic2-multitenant-manage tenant_command shell -d <slug>-auth.<domain> \
+        -c "import os; os.environ['MIGRATE_DRY_RUN']='1'; os.environ['MIGRATE_BACKUP_DIR']='/tmp'; exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
 
     # mode application réelle — écrit en base + provisionning hobo (re-sync
-    # wcs/combo) + backup JSON + rapport suspects complet.
-    MIGRATE_DRY_RUN=0 authentic2-multitenant-manage tenant_command shell \
-        -d <slug>-auth.<domain> \
-        -c "exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
+    # wcs/combo) + backup JSON + rapport suspects complet. Pointer
+    # MIGRATE_BACKUP_DIR vers un dossier PERSISTANT et inscriptible (PAS /tmp) :
+    # le backup JSON est le seul filet de sécurité avant écriture.
+    authentic2-multitenant-manage tenant_command shell -d <slug>-auth.<domain> \
+        -c "import os; os.environ['MIGRATE_DRY_RUN']='0'; os.environ['MIGRATE_BACKUP_DIR']='/var/backups/authentic2'; exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read()); run()"
 
 Variante heredoc (coller SANS indentation, `EOF` final tout à gauche, sinon le
 shell ne ferme pas le bloc / Python lève IndentationError) :
 
-    MIGRATE_DRY_RUN=1 authentic2-multitenant-manage tenant_command shell -d <slug>-auth.<domain> <<'EOF'
+    authentic2-multitenant-manage tenant_command shell -d <slug>-auth.<domain> <<'EOF'
+    import os
+    os.environ['MIGRATE_DRY_RUN'] = '1'
+    os.environ['MIGRATE_BACKUP_DIR'] = '/tmp'
     exec(open('/opt/publik/scripts/scripts_teleservices/build-e-guichet/migrate_eo_profile_to_imio.py').read())
     run()
     EOF
 
-Variables d'environnement
--------------------------
+Variables d'environnement (à positionner via os.environ, cf. Lancement)
+-----------------------------------------------------------------------
     MIGRATE_DRY_RUN     "1" (défaut) pour simuler, "0" pour appliquer.
     MIGRATE_BACKUP_DIR  Dossier de dump JSON + rapport suspects TSV
                         (défaut: /var/backups/authentic2).
@@ -287,9 +295,12 @@ _BOX_RE = re.compile(
     re.IGNORECASE | re.VERBOSE,
 )
 
-# Suffixe optionnel après le numéro principal : "12a", "12 bis", "12/3", "12-A".
+# Suffixe optionnel après le numéro principal : "12a", "12 A", "12 bis", "12/3",
+# "12-A", "12 rez". Le séparateur avec le numéro peut être vide, une espace, ou
+# / -. Restreint à bis/ter/quater/rez/rdc OU une lettre isolée (\b) pour ne pas
+# happer un mot du nom de rue (ex. "5 rue Royale", "rue du 8 mai").
 # Sera redirigé vers num_box car NumHouseField exige des chiffres purs.
-_SUFFIX = r"(?:bis|ter|quater|[A-Za-z]+|\s*[/\-]\s*\w+)"
+_SUFFIX = r"(?:\s*[/\-]\s*\w+|\s*(?:bis|ter|quater|rez|rdc)\b|\s+[A-Za-z]\b|[A-Za-z])"
 
 # Numéro en TÊTE : "5 rue Royale", "2, allee des patriotes".
 _NUM_HEAD_RE = re.compile(
@@ -299,7 +310,7 @@ _NUM_HEAD_RE = re.compile(
 
 # Numéro en QUEUE : "rue Communale 13", "Rue de la Goudinière, 32".
 _NUM_TAIL_RE = re.compile(
-    r"[,;]?\s*(?P<num_house>\d+)(?P<suffix>" + _SUFFIX + r")?\s*$",
+    r"[,;]?\s*(?P<num_house>\d+)(?P<suffix>" + _SUFFIX + r")?\s*[.,;]?\s*$",
     re.IGNORECASE,
 )
 

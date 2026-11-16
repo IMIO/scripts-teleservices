@@ -1,80 +1,63 @@
 """
-This script is used to verify the setup of itsme in Authentic2.
+Verify the FAS (CSAM) authentication levels configured in Authentic2.
+
+FAS reads AUTHN_CLASSREF as a minimum level and offers every authentication
+mean at or above the lowest requested level, while mellon only accepts the
+exact levels listed. Any level offered by FAS but missing from the list ends
+with a "user not found" page, so the list must match EXPECTED_CLASSREF.
 """
 
+import glob
 import json
-import subprocess
+import os
+import sys
+
+TENANTS_GLOB = "/var/lib/authentic2-multitenant/tenants/*/settings.json"
+FAS_METADATA_MARKER = "belgium.be"
+EXPECTED_CLASSREF = {
+    "urn:be:fedict:iam:fas:citizen:Level500",
+    "urn:be:fedict:iam:fas:citizen:Level490",
+    "urn:be:fedict:iam:fas:citizen:Level450",
+}
 
 
-def verify_file_exist(path):
+def check_settings_json(settings_json_path):
     try:
-        with open(path, "r") as file:
-            return True
-    except FileNotFoundError:
-        return False
-
-
-def verify_json_key_value(settings_json, key):
-    """
-    verify that
-
-
-    AUTHN_CLASSREF contains more than 2 items
-
-    Example of structure for reference :
-
-    {
-        "MELLON_IDENTITY_PROVIDERS": [
-        {
-            "METADATA_URL": "some_url",
-            "AUTHN_CLASSREF": ["some_urn", "some_urn", "some_urn"]
-        }
-    ],
-    }
-    """
-    try:
-        with open(settings_json, "r") as file:
+        with open(settings_json_path, "r") as file:
             data = json.load(file)
-            if key in data:
-                for element in data[key]:
-                    if element["AUTHN_CLASSREF"]:
-                        if len(element["AUTHN_CLASSREF"]) > 2:
-                            feedback = f"OK"
-                    else:
-                        feedback = f"AUTHN_CLASSREF not found in {settings_json}"
-            else:
-                feedback = f"Key {key} not found in {settings_json}"
-    except FileNotFoundError:
-        feedback = f"File {settings_json} not found"
+    except (OSError, json.JSONDecodeError) as e:
+        return f"unreadable settings.json ({e})"
 
-    return feedback
+    fas_idps = [
+        idp
+        for idp in data.get("MELLON_IDENTITY_PROVIDERS") or []
+        if FAS_METADATA_MARKER in (idp.get("METADATA_URL") or "")
+    ]
+    if not fas_idps:
+        return None
+
+    for idp in fas_idps:
+        classref = set(idp.get("AUTHN_CLASSREF") or [])
+        if not classref:
+            return "AUTHN_CLASSREF not found"
+        if classref != EXPECTED_CLASSREF:
+            missing = sorted(EXPECTED_CLASSREF - classref)
+            unexpected = sorted(classref - EXPECTED_CLASSREF)
+            return f"AUTHN_CLASSREF mismatch, missing: {missing}, unexpected: {unexpected}"
+    return "OK"
 
 
 def verify_for_itsme():
-    authentic_tenant = subprocess.run(
-        "ls /var/lib/authentic2-multitenant/tenants/",
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        shell=True,
-        check=True,
-    )
-
-    if authentic_tenant:
-        authentic_tenant = authentic_tenant.stdout.decode("utf-8").split("\n")[0].strip()
-
-        settings_json_path = f"/var/lib/authentic2-multitenant/tenants/{authentic_tenant}/settings.json"
-
-        settings_json = verify_file_exist(settings_json_path)
-
-        if not settings_json:
-            error_message = (
-                f"settings.json file not found in /var/lib/authentic2-multitenant/tenants/{authentic_tenant}/"
-            )
-
-        else:
-            error_message = verify_json_key_value(settings_json_path, "MELLON_IDENTITY_PROVIDERS")
-
-    return error_message + " " + settings_json_path
+    all_ok = True
+    for settings_json_path in sorted(glob.glob(TENANTS_GLOB)):
+        result = check_settings_json(settings_json_path)
+        if result is None:
+            continue
+        tenant = os.path.basename(os.path.dirname(settings_json_path))
+        print(f"{tenant}: {result}")
+        all_ok = all_ok and result == "OK"
+    return all_ok
 
 
-print(verify_for_itsme())
+if __name__ == "__main__":
+    sys.exit(0 if verify_for_itsme() else 1)

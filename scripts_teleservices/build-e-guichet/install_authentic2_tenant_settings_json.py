@@ -51,12 +51,9 @@ def load_and_modify_json(slug):
         {
         "METADATA_URL": "https://iamapps-public.belgium.be/saml/fas-metadata.xml",
         "AUTHN_CLASSREF": [
-            "urn:be:fedict:iam:fas:citizen:eid",
-            "urn:be:fedict:iam:fas:citizen:token",
-            "urn:be:fedict:iam:fas:citizen:bmid",
             "urn:be:fedict:iam:fas:citizen:Level500",
-	        "urn:be:fedict:iam:fas:citizen:Level450",
-            "urn:be:fedict:iam:fas:citizen:Level300"
+            "urn:be:fedict:iam:fas:citizen:Level490",
+            "urn:be:fedict:iam:fas:citizen:Level450"
         ]
         }
     ],

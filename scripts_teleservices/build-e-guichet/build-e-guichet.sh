@@ -52,11 +52,6 @@ if [ $3 == "full" ]; then
   sleep 0.1
 fi
 
-# Create passerelle "pays" datasource. (To choice country in users' profile).
-echo "-- Creating passerelle 'pays' datasource ..."
-sudo -u passerelle /usr/bin/passerelle-manage tenant_command import_site --overwrite -d $1-passerelle.$2 /opt/publik/scripts/scripts_teleservices/build-e-guichet/passerelle/pays.json --import-users
-sleep 0.1
-
 # Add hobo extra params
 echo "-- Applying hobo-manage cook to extra hobo params defined in /etc/hobo/recipe-$1-extra.json  ..."
 sudo -u hobo hobo-manage cook /etc/hobo/recipe.json
